@@ -1,5 +1,7 @@
 tags:
-  - tag1
+  - tictactoe
+  - cli
+  - application
 languages:
-  - language1
+  - ruby
 resources: 0
