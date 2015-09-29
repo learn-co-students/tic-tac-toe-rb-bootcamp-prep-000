@@ -46,7 +46,7 @@ There are three test files that should be completed in order. `01_tic_tac_toe_sp
 
 ### Your Tic Tac Toe Game
 
-There are infinite ways to build Tic Tac Toe. We, however, have been building up to a very specific structure with the methods we've been building throughout this course. We'll be using many of those methods here. These methods represent the basic requirements and logic of the game. 
+There are infinite ways to build Tic Tac Toe. We, however, have been building up to a very specific structure with the methods we've been building throughout this course. We'll be using many of those methods here. These methods represent the basic requirements and logic of the game.
 
 Why build and utilize the helper methods we've been constructing?
 
@@ -74,7 +74,7 @@ puts "-----------"
 puts " #{board[6]} | #{board[7]} | #{board[8]} "
 ```
 
-Now, let's take a look at the same task, encapsulated into a method that we can simply call, or invoke, three times. 
+Now, let's take a look at the same task, encapsulated into a method that we can simply call, or invoke, three times.
 
 ```ruby
 def display_board(board)
@@ -92,9 +92,9 @@ display_board(board)
 display_board(board)
 ```
 
-When our logic is well encapsulated by individual methods everything about our code is easier. We can re-use the same logic again and again, painlessly. 
+When our logic is well encapsulated by individual methods everything about our code is easier. We can re-use the same logic again and again, painlessly.
 
-You'll approach building Tic Tac Toe in this manner, first defining helper methods according to the test requirements and then slowly putting them together to define the complete play logic. 
+You'll approach building Tic Tac Toe in this manner, first defining helper methods according to the test requirements and then slowly putting them together to define the complete play logic.
 
 You'll then use this play method within a CLI and build a fully functioning 2 player Tic Tac Toe CLI in Ruby!
 
@@ -102,7 +102,7 @@ You'll then use this play method within a CLI and build a fully functioning 2 pl
 
 We'll be representing a Tic Tac Toe board using an array of `" "` strings. We'll pass this board to every method that as an argument so the helper methods can interact with or introspect on the board.
 
-We'll be getting user input via `gets` and a player will choose a position by entering 1-9. Our program will then fill out the appropriate position on the board with the player's token. 
+We'll be getting user input via `gets` and a player will choose a position by entering 1-9. Our program will then fill out the appropriate position on the board with the player's token.
 
 We will keep track of which player's turn it is and how many turns have been played. We will check to see, at every turn, if there is a winner. If there is a winner, we'll congratulate them. If there is a tie, we will inform our players.
 
@@ -110,7 +110,7 @@ We will keep track of which player's turn it is and how many turns have been pla
 
 ### Helper Methods
 
-Open up `lib/tic_tac_toe.rb`. You'll be coding your helper methods here. Run the tests for these methods by typing `rspec spec/01_tic_tac_toe_spec.rb` in the terminal. Use the test output, along with the guidelines below, to build these methods. 
+Open up `lib/tic_tac_toe.rb`. You'll be coding your helper methods here. Run the tests for these methods by typing `rspec spec/01_tic_tac_toe_spec.rb` in the terminal. Use the test output, along with the guidelines below, to build these methods.
 
 #### `WIN_COMBINATIONS`
 
@@ -124,7 +124,7 @@ WIN_COMBINATIONS = [
 ]
 ```
 
-#### `#display_board?`
+#### `#display_board`
 
 Define a method that prints the current board representation based on the `board` argument passed to the method.
 
@@ -209,7 +209,7 @@ The `#current_player` method should take in an argument of the game board and us
 
 #### `#won?`
 
-Your `#won?` method should accept a board as an argument and return false/nil if there is no win combination present in the board and return the winning combination indexes as an array if there is a win. Use your `WIN_COMBINATIONS` constant in this method. 
+Your `#won?` method should accept a board as an argument and return false/nil if there is no win combination present in the board and return the winning combination indexes as an array if there is a win. Use your `WIN_COMBINATIONS` constant in this method.
 
 #### `#full?`
 
@@ -358,9 +358,9 @@ Your `bin/tictactoe` CLI should:
 
 #### Top-Tip: Using a Console
 
-When building a large application like this one, it's useful to be able to explore your code through an interactive console that has all your code loaded. For example, imagine wanting to test your `#valid_move?` method. You might have built the method in `lib/tic_tac_toe.rb`, but besides finishing the entire lab and trying it in the context of your CLI or running the test suite and seeing output, it's very hard to know how the method you built behaves. So you might start `irb` in your terminal and copy the source of your `#valid_move` method into a new IRB session so you can play with it. But as the methods become more complex and dependent, that breaks down. So we've given you a console that will load your code for you into a sort of interactive playground. 
+When building a large application like this one, it's useful to be able to explore your code through an interactive console that has all your code loaded. For example, imagine wanting to test your `#valid_move?` method. You might have built the method in `lib/tic_tac_toe.rb`, but besides finishing the entire lab and trying it in the context of your CLI or running the test suite and seeing output, it's very hard to know how the method you built behaves. So you might start `irb` in your terminal and copy the source of your `#valid_move` method into a new IRB session so you can play with it. But as the methods become more complex and dependent, that breaks down. So we've given you a console that will load your code for you into a sort of interactive playground.
 
-First, run `bundle` to make sure all your gems are installed. Then, you can start the console with `rake console` in your terminal. 
+First, run `bundle` to make sure all your gems are installed. Then, you can start the console with `rake console` in your terminal.
 
 Imagine your `lib/tic_tac_toe.rb` containing:
 
