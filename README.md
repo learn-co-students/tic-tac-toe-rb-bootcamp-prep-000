@@ -10,6 +10,10 @@ You're going to be building a 2 player CLI version of Tic Tac Toe by defining a 
 
 <iframe width="100%" heigh="100%" src="https://www.youtube.com/embed/e4TMZ0f6qoI" frameborder="0" allowfullscreen></iframe>
 
+### Use Your Previous Tic Tac Toe Code
+
+If you've been following along with the progression of Tic Tac Toe labs you've probably already built lots of the methods required to solve this lab. As you solve this lab, when you encounter a requirement you have previously solved, like defining the `WIN_COMBINATIONS` constant, or the `#display_board` method, you should take a second and find your old code. The ability to recognize previously solved problems and integrate a known solution is crucial to programming (and problem solving in general). Us programmers, we call that "Copy and Pasting."
+
 ### Project Structure
 
 ```
@@ -231,7 +235,7 @@ The `#winner` method should accept a board and return the token, "X" or "O" that
 
 #### `#play`
 
-The play method is the main method of the tic tac toe application and is responsible for the game loop. A tic tac toe game must allow players to tale turns, checking if the game is over after every turn, and at the conclusion of the game, whether because it was won or because it was a draw, reporting to the user the outcome of the game. You can imagine the psuedocode:
+The play method is the main method of the tic tac toe application and is responsible for the game loop. A tic tac toe game must allow players to take turns, checking if the game is over after every turn, and at the conclusion of the game, whether because it was won or because it was a draw, reporting to the user the outcome of the game. You can imagine the psuedocode:
 
 ```
 until the game is over
@@ -356,7 +360,7 @@ Your `bin/tictactoe` CLI should:
 3. Display the starting board.
 4. Begin the game by calling `#play`.
 
-#### Top-Tip: Using a Console
+#### Tip: Using a Console
 
 When building a large application like this one, it's useful to be able to explore your code through an interactive console that has all your code loaded. For example, imagine wanting to test your `#valid_move?` method. You might have built the method in `lib/tic_tac_toe.rb`, but besides finishing the entire lab and trying it in the context of your CLI or running the test suite and seeing output, it's very hard to know how the method you built behaves. So you might start `irb` in your terminal and copy the source of your `#valid_move` method into a new IRB session so you can play with it. But as the methods become more complex and dependent, that breaks down. So we've given you a console that will load your code for you into a sort of interactive playground.
 
@@ -396,6 +400,16 @@ Console started:
 ```
 
 As you can see, it's easy to test the method with data we created.
+
+## Play Your Game
+
+Once you get all the tests to pass, play your game!
+
+```
+$ bin/tictactoe
+```
+
+Feel proud. You can't imagine how far we've come already.
 
 ## Code Coverage
 
