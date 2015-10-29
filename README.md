@@ -299,7 +299,7 @@ expect(self).to receive(:gets).at_least(:once).and_return("1")
 
 The final bit of that, `and_return("1")`, states that when `gets` is called and the expectation is met, the call to `gets` should also be stubbed and return "1".
 
-5 . Finally, after setting up the expectations of the behavoir of `#play`, the test suite evokes the method. All expectations set must be met by the termination of that method call.
+5 . Finally, after setting up the expectations of the behavior of `#play`, the test suite evokes the method. All expectations set must be met by the termination of that method call.
 
 ```ruby
 play(board)
