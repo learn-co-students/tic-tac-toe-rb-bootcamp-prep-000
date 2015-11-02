@@ -104,13 +104,15 @@ You'll then use this play method within a CLI and build a fully functioning 2 pl
 
 ### Game Conventions
 
-We'll be representing a Tic Tac Toe board using an array of `" "` strings. We'll pass this board to every method that as an argument so the helper methods can interact with or introspect on the board.
+We'll be representing a Tic Tac Toe board using an array of `" "` strings. We'll pass this board to every method that has an argument so the helper methods can interact with or introspect on the board.
 
 We'll be getting user input via `gets` and a player will choose a position by entering 1-9. Our program will then fill out the appropriate position on the board with the player's token.
 
 We will keep track of which player's turn it is and how many turns have been played. We will check to see, at every turn, if there is a winner. If there is a winner, we'll congratulate them. If there is a tie, we will inform our players.
 
 ## Instructions
+
+**Run: `bundle` from your terminal before starting this lab! Otherwise you're going to see errors relating to not finding a gem `simplecov` when you try to run `learn`.**
 
 ### Helper Methods
 
@@ -281,7 +283,7 @@ board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 allow($stdout).to receive(:puts)
 ```
 
-3 . Our play method is going to involve looping. The test suite is going to ensure that when you build your game loop, you use the `#over?` method as a condition of when to end the loop. When we call `#play` in our test this loop will never end because there is no player input and no one ever wins the game in most of our tests. This would create an infinite loop in our test. So to avoid this, we fake the behavoir of `#over?`, making sure it returns false the first time it is called and true the second.
+3 . Our play method is going to involve looping. The test suite is going to ensure that when you build your game loop, you use the `#over?` method as a condition of when to end the loop. When we call `#play` in our test this loop will never end because there is no player input and no one ever wins the game in most of our tests. This would create an infinite loop in our test. So to avoid this, we fake the behavior of `#over?`, making sure it returns false the first time it is called and true the second.
 
 ```ruby
 allow(self).to receive(:over?).and_return(false, true)
@@ -299,7 +301,7 @@ expect(self).to receive(:gets).at_least(:once).and_return("1")
 
 The final bit of that, `and_return("1")`, states that when `gets` is called and the expectation is met, the call to `gets` should also be stubbed and return "1".
 
-5 . Finally, after setting up the expectations of the behavoir of `#play`, the test suite evokes the method. All expectations set must be met by the termination of that method call.
+5 . Finally, after setting up the expectations of the behavior of `#play`, the test suite evokes the method. All expectations set must be met by the termination of that method call.
 
 ```ruby
 play(board)
