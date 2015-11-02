@@ -283,7 +283,7 @@ board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 allow($stdout).to receive(:puts)
 ```
 
-3 . Our play method is going to involve looping. The test suite is going to ensure that when you build your game loop, you use the `#over?` method as a condition of when to end the loop. When we call `#play` in our test this loop will never end because there is no player input and no one ever wins the game in most of our tests. This would create an infinite loop in our test. So to avoid this, we fake the behavoir of `#over?`, making sure it returns false the first time it is called and true the second.
+3 . Our play method is going to involve looping. The test suite is going to ensure that when you build your game loop, you use the `#over?` method as a condition of when to end the loop. When we call `#play` in our test this loop will never end because there is no player input and no one ever wins the game in most of our tests. This would create an infinite loop in our test. So to avoid this, we fake the behavior of `#over?`, making sure it returns false the first time it is called and true the second.
 
 ```ruby
 allow(self).to receive(:over?).and_return(false, true)
