@@ -423,3 +423,5 @@ When you click on `lib/tic_tac_toe.rb`, you'll see something like:
 ![Coverage 2](https://dl.dropboxusercontent.com/s/3xzof85jm0g5vwp/2015-09-20%20at%203.40%20PM.png)
 
 The lines in green have been tested, the lines in red haven't. When all tests pass, you should see 100% test coverage.
+
+test
