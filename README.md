@@ -1,5 +1,4 @@
 # Tic Tac Toe in Ruby
-test
 
 ## Objectives
 
