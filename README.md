@@ -1,5 +1,4 @@
 # Tic Tac Toe in Ruby
-test
 
 ## Objectives
 
@@ -105,7 +104,7 @@ You'll then use this play method within a CLI and build a fully functioning 2 pl
 
 ### Game Conventions
 
-We'll be representing a Tic Tac Toe board using an array of `" "` strings. We'll pass this board to every method that as an argument so the helper methods can interact with or introspect on the board.
+We'll be representing a Tic Tac Toe board using an array of `" "` strings. We'll pass this board to every method as an argument so the helper methods can interact with or introspect on the board.
 
 We'll be getting user input via `gets` and a player will choose a position by entering 1-9. Our program will then fill out the appropriate position on the board with the player's token.
 
@@ -424,4 +423,4 @@ When you click on `lib/tic_tac_toe.rb`, you'll see something like:
 
 The lines in green have been tested, the lines in red haven't. When all tests pass, you should see 100% test coverage.
 
-test
+<a href='https://learn.co/lessons/tic-tac-toe-rb' data-visibility='hidden'>View this lesson on Learn.co</a>
