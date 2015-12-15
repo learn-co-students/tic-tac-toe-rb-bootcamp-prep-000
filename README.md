@@ -423,5 +423,4 @@ When you click on `lib/tic_tac_toe.rb`, you'll see something like:
 
 The lines in green have been tested, the lines in red haven't. When all tests pass, you should see 100% test coverage.
 
-test
 <a href='https://learn.co/lessons/tic-tac-toe-rb' data-visibility='hidden'>View this lesson on Learn.co</a>
