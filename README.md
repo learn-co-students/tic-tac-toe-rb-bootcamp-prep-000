@@ -169,7 +169,7 @@ Your `#move` method must take in three arguments, the board array, the location 
 
 #### `#position_taken?`
 
-The `#position_taken?` method will be responsible for evaluating the user's input against the Tic Tac Toe board and checking to see whether or not that position is occupied. If the user inputs that they would like to fill out position `2`, our `#position_taken?` method will check to see if that position is vacant or if it contains an "X" or and "O". If the position is free, the method should return `false` (i.e. "not taken"), otherwise it will return `true`.
+The `#position_taken?` method will be responsible for evaluating the user's input against the Tic Tac Toe board and checking to see whether or not that position is occupied. If the user inputs that they would like to fill out position `2`, our `#position_taken?` method will check to see if that position is vacant or if it contains an "X" or an "O". If the position is free, the method should return `false` (i.e. "not taken"), otherwise it will return `true`.
 
 #### `#valid_move?`
 
@@ -281,7 +281,7 @@ board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 allow($stdout).to receive(:puts)
 ```
 
-3 . Our play method is going to involve looping. The test suite is going to ensure that when you build your game loop, you use the `#over?` method as a condition of when to end the loop. When we call `#play` in our test this loop will never end because there is no player input and no one ever wins the game in most of our tests. This would create an infinite loop in our test. So to avoid this, we fake the behavoir of `#over?`, making sure it returns false the first time it is called and true the second.
+3 . Our play method is going to involve looping. The test suite is going to ensure that when you build your game loop, you use the `#over?` method as a condition of when to end the loop. When we call `#play` in our test this loop will never end because there is no player input and no one ever wins the game in most of our tests. This would create an infinite loop in our test. So to avoid this, we fake the behavior of `#over?`, making sure it returns false the first time it is called and true the second.
 
 ```ruby
 allow(self).to receive(:over?).and_return(false, true)
