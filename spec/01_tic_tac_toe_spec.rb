@@ -42,6 +42,19 @@ describe './lib/tic_tac_toe.rb' do
   end
 
   describe '#move' do
+
+    it 'does not allow for a default third argument' do
+      board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+
+      expect{move(board, 1)}.to raise_error(ArgumentError)
+    end
+
+    it 'takes three arguments: board, position, and player token' do
+      board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+
+      expect{move(board, 1, "X")}.to_not raise_error(ArgumentError)
+    end
+
     it 'allows "X" player in the bottom right and "O" in the top left ' do
       board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
       move(board, 1, "O")
@@ -154,6 +167,15 @@ describe './lib/tic_tac_toe.rb' do
   end
 
   describe '#draw?' do
+
+    it 'calls won? and full?' do
+      board = ["X", "O", "X", "O", "X", "X", "O", "X", "O"]
+      expect(self).to receive(:won?).with(board)
+      expect(self).to receive(:full?).with(board)
+
+      draw?(board)
+    end
+
     it 'returns true for a draw' do
       board = ["X", "O", "X", "O", "X", "X", "O", "X", "O"]
 
