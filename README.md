@@ -165,7 +165,7 @@ Outputting:
 
 #### `#move`
 
-Your `#move` method must take in three arguments, the board array, the location in the board array that the player would like to fill out with an "X" or and "O", and the player's character (either "X" or "O"). The third argument, the player's character, should have a default of "X". Regarding the player's input: if the user's input is `5`, the player wants to fill out position 5 with their character. This means that your method must fill out the correct array index with the player's character. Remember that, from the player's point of view, the board contains spaces 1-9. But, an array's indexes start their count at 0. You'll have to account for that in your `#move` method.
+Your `#move` method must take in three arguments, the board array, the location in the board array that the player would like to fill out with an "X" or and "O", and the player's character (either "X" or "O"). We previously had you write this method with a default argument of "X" for the third argument, but that is no longer needed. Regarding the player's input: if the user's input is `5`, the player wants to fill out position 5 with their character. This means that your method must fill out the correct array index with the player's character. Remember that, from the player's point of view, the board contains spaces 1-9. But, an array's indexes start their count at 0. You'll have to account for that in your `#move` method.
 
 #### `#position_taken?`
 
