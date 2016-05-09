@@ -106,7 +106,7 @@ You'll then use this play method within a CLI and build a fully functioning 2 pl
 
 We'll be representing a Tic Tac Toe board using an array of `" "` strings. We'll pass this board to every method as an argument so the helper methods can interact with or introspect on the board.
 
-We'll be getting user input via `gets` and a player will choose a position by entering 1-9. Our program will then fill out the appropriate position on the board with the player's token.
+We'll be getting user input via `gets` and a player will choose a spot on the board by entering 1-9. Our program will then fill out the appropriate position on the board with the player's token.
 
 We will keep track of which player's turn it is and how many turns have been played. We will check to see, at every turn, if there is a winner. If there is a winner, we'll congratulate them. If there is a tie, we will inform our players.
 
@@ -163,13 +163,17 @@ Outputting:
    |   |   
 ```
 
+#### `input_to_position`
+
+Once the user inputs where they would like to go on the board, we then have to convert this to the board position (i.e. board index) multiple times. Instead of doing that in a lot of places, we can remove this repetitive code and put it in this helper method. This method takes the user_input (which is a string), converts it to an Integer, and subtracts 1. Remember that, from the player's point of view, the board contains spaces 1-9. But, an array's indexes start their count at 0.
+
 #### `#move`
 
-Your `#move` method must take in three arguments, the board array, the location in the board array that the player would like to fill out with an "X" or and "O", and the player's character (either "X" or "O"). We previously had you write this method with a default argument of "X" for the third argument, but that is no longer needed. Regarding the player's input: if the user's input is `5`, the player wants to fill out position 5 with their character. This means that your method must fill out the correct array index with the player's character. Remember that, from the player's point of view, the board contains spaces 1-9. But, an array's indexes start their count at 0. You'll have to account for that in your `#move` method.
+Your `#move` method must take in three arguments: **1)** the board array, **2)** the position in the board array that the player would like to fill out with an "X" or and "O", and **3)** the player's character (either "X" or "O"). We previously had you write this method with a default argument of "X" for the third argument, but that is no longer needed.
 
 #### `#position_taken?`
 
-The `#position_taken?` method will be responsible for evaluating the user's input against the Tic Tac Toe board and checking to see whether or not that position is occupied. If the user inputs that they would like to fill out position `2`, our `#position_taken?` method will check to see if that position is vacant or if it contains an "X" or an "O". If the position is free, the method should return `false` (i.e. "not taken"), otherwise it will return `true`.
+The `#position_taken?` method will be responsible for evaluating the position selected by the user against the Tic Tac Toe board and checking to see whether or not that position is occupied. If the user would like to fill out position 1, our `#position_taken?` method will check to see if that position is vacant or if it contains an "X" or an "O". If the position is free, the method should return `false` (i.e. "not taken"), otherwise it will return `true`.
 
 #### `#valid_move?`
 
@@ -182,11 +186,11 @@ Build a method `valid_move?` that accepts a board and a position to check and re
 
 Build a method `#turn` to encapsulate the logic of a single complete turn composed of the following routine:
 
-1. Asking the user for their move by position 1-9.
+1. Asking the user for their move by location 1-9.
 2. Receiving the user input.
-3. If the move is valid, make the move.
-4. If the move is invalid, ask for a new move until a valid move is received.
-5. Display the board after the valid move has been made.
+3. Convert user input to a position
+4. If the move is valid, make the move and display board.
+5. Otherwise (that is, if the move is invalid) ask for a new move until a valid move is received.
 
 All these procedures will be wrapped into our `#turn` method. However, the majority of the logic for these procedures will be defined and encapsulated in individual methods which you've already built.
 
@@ -195,12 +199,12 @@ You can imagine the pseudocode for the `#turn` method:
 ```
 ask for input
 get input
-if input is valid
-  make the move for input
+convert input to position
+if move is valid
+  make the move for position and show board
 else
-  ask for input again until you get a valid input
+  ask for input again until you get a valid move
 end
-show the board
 ```
 
 #### `#turn_count`
