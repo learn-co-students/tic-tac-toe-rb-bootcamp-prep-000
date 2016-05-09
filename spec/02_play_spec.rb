@@ -37,11 +37,11 @@ describe './lib/tic_tac_toe.rb' do
       board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
       allow($stdout).to receive(:puts)
       allow(self).to receive(:gets).and_return("1","2","3")
-      allow(self).to receive(:over?).and_return(false, false, false, true)
+      allow(self).to receive(:over?).and_return(false, false, false, true, StandardError.new)
 
       play(board)
 
-      expect(board).to match_array(["X", "O", "X", " ", " ", " ", " ", " ", " "])
+      expect(board).to match_array(["X", "O", "X", " ", " ", " ", " ", " ", " "]), "The over? method should only be called 4 times"
     end
 
     it 'checks if the game is won after every turn' do
