@@ -275,7 +275,7 @@ This test is built to confirm that your implementation of the `#play` method wil
 board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 ```
 
-2 . We state that any output to `$stdout` (which is how Ruby sends output to your terminal) should basically be ignored. Otherwise when we run our tests, we'll see all of our programs output and it'll be super confusing.
+2 . We state that any output to `$stdout` (which is how Ruby sends output to your terminal) should basically be ignored. Otherwise when we run our tests, we'll see all of our program's output and it'll be super confusing.
 
 ```ruby
 allow($stdout).to receive(:puts)
@@ -424,3 +424,5 @@ When you click on `lib/tic_tac_toe.rb`, you'll see something like:
 The lines in green have been tested, the lines in red haven't. When all tests pass, you should see 100% test coverage.
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/tic-tac-toe-rb' title='Tic Tac Toe in Ruby'>Tic Tac Toe in Ruby</a> on Learn.co and start learning to code for free.</p>
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/tic-tac-toe-rb'>Tic Tac Toe in Ruby</a> on Learn.co and start learning to code for free.</p>
