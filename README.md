@@ -8,7 +8,7 @@
 
 You're going to be building a 2 player CLI version of Tic Tac Toe by defining a set of methods to encapsulate the game logic. When complete, it will look something like this when played:
 
-<iframe width="100%" heigh="100%" src="https://www.youtube.com/embed/e4TMZ0f6qoI" frameborder="0" allowfullscreen></iframe>
+<iframe width="100%" height="100%" src="https://www.youtube.com/embed/e4TMZ0f6qoI" frameborder="0" allowfullscreen></iframe>
 
 ### Use Your Previous Tic Tac Toe Code
 
@@ -424,3 +424,5 @@ When you click on `lib/tic_tac_toe.rb`, you'll see something like:
 The lines in green have been tested, the lines in red haven't. When all tests pass, you should see 100% test coverage.
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/tic-tac-toe-rb' title='Tic Tac Toe in Ruby'>Tic Tac Toe in Ruby</a> on Learn.co and start learning to code for free.</p>
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/tic-tac-toe-rb'>Tic Tac Toe in Ruby</a> on Learn.co and start learning to code for free.</p>
