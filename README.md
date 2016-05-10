@@ -275,7 +275,7 @@ This test is built to confirm that your implementation of the `#play` method wil
 board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 ```
 
-2 . We state that any output to `$stdout` (which is how Ruby sends output to your terminal) should basically be ignored. Otherwise when we run our tests, we'll see all of our programs output and it'll be super confusing.
+2 . We state that any output to `$stdout` (which is how Ruby sends output to your terminal) should basically be ignored. Otherwise when we run our tests, we'll see all of our program's output and it'll be super confusing.
 
 ```ruby
 allow($stdout).to receive(:puts)
