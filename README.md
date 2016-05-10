@@ -8,7 +8,7 @@
 
 You're going to be building a 2 player CLI version of Tic Tac Toe by defining a set of methods to encapsulate the game logic. When complete, it will look something like this when played:
 
-<iframe width="100%" heigh="100%" src="https://www.youtube.com/embed/e4TMZ0f6qoI" frameborder="0" allowfullscreen></iframe>
+<iframe width="100%" height="100%" src="https://www.youtube.com/embed/e4TMZ0f6qoI" frameborder="0" allowfullscreen></iframe>
 
 ### Use Your Previous Tic Tac Toe Code
 
