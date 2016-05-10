@@ -8,7 +8,7 @@
 
 You're going to be building a 2 player CLI version of Tic Tac Toe by defining a set of methods to encapsulate the game logic. When complete, it will look something like this when played:
 
-<iframe width="100%" heigh="100%" src="https://www.youtube.com/embed/e4TMZ0f6qoI" frameborder="0" allowfullscreen></iframe>
+<iframe width="100%" height="100%" src="https://www.youtube.com/embed/e4TMZ0f6qoI" frameborder="0" allowfullscreen></iframe>
 
 ### Use Your Previous Tic Tac Toe Code
 
@@ -235,7 +235,7 @@ The `#winner` method should accept a board and return the token, "X" or "O" that
 
 #### `#play`
 
-The play method is the main method of the tic tac toe application and is responsible for the game loop. A tic tac toe game must allow players to take turns, checking if the game is over after every turn, and at the conclusion of the game, whether because it was won or because it was a draw, reporting to the user the outcome of the game. You can imagine the psuedocode:
+The play method is the main method of the tic tac toe application and is responsible for the game loop. A tic tac toe game must allow players to take turns, checking if the game is over after every turn, and at the conclusion of the game, whether because it was won or because it was a draw, reporting to the user the outcome of the game. You can imagine the pseudocode:
 
 ```
 until the game is over
@@ -275,7 +275,7 @@ This test is built to confirm that your implementation of the `#play` method wil
 board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 ```
 
-2 . We state that any output to `$stdout` (which is how Ruby sends output to your terminal) should basically be ignored. Otherwise when we run our tests, we'll see all of our programs output and it'll be super confusing.
+2 . We state that any output to `$stdout` (which is how Ruby sends output to your terminal) should basically be ignored. Otherwise when we run our tests, we'll see all of our program's output and it'll be super confusing.
 
 ```ruby
 allow($stdout).to receive(:puts)
@@ -424,3 +424,5 @@ When you click on `lib/tic_tac_toe.rb`, you'll see something like:
 The lines in green have been tested, the lines in red haven't. When all tests pass, you should see 100% test coverage.
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/tic-tac-toe-rb' title='Tic Tac Toe in Ruby'>Tic Tac Toe in Ruby</a> on Learn.co and start learning to code for free.</p>
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/tic-tac-toe-rb'>Tic Tac Toe in Ruby</a> on Learn.co and start learning to code for free.</p>
