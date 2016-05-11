@@ -303,7 +303,7 @@ expect(self).to receive(:gets).at_least(:once).and_return("1")
 
 The final bit of that, `and_return("1")`, states that when `gets` is called and the expectation is met, the call to `gets` should also be stubbed and return "1".
 
-5 . Finally, after setting up the expectations of the behavoir of `#play`, the test suite evokes the method. All expectations set must be met by the termination of that method call.
+5 . Finally, after setting up the expectations of the behavior of `#play`, the test suite evokes the method. All expectations set must be met by the termination of that method call.
 
 ```ruby
 play(board)
@@ -354,6 +354,26 @@ Finished in 0.0058 seconds (files took 0.1434 seconds to load)
 ```
 
 And it works! We don't want to just use that, the `#play` method is way more complicated and probably shouldn't be calling `gets` itself but rather having some other method, like `#turn` call gets. As long as something `#play` does meets the expectations set, the test will pass.
+
+#### Watch out for hanging test Stack Level Too Deep
+
+The test may just appear to freeze in the middle or you might run into this error:
+
+```
+SystemStackError:
+       stack level too deep
+     # ./lib/tic_tac_toe.rb:60:in `puts'
+     # ./lib/tic_tac_toe.rb:60:in `turn'
+     # ./lib/tic_tac_toe.rb:67:in `turn'
+     # ./lib/tic_tac_toe.rb:67:in `turn'
+     # ./lib/tic_tac_toe.rb:67:in `turn'
+     # ./lib/tic_tac_toe.rb:67:in `turn'
+     ...
+     ..
+     .
+```
+
+This means that we're calling a method that gets stuck in an infinite loop. A common location where this occurs is testing the `play` method without using the `over?` method to determine if the game is over. This is because our test stubs the `over?` method to manually return true even when the game isn't over. So if you are not basing your decision in your code to stop taking turns when the game is `over?` then we end up in an infinite loop!
 
 ### The CLI: `bin/tictactoe`
 
