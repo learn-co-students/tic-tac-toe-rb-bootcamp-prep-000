@@ -106,7 +106,7 @@ You'll then use this play method within a CLI and build a fully functioning 2 pl
 
 We'll be representing a Tic Tac Toe board using an array of `" "` strings. We'll pass this board to every method as an argument so the helper methods can interact with or introspect on the board.
 
-We'll be getting user input via `gets` and a player will choose a spot on the board by entering 1-9. Our program will then fill out the appropriate position on the board with the player's token.
+We'll be getting user input via `gets` and a player will choose a spot on the board by entering 1-9. Our program will then fill out the appropriate position on the board with the player's token. The term 'position' will refer to the index in the board array (0-8).
 
 We will keep track of which player's turn it is and how many turns have been played. We will check to see, at every turn, if there is a winner. If there is a winner, we'll congratulate them. If there is a tie, we will inform our players.
 
