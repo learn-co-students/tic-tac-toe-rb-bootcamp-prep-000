@@ -28,8 +28,8 @@ def display_board(board)
   puts " #{board[6]} | #{board[7]} | #{board[8]} "
 end
 
-def valid_move?(board, position)
-  position.between?(0,8) && !position_taken?(board, position)
+def valid_move?(board, index)
+  index.between?(0,8) && !position_taken?(board, index)
 end
 
 def won?(board)
@@ -52,24 +52,24 @@ def over?(board)
   won?(board) || draw?(board)
 end
 
-def input_to_position(user_input)
+def input_to_index(user_input)
   user_input.to_i - 1
 end
 
 def turn(board)
   puts "Please enter 1-9:"
   user_input = gets.strip
-  position = input_to_position(user_input)
-  if valid_move?(board, position)
-    move(board, position, current_player(board))
+  index = input_to_position(user_input)
+  if valid_move?(board, index)
+    move(board, index, current_player(board))
     display_board(board)
   else
     turn(board)
   end
 end
 
-def position_taken?(board, position)
-  board[position]== "X" || board[position] == "O"
+def position_taken?(board, index)
+  board[index]== "X" || board[index] == "O"
   # Creates a stop on RSpec
   # !(board[location].nil? || board[location] == "")
 end
@@ -82,8 +82,8 @@ def turn_count(board)
   board.count{|token| token == "X" || token == "O"}
 end
 
-def move(board, position, player)
-  board[position] = player
+def move(board, index, player)
+  board[index] = player
 end
 
 def winner(board)
