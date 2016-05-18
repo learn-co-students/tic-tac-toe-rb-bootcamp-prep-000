@@ -106,7 +106,7 @@ You'll then use this play method within a CLI and build a fully functioning 2 pl
 
 We'll be representing a Tic Tac Toe board using an array of `" "` strings. We'll pass this board to every method as an argument so the helper methods can interact with or introspect on the board.
 
-We'll be getting user input via `gets` and a player will choose a position by entering 1-9. Our program will then fill out the appropriate position on the board with the player's token.
+We'll be getting user input via `gets` and a player will choose a position on the board by entering 1-9. Our program will then fill out the appropriate position on the board with the player's token. The term 'position' will refer to the spot on the board as the player sees it (1-9).
 
 We will keep track of which player's turn it is and how many turns have been played. We will check to see, at every turn, if there is a winner. If there is a winner, we'll congratulate them. If there is a tie, we will inform our players.
 
@@ -163,17 +163,21 @@ Outputting:
    |   |   
 ```
 
+#### `#input_to_index`
+
+Once the user inputs where they would like to go on the board, we then have to convert this to the board index multiple times. Instead of doing that in a lot of places, we can remove this repetitive code and put it in this helper method. This method takes the user_input (which is a string), converts it to an Integer, and subtracts 1. Remember that, from the player's point of view, the board contains spaces 1-9. But, an array's indexes start their count at 0.
+
 #### `#move`
 
-Your `#move` method must take in three arguments, the board array, the location in the board array that the player would like to fill out with an "X" or and "O", and the player's character (either "X" or "O"). The third argument, the player's character, should have a default of "X". Regarding the player's input: if the user's input is `5`, the player wants to fill out position 5 with their character. This means that your method must fill out the correct array index with the player's character. Remember that, from the player's point of view, the board contains spaces 1-9. But, an array's indexes start their count at 0. You'll have to account for that in your `#move` method.
+Your `#move` method must take in three arguments: **1)** the board array, **2)** the index in the board array that the player would like to fill out with an "X" or and "O", and **3)** the player's character (either "X" or "O"). We previously had you write this method with a default argument of "X" for the third argument, but that is no longer needed.
 
 #### `#position_taken?`
 
-The `#position_taken?` method will be responsible for evaluating the user's input against the Tic Tac Toe board and checking to see whether or not that position is occupied. If the user inputs that they would like to fill out position `2`, our `#position_taken?` method will check to see if that position is vacant or if it contains an "X" or an "O". If the position is free, the method should return `false` (i.e. "not taken"), otherwise it will return `true`.
+The `#position_taken?` method will be responsible for evaluating the position selected by the user against the Tic Tac Toe board and checking to see whether or not that index on the board array is occupied. If the user would like to fill out position 1, our `#position_taken?` method will check to see if that board index is vacant or if it contains an "X" or an "O". If the position is free, the method should return `false` (i.e. "not taken"), otherwise it will return `true`.
 
 #### `#valid_move?`
 
-Build a method `valid_move?` that accepts a board and a position to check and returns `true` if the move is valid and `false` or `nil` if not. A valid move means that the submitted position is:
+Build a method `valid_move?` that accepts a board and an index to check and returns `true` if the move is valid and `false` or `nil` if not. A valid move means that the submitted position is:
 
 1. Present on the game board.
 2. Not already filled with a token.
@@ -184,9 +188,9 @@ Build a method `#turn` to encapsulate the logic of a single complete turn compos
 
 1. Asking the user for their move by position 1-9.
 2. Receiving the user input.
-3. If the move is valid, make the move.
-4. If the move is invalid, ask for a new move until a valid move is received.
-5. Display the board after the valid move has been made.
+3. Convert user input to an index
+4. If the move is valid, make the move and display board.
+5. Otherwise (that is, if the move is invalid) ask for a new position until a valid move is received.
 
 All these procedures will be wrapped into our `#turn` method. However, the majority of the logic for these procedures will be defined and encapsulated in individual methods which you've already built.
 
@@ -195,12 +199,12 @@ You can imagine the pseudocode for the `#turn` method:
 ```
 ask for input
 get input
-if input is valid
-  make the move for input
+convert input to index
+if move is valid
+  make the move for index and show board
 else
-  ask for input again until you get a valid input
+  ask for input again until you get a valid move
 end
-show the board
 ```
 
 #### `#turn_count`
@@ -299,7 +303,7 @@ expect(self).to receive(:gets).at_least(:once).and_return("1")
 
 The final bit of that, `and_return("1")`, states that when `gets` is called and the expectation is met, the call to `gets` should also be stubbed and return "1".
 
-5 . Finally, after setting up the expectations of the behavoir of `#play`, the test suite evokes the method. All expectations set must be met by the termination of that method call.
+5 . Finally, after setting up the expectations of the behavior of `#play`, the test suite evokes the method. All expectations set must be met by the termination of that method call.
 
 ```ruby
 play(board)
@@ -351,6 +355,26 @@ Finished in 0.0058 seconds (files took 0.1434 seconds to load)
 
 And it works! We don't want to just use that, the `#play` method is way more complicated and probably shouldn't be calling `gets` itself but rather having some other method, like `#turn` call gets. As long as something `#play` does meets the expectations set, the test will pass.
 
+#### Watch out for hanging test Stack Level Too Deep
+
+The test may just appear to freeze in the middle or you might run into this error:
+
+```
+SystemStackError:
+       stack level too deep
+     # ./lib/tic_tac_toe.rb:60:in `puts'
+     # ./lib/tic_tac_toe.rb:60:in `turn'
+     # ./lib/tic_tac_toe.rb:67:in `turn'
+     # ./lib/tic_tac_toe.rb:67:in `turn'
+     # ./lib/tic_tac_toe.rb:67:in `turn'
+     # ./lib/tic_tac_toe.rb:67:in `turn'
+     ...
+     ..
+     .
+```
+
+This means that we're calling a method that gets stuck in an infinite loop. A common location where this occurs is testing the `play` method without using the `over?` method to determine if the game is over. This is because our test stubs the `over?` method to manually return true even when the game isn't over. So if you are not basing your decision in your code to stop taking turns when the game is `over?` then we end up in an infinite loop!
+
 ### The CLI: `bin/tictactoe`
 
 Your `bin/tictactoe` CLI should:
@@ -369,8 +393,8 @@ First, run `bundle` to make sure all your gems are installed. Then, you can star
 Imagine your `lib/tic_tac_toe.rb` containing:
 
 ```ruby
-def move(board, location, player = "X")
-  board[location.to_i-1] = player
+def move(board, index, player = "X")
+  board[index] = player
 end
 ```
 
@@ -391,11 +415,11 @@ Loading your application environment...
 Console started:
 [1] pry(main)> board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 => [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-[2] pry(main)> valid_move?(board, "1")
+[2] pry(main)> valid_move?(board, 0)
 => true
 [3] pry(main)> board = ["X", " ", " ", " ", " ", " ", " ", " ", " "]
 => ["X", " ", " ", " ", " ", " ", " ", " ", " "]
-[4] pry(main)> valid_move?(board, "1")
+[4] pry(main)> valid_move?(board, 0)
 => false
 ```
 

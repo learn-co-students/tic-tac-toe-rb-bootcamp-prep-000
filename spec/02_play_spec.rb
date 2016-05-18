@@ -35,9 +35,14 @@ describe './lib/tic_tac_toe.rb' do
 
     it 'plays the first few turns of the game' do
       board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+      num_of_turns = 0
       allow($stdout).to receive(:puts)
       allow(self).to receive(:gets).and_return("1","2","3")
       allow(self).to receive(:over?).and_return(false, false, false, true)
+      allow(self).to receive(:turn) do
+        num_of_turns += 1
+        Process.exit!(true) if num_of_turns > 10
+      end.and_call_original
 
       play(board)
 
