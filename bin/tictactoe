@@ -1,3 +1,19 @@
 #!/usr/bin/env ruby
 
 require_relative '../lib/tic_tac_toe'
+
+# puts "Welcome to Tic Tac Toe!"
+# while $play_again
+# reset
+# display_board(winning_combo)
+# play(winning_combo)
+# outputWinner(winning_combo)
+# playagain?
+# end
+
+board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+
+puts "Welcome to Tic Tac Toe!"
+display_board(board)
+
+play(board)
