@@ -1,3 +1,9 @@
 #!/usr/bin/env ruby
 
 require_relative '../lib/tic_tac_toe'
+board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+puts "Welcome, would you like to play Tic Tac Toe? (y/n)"
+game_start = gets
+if game_start == "y" || "Y"
+  play(board)
+end
