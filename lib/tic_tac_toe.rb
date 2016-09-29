@@ -35,6 +35,7 @@ def valid_move?(board,index)
 end
 
 def turn(board)
+  char = current_player(board)
   puts "Please enter 1-9:"
   input = gets.strip
   index = input_to_index(input)
@@ -109,6 +110,6 @@ def play(board)
  elsif winner(board) == "O"
    puts "Congratulations O!"
  else
-   puts "Cat's Game!"
+   puts "Cats Game!"
  end
 end
