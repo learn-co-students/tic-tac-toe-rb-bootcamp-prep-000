@@ -9,14 +9,16 @@ WIN_COMBINATIONS = [
   [6,4,2]
 ]
 
-def display_board
-  board_row = "   |   |   "
+def display_board(board)
+  board_row1 = " #{board[0]} | #{board[1]} | #{board[2]} "
+  board_row2 = " #{board[3]} | #{board[4]} | #{board[5]} "
+  board_row3 = " #{board[6]} | #{board[7]} | #{board[8]} "
   board_line = "-----------"
-  puts board_row
+  puts board_row1
   puts board_line
-  puts board_row
+  puts board_row2
   puts board_line
-  puts board_row
+  puts board_row3
 end
 
 def input_to_index(piece)
@@ -25,7 +27,7 @@ def input_to_index(piece)
   return index
 end
 
-def move(array, piece = 1, char = "X")
+def move(array, piece, char)
   array[piece] = char
   return array
 end
@@ -54,9 +56,10 @@ def turn(board)
   puts "Please enter 1-9:"
   spot = gets.strip
   index = input_to_index(spot)
+  char = current_player(board)
   if valid_move?(board, index) == false
     turn(board)
-  else move(board, index, "X")
+  else move(board, index, char)
   end
   display_board(board)
 end
@@ -108,8 +111,15 @@ def winner(board)
 end
 
 def play(board)
-  display(board)
+  display_board(board)
   until over?(board) do
     turn(board)
+  end
+  if !draw?(board) && winner(board) == "X"
+    puts "Congratulations X!"
+  elsif !draw?(board) && winner(board) == "O"
+    puts "Congratulations O!"
+  else
+    puts "Cats Game!"
   end
 end
