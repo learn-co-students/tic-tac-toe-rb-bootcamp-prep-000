@@ -102,11 +102,8 @@ def position_taken?(board, index)
     end
 
     def play(board)
-      input = gets
-
       while !over?(board)
         turn(board)
-
       end
 
       if won?(board)
