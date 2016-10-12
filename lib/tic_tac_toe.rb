@@ -107,12 +107,14 @@ end
 def play(board)
   turn = 0
   while turn < 9 do
-    unless over?(board)
+    if !over?(board)
       turn(board)
       turn += 1
+    else
+      winner = winner(board)
+      puts "Congratulations #{winner}!" if won?(board)
+      puts "Cats Game!" if draw?(board)
+      break
     end
   end
-  winner = winner(board)
-  puts "Congratulations #{winner}" if won?
-  puts "Cats Game!" if draw?
 end
