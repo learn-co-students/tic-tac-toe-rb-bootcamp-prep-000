@@ -84,6 +84,10 @@ def full?(board)
   board.none?{|position| position == " " || position.nil?}
 end
 
+def draw?(board)
+   !won?(board) && full?(board)
+end
+
 def over?(board)
   full?(board) || won?(board) || draw?(board)
 end
@@ -111,13 +115,4 @@ def play(board)
   winner = winner(board)
   puts "Congratulations #{winner}" if won?
   puts "Cats Game!" if draw?
-end
-
-def draw?(board)
-  unless won?(board)
-    if full?(board)
-      return true
-    end
-  end
-  return false
 end
