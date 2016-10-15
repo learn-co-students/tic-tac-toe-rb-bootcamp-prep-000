@@ -1,4 +1,6 @@
 require 'bundler'
+require 'pry'
+
 Bundler.require
 
 def reload!
