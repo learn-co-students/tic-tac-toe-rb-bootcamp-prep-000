@@ -193,10 +193,10 @@ describe './lib/tic_tac_toe.rb' do
     it 'calls won? and full?' do
       board = ["X", "O", "X", "O", "X", "X", "O", "X", "O"]
       expect(self).to receive(:won?).with(board)
-      expect(self).to receive(:full?).with(board)
+    expect(self).to receive(:full?).with(board)
 
       draw?(board)
-    end
+   end
 
     it 'returns true for a draw' do
       board = ["X", "O", "X", "O", "X", "X", "O", "X", "O"]
