@@ -92,15 +92,9 @@ def full?(board)
   return bol
   end
 
-def draw?(board)
-  if full?(board) == true && won?(board) == false
-    return true
-  elsif full?(board) == false && won?(board) == false
-    return false
-  elsif  won?(board) == true
-    return false
+  def draw?(board)
+    !won?(board) && full?(board)
   end
-end
 
 def over?(board)
   if won?(board) != false || draw?(board) == true || full?(board) == true
