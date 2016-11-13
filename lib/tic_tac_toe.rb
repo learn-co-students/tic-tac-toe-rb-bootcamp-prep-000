@@ -95,7 +95,6 @@ end
 
 def play(board)
   while !over?(board)
-    turn_count(board)
     turn(board)
   end
   if draw?(board) == true
