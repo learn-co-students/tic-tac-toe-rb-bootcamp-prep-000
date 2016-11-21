@@ -85,15 +85,15 @@ end
 
 
 def full?(board)
-  WIN_COMBINATIONS.each do |wincombo|
-    if wincombo.any? do |square|
-      board[square] == ""|| board[square] == " "
-            end
-      return false
-    else
-      return true
-    end
-    end
+  square = 0
+  while square < 9
+      if board[square] == ""|| board[square] == " "
+        return false
+      else
+        square += 1
+      end
+  end
+  return true
 end
 
 def draw?(board)
@@ -122,8 +122,8 @@ def turn(board)
   puts "Please enter 1-9:"
   position = gets.strip
   index = input_to_index(position)
+#  binding.pry
   if valid_move?(board,index)
-  #  binding.pry
     move(board,index,current_player(board))
     display_board(board)
   else
@@ -132,12 +132,15 @@ def turn(board)
 end
 
 def play(board)
+  while over?(board)!=true
       turn(board)
-    if over?(board)!=true
-      turn(board)
-  elsif draw?(board)
+    end
+  if draw?(board)
     puts "Cats Game!"
+    binding.pry
+  elsif current_player(board)=="X"
+    puts "Congratulations O!"
   else
-    puts "#{token} wins!"
+    puts "Congratulations X!"
   end
 end
