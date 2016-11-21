@@ -22,7 +22,6 @@ end
 def input_to_index(user_input)
   position = user_input.to_i
   index = position - 1
-  return index
 end
 
 def move(board, index, char)
