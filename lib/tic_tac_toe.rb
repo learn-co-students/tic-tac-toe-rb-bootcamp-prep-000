@@ -85,15 +85,9 @@ end
 
 
 def full?(board)
-  square = 0
-  while square < 9
-      if board[square] == ""|| board[square] == " "
-        return false
-      else
-        square += 1
-      end
+  board.all? do |position|
+    position != " "
   end
-  return true
 end
 
 def draw?(board)
