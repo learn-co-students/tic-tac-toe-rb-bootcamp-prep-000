@@ -118,7 +118,6 @@ def winner(board)
 end
 
 def turn(board)
-  display_board(board)
   puts "Please enter 1-9:"
   position = gets.strip
   index = input_to_index(position)
@@ -137,10 +136,8 @@ def play(board)
     end
   if draw?(board)
     puts "Cats Game!"
-    binding.pry
-  elsif current_player(board)=="X"
-    puts "Congratulations O!"
+    #binding.pry
   else
-    puts "Congratulations X!"
+    puts "Congratulations #{winner(board)}!"
   end
 end
