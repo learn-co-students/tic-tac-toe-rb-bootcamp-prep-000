@@ -26,7 +26,7 @@ end
 
 def move(board, index, char)
   board[index]=char
-  return board
+  #return board
 end
 
 # code your #position_taken? method here!
