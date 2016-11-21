@@ -48,31 +48,6 @@ def valid_move?(board, index)
   end
 end
 
-def turn(board)
-  puts "Please enter 1-9:"
-  position = gets.strip
-  index = input_to_index(position)
-  if valid_move?(board,index)
-    token = current_player(board)
-    move(board,index, token)
-  else
-    if position_taken?(board,index)
-      puts "That space is taken"
-    turn(board)
-  	end
-  	turn(board)
-  end
-  display_board(board)
-  if over?(board)
-  	if draw?(board)
-  		puts "Cats Game!"
-  	end
-  else
-  puts "#{token} wins!"
-  end
-  turn(board)
-end
-
 def turn_count(board)
   occupied = 0
   board.each do |space|
@@ -141,9 +116,27 @@ def winner(board)
   end
 end
 
+def turn(board)
+  display_board(board)
+  puts "Please enter 1-9:"
+  position = gets.strip
+  index = input_to_index(position)
+end
+
 def play(board)
+  turn(board)
+  if valid_move(board,index)
+    move(board,index,current_player(board))
+  elsif position_taken?(board,index)
+    puts "That space is taken"
+  else
+    turn(board)
+  end
   if over?(board)!=true
     turn(board)
-  #  over?(board)
+  elsif draw?(board)
+    puts "Cats Game!"
+  else
+    puts "#{token} wins!"
   end
 end
