@@ -1,4 +1,3 @@
-require 'pry'
 WIN_COMBINATIONS = [
   [0,1,2],
   [3,4,5],
@@ -26,26 +25,17 @@ end
 
 def move(board, index, char)
   board[index]=char
-  #return board
 end
 
 # code your #position_taken? method here!
 def position_taken?(board,index)
-  if (board[index]=="X" || board[index]=="O")
-    return true
-  else
-    return false
-  end
+   (board[index]=="X" || board[index]=="O")
 end
 
 
 # code your #valid_move? method here
 def valid_move?(board, index)
-  if  !position_taken?(board,index) && index.between?(0,8)
-    true
-  else
-    false
-  end
+  !position_taken?(board,index) && index.between?(0,8)
 end
 
 def turn_count(board)
@@ -90,11 +80,7 @@ def full?(board)
 end
 
 def draw?(board)
-  if (!won?(board) && full?(board))
-    return true
-  else
-    return false
-  end
+  (!won?(board) && full?(board))
 end
 
 
@@ -129,7 +115,6 @@ def play(board)
     end
   if draw?(board)
     puts "Cats Game!"
-    #binding.pry
   else
     puts "Congratulations #{winner(board)}!"
   end
