@@ -17,7 +17,6 @@ def display_board(board)
   puts " #{board[6]} | #{board[7]} | #{board[8]} "
 end
 
-# code your input_to_index and move method here!
 def input_to_index(user_input)
   position = user_input.to_i
   index = position - 1
@@ -27,13 +26,10 @@ def move(board, index, char)
   board[index]=char
 end
 
-# code your #position_taken? method here!
 def position_taken?(board,index)
    (board[index]=="X" || board[index]=="O")
 end
 
-
-# code your #valid_move? method here
 def valid_move?(board, index)
   !position_taken?(board,index) && index.between?(0,8)
 end
@@ -70,8 +66,6 @@ WIN_COMBINATIONS.each do |wincombo|
  end
   return false
 end
-
-
 
 def full?(board)
   board.all? do |position|
