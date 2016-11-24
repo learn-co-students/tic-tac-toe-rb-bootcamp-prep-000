@@ -4,8 +4,6 @@
       "/home/lgrapstein/code/labs/tic-tac-toe-rb-bootcamp-prep-000/lib/tic_tac_toe.rb": [
         1,
         null,
-        1,
-        null,
         null,
         null,
         null,
@@ -25,8 +23,6 @@
         3,
         null,
         null,
-        null,
-        1,
         null,
         1,
         21,
@@ -99,6 +95,6 @@
         null
       ]
     },
-    "timestamp": 1475857863
+    "timestamp": 1480024421
   }
 }

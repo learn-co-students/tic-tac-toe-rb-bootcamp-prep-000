@@ -1,5 +1,3 @@
-print "Welcome to Tic Tac Toe!"
-
 WIN_COMBINATIONS = [
   [0,1,2],
   [3,4,5],
@@ -21,8 +19,6 @@ def play(board)
     puts "Cats Game!"
   end
 end
-
-board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 
 def display_board(board)
   puts " #{board[0]} | #{board[1]} | #{board[2]} "
