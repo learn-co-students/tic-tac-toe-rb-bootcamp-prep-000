@@ -93,7 +93,7 @@ end
 
 # Method for determining if the game is over
 def over?(board)
-  won?(board) || full?(board) || draw?(board)
+  won?(board) || draw?(board)
 end
 
 # Method for determining if the game was won by a player
