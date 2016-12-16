@@ -41,12 +41,8 @@ end
 def play(board)
   turn_count = 1
   while turn_count <= 9
-    if !over?(board)
-      turn(board)
-      turn_count += 1
-    else
-      turn_count = 10
-    end
+    turn(board) if !over?(board)
+    turn_count += 1
   end
   draw?(board) ? response =  "Cats Game!" : response = "Congratulations #{winner(board)}!"
   puts response
