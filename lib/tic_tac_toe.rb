@@ -66,7 +66,7 @@ end
 def winner(board)
   winningCombo = won?(board)
   if winningCombo
-    winner = board[winningCombo[0]]
+    winner = board[won?(board)[0]]
   end
 end
 
@@ -104,7 +104,6 @@ def turn(board)
 end
 
 def play(board)
-
   while !(over?(board))
     turn(board)
   end
