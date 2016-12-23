@@ -16,27 +16,13 @@ def input_to_index(user_input)
 end
 
 def move(board, index, current_player)
-  board[index] = current_player(board)
+  board[index] = current_player
 end
 
-def turn_count(board)
-  total_occupied=board.select do |occupied|
-  occupied!=(" " || "" || nil)
-  total_occupied.count
-  end
-  total_occupied.count
-end
 
 
 def current_player(board)
-  no_x=board.select do |x|
-  x=="X"
-end
-  no_o=board.select do |o|
-  o=="O"
-end
-
-  (no_x.count > no_o.count)? "O":"X"
+  turn_count(board).even? ? "X":"O"
 
 end
 
@@ -60,7 +46,7 @@ def turn(board)
   end
 end
 
-def turn.count(board)
+def turn_count(board)
   no_x=board.select do |x|
   x=="X"
 end
@@ -68,7 +54,7 @@ end
   o=="O"
 end
 
-  turn=no_x+no_o
+  turn=no_x.count+no_o.count
 
 end
 
@@ -86,16 +72,16 @@ def won?(board)
   store=store[0]
   if store==[] || store== nil
     false
-  else  store
+  else  true
   end
 
 end
 
 def draw?(board)
-  if won?(board)!=false  #the game is won
-    nil
+  if won?(board)==true  #the game is won
+    false
   # the game is not won
-elsif full?(board)==true  #the board is full
+  elsif full?(board)==true  #the board is full
     true
   else                    #the board is not full
     false
@@ -150,9 +136,23 @@ def play(board)
   end
 
   if won?(board)
-    true
+
+    no_x=board.select do |x|
+    x=="X"
+    end
+    no_o=board.select do |o|
+    o=="O"
+    end
+
+    if no_x.count>no_o.count
+    winner="X"
+    else winner="O"
+    end
+    puts "Congratulations #{winner}!"
+
+
   elsif draw?(board)
-    true
+    puts "Cats Game!"
   else false
   end
 end
