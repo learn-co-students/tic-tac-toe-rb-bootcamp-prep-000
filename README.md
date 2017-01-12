@@ -443,7 +443,7 @@ Feel proud. You can't imagine how far we've come already.
 
 ## Code Coverage
 
-Included with this lesson is a tool that will generate a Coverage Report that shows how much of our code is tested when we run our tests. After a test run, you can open the file generated in `coverage/index.html` from terminal with `open coverage/index.html`. It should pop up in your browser and look like:
+Included with this lesson is a tool that will generate a Coverage Report that shows how much of our code is tested when we run our tests. After a test run, you can open the file generated in `coverage/index.html` from terminal with `open coverage/index.html` (**If you're using the Learn IDE, don't run the `open` command here. Instead run `httpserver` and then open the IP address noted in browser and select the link to `coverage/`**). It should pop up in your browser and look like:
 
 ![Coverage](https://dl.dropboxusercontent.com/s/59peed056jjk9xm/2015-09-20%20at%203.39%20PM.png)
 
