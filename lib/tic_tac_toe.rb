@@ -96,7 +96,7 @@ end
 
 
 def draw?(board)
-   !won?(board) && full?(board) 
+   !won?(board) && full?(board)
 
 end
 
@@ -115,5 +115,18 @@ def winner(board)
     index = win_combo[0]
     return board[index]
 
+end
+end
+
+
+def play(board)
+    until over?(board)
+      turn(board)
+    end
+  if won?(board)
+    puts "Congratulations #{winner(board)}!"
+end
+  if draw?(board)
+    puts "Cats Game!"
 end
 end
