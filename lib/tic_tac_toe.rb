@@ -1,3 +1,5 @@
+require 'pry'
+
 WIN_COMBINATIONS = [
   [0,1,2], # Top row
   [3,4,5],  # Middle row
@@ -78,15 +80,13 @@ def won?(board)
 end
 
 def full?(board)
-  if board.any? { |i| i == " " }
-    false
-  else
+  unless board.any? { |i| i == " " }
     true
   end
 end
 
 def draw?(board)
-  full?(board) && !won?(board)
+  !won?(board) && full?(board)
 end
 
 def over?(board)
@@ -96,5 +96,19 @@ end
 def winner(board)
   if winning_array = won?(board)
     board[winning_array[0]]
+  end
+end
+
+def play(board)
+  9.times do
+    if !over?(board)
+      turn(board)
+    elsif draw?(board)
+      puts "Cats Game!"
+      break
+    elsif won?(board)
+      puts "Congratulations #{winner(board)}!"
+      break
+    end
   end
 end
