@@ -2,7 +2,10 @@
   "RSpec": {
     "coverage": {
       "/home/carolinewynspeare-42596/code/labs/tic-tac-toe-rb-bootcamp-prep-000/lib/tic_tac_toe.rb": [
+<<<<<<< HEAD
         null,
+=======
+>>>>>>> 29856c96117aa99b3e2c24db92d845338085c46f
         1,
         null,
         null,
@@ -15,6 +18,7 @@
         null,
         null,
         1,
+<<<<<<< HEAD
         24,
         null,
         null,
@@ -33,20 +37,50 @@
         4,
         null,
         24,
+=======
+        14,
+        null,
+        null,
+        1,
+        952,
+        null,
+        null,
+        1,
+        14,
+        null,
+        null,
+        1,
+        1890,
+        0,
+        1890,
+        1876,
+        null,
+        14,
+>>>>>>> 29856c96117aa99b3e2c24db92d845338085c46f
         null,
         null,
         null,
         1,
+<<<<<<< HEAD
         23,
         20,
         3,
         1,
         2,
         2,
+=======
+        952,
+        14,
+        938,
+        938,
+        0,
+        0,
+>>>>>>> 29856c96117aa99b3e2c24db92d845338085c46f
         null,
         null,
         null,
         1,
+<<<<<<< HEAD
         20,
         20,
         20,
@@ -56,10 +90,21 @@
         19,
         null,
         1,
+=======
+        953,
+        952,
+        952,
+        952,
+        14,
+        14,
+        null,
+        938,
+>>>>>>> 29856c96117aa99b3e2c24db92d845338085c46f
         null,
         null,
         null,
         1,
+<<<<<<< HEAD
         21,
         21,
         189,
@@ -75,10 +120,28 @@
         14,
         null,
         6,
+=======
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        null,
+        0,
+>>>>>>> 29856c96117aa99b3e2c24db92d845338085c46f
         null,
         null,
         null,
         1,
+<<<<<<< HEAD
         53,
         379,
         379,
@@ -108,10 +171,42 @@
         null,
         1,
         21,
+=======
+        36,
+        238,
+        238,
+        238,
+        null,
+        238,
+        238,
+        238,
+        238,
+        6,
+        null,
+        2,
+        null,
+        230,
+        null,
+        null,
+        28,
+        null,
+        null,
+        1,
+        76,
+        null,
+        null,
+        1,
+        13,
+        null,
+        null,
+        1,
+        16,
+>>>>>>> 29856c96117aa99b3e2c24db92d845338085c46f
         null,
         null,
         null,
         1,
+<<<<<<< HEAD
         8,
         36,
         36,
@@ -129,25 +224,60 @@
         null,
         null,
         1,
+=======
+        5,
+        10,
+        10,
+        10,
+        null,
+        10,
+        10,
+        10,
+        10,
+        3,
+        null,
+        2,
+        null,
+        5,
+        null,
+        null,
+        0,
+>>>>>>> 29856c96117aa99b3e2c24db92d845338085c46f
         null,
         null,
         null,
         1,
         12,
+<<<<<<< HEAD
         17,
         null,
         12,
+=======
+        12,
+        15,
+        null,
+        11,
+>>>>>>> 29856c96117aa99b3e2c24db92d845338085c46f
         5,
         4,
         1,
         1,
         null,
+<<<<<<< HEAD
         7,
         7,
+=======
+        6,
+        6,
+>>>>>>> 29856c96117aa99b3e2c24db92d845338085c46f
         null,
         null
       ]
     },
+<<<<<<< HEAD
     "timestamp": 1485713655
+=======
+    "timestamp": 1485661332
+>>>>>>> 29856c96117aa99b3e2c24db92d845338085c46f
   }
 }

@@ -1,4 +1,3 @@
-
 WIN_COMBINATIONS = [
 [0,1,2],
 [3,4,5],
@@ -10,6 +9,20 @@ WIN_COMBINATIONS = [
 [2,4,6]
 ]
 
+<<<<<<< HEAD
+WIN_COMBINATIONS = [
+[0,1,2],
+[3,4,5],
+[6,7,8],
+[0,3,6],
+[1,4,7],
+[2,5,8],
+[0,4,8],
+[2,4,6]
+]
+
+=======
+>>>>>>> 29856c96117aa99b3e2c24db92d845338085c46f
 def display_board(board)
   puts " #{board[0]} | #{board[1]} | #{board[2]} \n-----------\n #{board[3]} | #{board[4]} | #{board[5]} \n-----------\n #{board[6]} | #{board[7]} | #{board[8]} "
 end
@@ -47,11 +60,18 @@ def turn(board)
   user_input = gets.strip
   index = input_to_index(user_input)
   if valid_move?(board, index)
+<<<<<<< HEAD
     character = current_player(board)
     move(board, index, character)
     display_board(board)
 else
 turn(board)
+=======
+    move(board, index, character="X")
+    display_board(board)
+else
+    turn(board)
+>>>>>>> 29856c96117aa99b3e2c24db92d845338085c46f
 end
 end
 
@@ -129,6 +149,10 @@ def current_player(board)
  end
 
  def play(board)
+<<<<<<< HEAD
+=======
+input = gets.strip
+>>>>>>> 29856c96117aa99b3e2c24db92d845338085c46f
 until over?(board) == true
   turn(board)
 end
