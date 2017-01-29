@@ -47,7 +47,8 @@ def turn(board)
   user_input = gets.strip
   index = input_to_index(user_input)
   if valid_move?(board, index)
-    move(board, index, character = "X")
+    character = current_player(board)
+    move(board, index, character)
     display_board(board)
 else
 turn(board)
@@ -128,7 +129,6 @@ def current_player(board)
  end
 
  def play(board)
-input = gets.strip
 until over?(board) == true
   turn(board)
 end
