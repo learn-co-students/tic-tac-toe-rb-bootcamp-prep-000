@@ -25,7 +25,7 @@ end
 
 # Define your play method below
 def play(board)
-  while !over?(board) && !won?(board)
+  while !over?(board)
     turn(board)
   end
 
@@ -85,13 +85,11 @@ def turn_count(board)
 end
 
 def current_player(board)
-
   if turn_count(board) % 2 == 0
     current = "X"
   else
     current = "O"
   end
-  current
 end
 
 def won?(board)
