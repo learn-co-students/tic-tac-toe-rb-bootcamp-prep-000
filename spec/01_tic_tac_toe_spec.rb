@@ -134,7 +134,7 @@ describe './lib/tic_tac_toe.rb' do
 
     it 'asks for input again after a failed validation' do
       board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-
+      
       allow($stdout).to receive(:puts)
 
       expect(self).to receive(:gets).and_return("invalid")
