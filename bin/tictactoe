@@ -4,13 +4,6 @@ require_relative '../lib/tic_tac_toe'
 
 board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 puts "Welcome to Tic Tac Toe!"
-puts "Where would you like to go?"
-puts "Please enter 1-9"
-input = gets.strip
 
-position = input_to_index(input)
-
-move(board, position)
 display_board(board)
-turn(board)
 play(board)

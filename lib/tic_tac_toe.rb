@@ -9,7 +9,17 @@ WIN_COMBINATIONS = [
     [6,4,2]
 ]
 
-board = [" "," "," "," "," "," "," "," "," "]
+def play(board)
+  while !over?(board)
+    turn(board)
+  end
+
+  if won?(board)
+    puts "Congratulations #{winner(board)}!"
+  elsif draw?(board)
+    puts "Cats Game!"
+  end
+end
 
 def display_board(board)
   puts " #{board[0]} | #{board[1]} | #{board[2]} "
@@ -19,20 +29,32 @@ def display_board(board)
   puts " #{board[6]} | #{board[7]} | #{board[8]} "
 end
 
+def valid_move?(board, index)
+  index.between?(0,8) && !position_taken?(board, index)
+end
+
 def input_to_index(user_input)
   user_input.to_i - 1
 end
 
-def move(board, index, player)
-  board[index] = player
+def won?(board)
+  WIN_COMBINATIONS.detect do |combo|
+   board[combo[0]] == board[combo[1]] &&
+   board[combo[1]] == board[combo[2]] &&
+   position_taken?(board, combo[0])
+ end
 end
 
-def position_taken?(board, location)
-  board[location] != " " && board[location] != ""
+def full?(board)
+  board.all?{|token| token == "X" || token == "O"}
 end
 
-def valid_move?(board, index)
-  index.between?(0,8) && !position_taken?(board, index)
+def draw?(board)
+  !won?(board) && full?(board)
+end
+
+def over?(board)
+  won?(board) || draw?(board)
 end
 
 def turn(board)
@@ -43,16 +65,15 @@ def turn(board)
     move(board, index, current_player(board))
     display_board(board)
   else
-    turn(board)
+    puts "stop"
   end
 end
+def position_taken?(board, index)
+  !(board[index].nil? || board[index] == " ")
+end
 
-def play(board)
-  turn_count = 0
-  until turn_count == 9
-    turn(board)
-    turn_count += 1
-  end
+def current_player(board)
+  turn_count(board) % 2 == 0 ? "X" : "O"
 end
 
 def turn_count(board)
@@ -65,36 +86,8 @@ def turn_count(board)
   turns
 end
 
-def current_player(board)
-  turn_count(board) % 2 == 0 ? "X" : "O"
-end
-
-def position_taken?(board, index)
-  !(board[index].nil? || board[index] == " ")
-end
-
-def won?(board)
-  WIN_COMBINATIONS.detect do |combo|
-   board[combo[0]] == board[combo[1]] &&
-   board[combo[1]] == board[combo[2]] &&
-   position_taken?(board, combo[0])
- end
-end
-
-def full(board)
-  !board[index].any?(" ")
-end
-
-def full?(board)
-  board.all?{|token| token == "X" || token == "O"}
-end
-
-def draw?(board)
-  !won?(board) && full?(board)
-end
-
-def over?(board)
-  won?(board) || full?(board)
+def move(board, index, player = "X")
+  board[index] = player
 end
 
 def winner(board)
