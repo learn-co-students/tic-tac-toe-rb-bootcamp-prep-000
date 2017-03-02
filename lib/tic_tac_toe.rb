@@ -14,9 +14,9 @@ def play(board)
     turn(board)
   end
   if won?(board)
-    puts "Congratulations #{winner(board)}!"
+    puts "Yeah Brah, #{winner(board)} Won!"
   elsif draw?(board)
-    puts "Cats Game!"
+    puts "Cats Game! Ya Freaks!"
   end
 end
 
