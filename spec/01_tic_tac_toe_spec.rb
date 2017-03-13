@@ -192,6 +192,9 @@ describe './lib/tic_tac_toe.rb' do
 
     it 'calls won? and full?' do
       board = ["X", "O", "X", "O", "X", "X", "O", "X", "O"]
+
+      allow($stdout).to receive(:puts)
+      
       expect(self).to receive(:won?).with(board)
       expect(self).to receive(:full?).with(board)
 
