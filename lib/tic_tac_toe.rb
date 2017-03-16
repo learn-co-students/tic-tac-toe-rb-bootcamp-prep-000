@@ -58,12 +58,23 @@ def turn(board)
   puts "Please enter 1-9:"
   input = gets.strip
   index = input_to_index(input)
-  if valid_move?(board,index) == true
-     move(board, index, value = "X")
+  value = current_player(board)
+  if valid_move?(board,index)  == true
+     move(board, index, value)
      display_board(board)
   else
       turn(board)
-end
+  end
+
+# puts "Please enter 1-9:"
+# input = gets.strip
+# index = input_to_index(input)
+# value = current_player(board)
+# if !valid_move?(board,index)
+#     turn(board)
+# end
+#   move(board,index,value)
+#   display_board(board)
 end
 
 def turn_count(board)
@@ -82,10 +93,11 @@ end
 def current_player(board)
  if turn_count(board) % 2 == 0
    return "X"
-else
+ else
   return "O"
-end 
+ end
 end
+
 def won?(board)
 
     WIN_COMBINATIONS.each do |win_combination|
@@ -111,55 +123,33 @@ def won?(board)
     return nil
 end
 
-
-
-
-
 def full?(board)
   board.all?{|index| index != " "} # "X" or "O"
 end
 
 def draw?(board)
-    if WIN_COMBINATIONS.any?{|i| i == won?(board)}
-       return false
-    elsif won?(board) == false && full?(board) == false
-       return false
-    else
-      return  true
-    end
+ !won?(board) && full?(board)
 end
 
 def over?(board)
-     if  full?(board) == true
-       return true
-     else
-       return false
-    end
-
+  won?(board) || draw?(board)
 end
-
 
 def winner(board)
     if win_combination = won?(board)
-    board[win_combination.first]
+      board[win_combination.first]
     end
 end
 
 def play(board)
-
-  # while counter < 9
-  # turn(board)
-  # counter += 1
-  # end
-  counter = 0
-until over?(board) == true 
- turn(board)
+   until over?(board)
+     turn(board)
+   end
+   if won?(board)
+        game_winner = winner(board)
+        puts "Congratulations #{game_winner}!"
+   end
+   if draw?(board)
+        puts "Cats Game!"
+   end
 end
-
-  if won?(board) == true
-    puts "Congratulations!"
-  else draw?(board) == true
-    puts "The game was a draw"
-end  
-end
-
