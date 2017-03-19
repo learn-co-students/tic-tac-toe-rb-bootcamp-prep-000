@@ -124,8 +124,6 @@ def turn_count (board)
 end
 
 def play(board)
-  puts "Welcome to Tic Tac Toe!"
-  
   9.times do
     if !over?(board)
       turn(board)
