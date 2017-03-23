@@ -23,20 +23,22 @@ def input_to_index(input)
   input.to_i - 1
 end
 
-
+# put player symbol in board array
 def move(board,index,current_player)
   board[index] = current_player
 end
 
+# T/F -- is there a symbol in board[index]
 def position_taken?(board,index)
   !(board[index].nil? || board[index] == " " || board[index] == "")
 end
 
-# is index valid?
+# T/F -- is index valid?
 def valid_move?(board,index)
   index.between?(0,8) && !position_taken?(board,index)
 end
 
+# Ask for input, 1..9 -- check validity and move then show board -- otherwise start over
 def turn(board)
   puts "Please enter 1-9:"
   input = gets.strip
@@ -50,6 +52,7 @@ def turn(board)
   display_board(board)
 end
 
+# count turns per symbol presence in array
 def turn_count(board)
   play_count = 0
   board.each do |play|
@@ -65,6 +68,7 @@ def current_player(board)
   turn_count(board).even? ? "X" : "O"
 end
 
+# Array/F -- return winning array or false
 def won?(board)
   WIN_COMBINATIONS.find do |win_combo|
     # win index, calm down.
@@ -82,25 +86,27 @@ def won?(board)
   end
 end
 
-# Is the board array full
+# T/F -- board array full
 def full?(board)
   board.all?{|symbol| symbol == "X" || symbol == "O"} ? true : false
 end
 
-# board array full, but no wins? Cat scratch
-# but in reverse because the test demands it
+# T/F -- no win and full board
 def scratch?(board)
   !won?(board) && full?(board)
 end
 
+# T/F -- any end state reached?
 def over?(board)
   won?(board) || scratch?(board) || full?(board)
 end
 
+# return player symbol
 def winner(board)
     won?(board) ? board[won?(board)[0]] : nil
 end
 
+# turn until over -- notification of end result
 def play(board)
   until over?(board)
     turn(board)
