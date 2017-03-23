@@ -1,6 +1,6 @@
 require_relative '../lib/tic_tac_toe.rb'
 
-describe './lib/tic_tac_toe.rb' do  
+describe './lib/tic_tac_toe.rb' do
   describe '#play' do
     it 'asks for players input on a turn of the game' do
       board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
@@ -60,12 +60,12 @@ describe './lib/tic_tac_toe.rb' do
       play(board)
     end
 
-    it 'checks if the game is draw after every turn' do
+    it 'checks if the game is scratch after every turn' do
       board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
       allow($stdout).to receive(:puts)
       allow(self).to receive(:gets).and_return("1", "2", "3")
 
-      expect(self).to receive(:draw?).at_least(:twice).and_return(false, false, true)
+      expect(self).to receive(:scratch?).at_least(:twice).and_return(false, false, true)
 
       play(board)
     end
@@ -97,7 +97,7 @@ describe './lib/tic_tac_toe.rb' do
       play(board)
     end
 
-    it 'stops playing in a draw' do
+    it 'stops playing in a scratch' do
       board = ["X", "O", "X", "O", "X", "X", "O", "X", "O"]
       allow($stdout).to receive(:puts)
 
@@ -106,7 +106,7 @@ describe './lib/tic_tac_toe.rb' do
       play(board)
     end
 
-    it 'prints "Cats Game!" on a draw' do
+    it 'prints "Cats Game!" on a scratch' do
       board = ["X", "O", "X", "O", "X", "X", "O", "X", "O"]
       allow($stdout).to receive(:puts)
 

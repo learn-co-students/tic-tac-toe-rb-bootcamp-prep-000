@@ -161,7 +161,7 @@ describe './lib/tic_tac_toe.rb' do
   end
 
   describe "#won?" do
-    it 'returns false for a draw' do
+    it 'returns false for a scratch' do
       board = ["X", "O", "X", "O", "X", "X", "O", "X", "O"]
 
       expect(won?(board)).to be_falsey
@@ -175,7 +175,7 @@ describe './lib/tic_tac_toe.rb' do
   end
 
   describe '#full?' do
-    it 'returns true for a draw' do
+    it 'returns true for a scratch' do
       board = ["X", "O", "X", "O", "X", "X", "O", "X", "O"]
 
       expect(full?(board)).to be_truthy
@@ -188,37 +188,37 @@ describe './lib/tic_tac_toe.rb' do
     end
   end
 
-  describe '#draw?' do
+  describe '#scratch?' do
 
     it 'calls won? and full?' do
       board = ["X", "O", "X", "O", "X", "X", "O", "X", "O"]
       expect(self).to receive(:won?).with(board)
       expect(self).to receive(:full?).with(board)
 
-      draw?(board)
+      scratch?(board)
     end
 
-    it 'returns true for a draw' do
+    it 'returns true for a scratch' do
       board = ["X", "O", "X", "O", "X", "X", "O", "X", "O"]
 
-      expect(draw?(board)).to be_truthy
+      expect(scratch?(board)).to be_truthy
     end
 
     it 'returns false for a won game' do
       board = ["X", "O", "X", "O", "X", "X", "O", "O", "X"]
 
-      expect(draw?(board)).to be_falsey
+      expect(scratch?(board)).to be_falsey
     end
 
     it 'returns false for an in-progress game' do
       board = ["X", " ", "X", " ", "X", " ", "O", "O", "X"]
 
-      expect(draw?(board)).to be_falsey
+      expect(scratch?(board)).to be_falsey
     end
   end
 
   describe '#over?' do
-    it 'returns true for a draw' do
+    it 'returns true for a scratch' do
       board = ["X", "O", "X", "O", "X", "X", "O", "X", "O"]
 
       expect(over?(board)).to be_truthy
