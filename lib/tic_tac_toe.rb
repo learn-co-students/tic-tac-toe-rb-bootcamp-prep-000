@@ -120,12 +120,18 @@ def turn(board)
 end
 
 def play(board)
-  while !over?(board)
+  if won?(board)
+    puts "Congratulations #{winner(board)}!"
+  elsif draw?(board)
+    puts "Cats Game!"
+  else
+    while !over?(board)
     turn(board)
     if won?(board)
       puts "Congratulations #{winner(board)}!"
     elsif draw?(board)
       puts "Cats Game!"
     end
+  end
   end
 end
