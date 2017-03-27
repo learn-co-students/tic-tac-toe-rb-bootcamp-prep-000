@@ -43,11 +43,7 @@ def turn(board)
   index=input_to_index(gets.strip)
 
   if valid_move?(board,index)
-    if turn_count(board)%2==0
       move(board,index,current_player(board))
-    else
-      move(board,index,current_player(board))
-    end
   else
     turn(board)
   end
@@ -102,8 +98,8 @@ def over?(board)
 end
 
 def winner(board)
-  if won?(board)
-    combination=won?(board)
+  if combination=won?(board)
+    #combination=won?(board)
     return board[combination[0]]
   end
 end
