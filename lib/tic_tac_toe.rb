@@ -25,7 +25,6 @@ def input_to_index(index)
 end
 
 def move(array, index, player)
-
   array[index] = player
 end
 
@@ -50,7 +49,7 @@ def valid_move?(board,index)
 end
 
 def turn(board)
-  player = "X"
+  player = current_player(board)
   puts "Please enter 1-9:"
   input = gets.strip
   index = input_to_index(input)
@@ -138,11 +137,7 @@ end
 
 def play(board)
   while !over?(board)
-    puts "Please enter 1-9"
-    input = gets
-    index = input_to_index(input)
-    move(board, index, current_player(board))
-    display_board(board)
+    turn(board)
   end
   if won?(board) != false
     puts "Congratulations #{winner(board)}!"
