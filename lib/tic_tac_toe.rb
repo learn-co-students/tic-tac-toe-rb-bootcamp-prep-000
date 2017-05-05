@@ -1,12 +1,12 @@
 WIN_COMBINATIONS = [
-  [0, 1, 2], # top row
-  [3, 4, 5], # middle row
-  [6, 7, 8], # bottom row
-  [0, 3, 6], # left column
-  [1, 4, 7], # middle column
-  [2, 5, 8], # right column
-  [0, 4, 8], # l-r diagonal
-  [2, 4, 6] # r-l diagonal
+  [0, 1, 2], 
+  [3, 4, 5], 
+  [6, 7, 8], 
+  [0, 3, 6], 
+  [1, 4, 7], 
+  [2, 5, 8], 
+  [0, 4, 8], 
+  [2, 4, 6]
 ]
 
 
@@ -62,7 +62,6 @@ end
 
 
 def turn_count(board)
-  #returns number of turns that have been played
   counter = 0
   board.each do |square|
     if square != " "
@@ -98,7 +97,6 @@ end
 
 
 def full?(board)
-  # returns true if board is full
   board.none?{ |element| element == " "}
 end
 
@@ -106,13 +104,10 @@ end
 def draw?(board)
   won = won?(board)
   full = full?(board)
-  # returns true if board has not been won and is full
   if won == false && full == true
     return true
-  # returns false if the board is not won and is not full
   elsif won == false && full == false
     return false
-  # returns false if board is won
   elsif won != false
     return false
   end
@@ -120,7 +115,6 @@ end
 
 
 def over?(board)
-  # returns true if board has been won, is a draw, or is full
   if won?(board) != false || draw?(board) == true || full?(board) == true
     return true
   end
@@ -128,7 +122,6 @@ end
 
 
 def winner(board)
-  # return the token that has won the game
   if won?(board) == false || draw?(board) == true
     return nil
   end
