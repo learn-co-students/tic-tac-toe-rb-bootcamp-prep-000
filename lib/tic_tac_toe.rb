@@ -65,16 +65,12 @@ end
 
 def won?(board)
 
-  if board == [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-    puts "Empty board"
-    return false
-  end
+  !board.include?([" ", " ", " ", " ", " ", " ", " ", " ", " "])
 
   WIN_COMBINATIONS.each do |winning_combo|
     if board[winning_combo[0]] == board[winning_combo[1]] &&
        board[winning_combo[1]] == board[winning_combo[2]] &&
        position_taken?(board, winning_combo[0])
-       puts "The game has been won!"
        return winning_combo
     end
   end
