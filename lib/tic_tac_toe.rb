@@ -89,3 +89,14 @@ def winner(board)
   winning_board = won?(board)
   winning_board ? board[winning_board[0]] : nil
 end
+
+def play(board)
+  until over?(board)
+    turn(board)
+  end
+  if won?(board)
+    puts "Congratulations #{winner(board)}!"
+  elsif draw?(board)
+    puts "Cats Game!"
+  end
+end
