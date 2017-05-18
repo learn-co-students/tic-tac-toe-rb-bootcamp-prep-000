@@ -1,4 +1,4 @@
-require "pry"
+
 WIN_COMBINATIONS = [
   [0, 1, 2],
   [3, 4, 5],
@@ -147,7 +147,6 @@ end
 #board = ["X", "X", "X", " ", " ", " ", " ", " ", " "]
 def play(board)
   until over?(board)
-    binding.pry
     turn(board)
 
   end
