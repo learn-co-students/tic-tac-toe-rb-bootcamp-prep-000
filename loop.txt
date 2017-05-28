@@ -1,0 +1,47 @@
+
+./lib/tic_tac_toe.rb
+  WIN_COMBINATIONS
+    defines a constant WIN_COMBINATIONS with arrays for each win combination
+  #display_board
+    prints arbitrary arrangements of the board
+  #input_to_index
+    converts a user_input to an integer
+    subtracts 1 from the user_input
+    returns -1 for strings without integers
+  #move
+    does not allow for a default third argument
+    takes three arguments: board, position, and player token
+    allows "X" player in the bottom right and "O" in the top left
+  #position_taken?
+    returns true/false based on position in board
+  #valid_move?
+    returns true/false based on position
+  #turn
+    makes valid moves
+    asks for input again after a failed validation
+  #turn_count
+    counts occupied positions
+  #current_player
+    returns the correct player, X, for the third move
+  #won?
+    returns false for a draw
+    returns true for a win
+  #full?
+    returns true for a draw
+    returns false for an in-progress game
+  #draw?
+    calls won? and full?
+    returns true for a draw
+    returns false for a won game
+    returns false for an in-progress game
+  #over?
+    returns true for a draw
+    returns true for a won game
+    returns false for an in-progress game
+  #winner
+    return X when X won
+    returns O when O won
+    returns nil when no winner
+
+./lib/tic_tac_toe.rb
+  #play
