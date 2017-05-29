@@ -59,9 +59,9 @@ def play(board)
     turn(board)
   end
   if won?(board)
-    puts "you did it"
+    puts "Congratulations #{winner(board)}!"
   elsif draw?(board)
-    puts "niether of you did it"
+    puts "Cats Game!"
   end
 end
 
@@ -80,7 +80,7 @@ end
 def current_player(board)
   if turn_count(board)%2 == 0
     return "X"
-  else
+  elsif turn_count(board)%2 == 1
     return "O"
   end
 end
@@ -104,8 +104,7 @@ end
 
 # checks to see if the board has ended in  a draw, or that the board is full, but no one has won.
 def draw?(board)
-  full?(board)
-  !(won?(board))
+  !won?(board) && full?(board)
 end
 
 # checks to see if the game is over either by a draw or someone won
