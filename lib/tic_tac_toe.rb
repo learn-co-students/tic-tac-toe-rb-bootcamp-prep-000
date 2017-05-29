@@ -111,7 +111,6 @@ end
 # checks to see if the game is over either by a draw or someone won
 def over?(board)
   draw?(board) || won?(board)
-  full?(board)
 end
 
 # Declares the winner of the game by using the return value of the over? method as an index value on the board. If the won? == true, then it will return the win combo from over? as an index value for the board. It will then return that index's value.
