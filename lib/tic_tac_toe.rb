@@ -20,7 +20,6 @@ def turn(board)
     index = input_to_index(your_move)
     break if valid_move?(board,index)
   end
-  #valid_move?(board,index) == false ? turn(board) :
   move(board,index,current_player(board))
   display_board(board)
 end
@@ -43,14 +42,10 @@ def valid_move?(board, index)
 end
 
 def play(board)
-  #puts over?(board)
   while (!over?(board))
-  # loop do
     turn(board)
-    #  over?(board)
-    # break if over?(board)
   end
-  puts won?(board) ?  "Congratulations #{winner(board)}!" : "Cats Game!" # draw?(board) ?  "Cats Game!" :  ""
+  puts won?(board) ?  "Congratulations #{winner(board)}!" : "Cats Game!"
 end
 
 def won?(board)
@@ -58,7 +53,7 @@ def won?(board)
 end
 
 def draw?(board)
-  (full?(board) && !won?(board))# .is_a(Array))
+  (full?(board) && !won?(board))
 end
 
 def over?(board)
@@ -66,7 +61,8 @@ def over?(board)
 end
 
 def winner(board)
-  won?(board) ? board[won?(board)[1][0][1]] : nil
+  win = won?(board)
+  win ? board[win[1][0][1]] : nil
 end
 
 def full?(board)
