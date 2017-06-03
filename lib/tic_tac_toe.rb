@@ -107,17 +107,13 @@ end
 
 # Define your play method below
 def play(board)
-while !over?(board)
+while !over?(board) || draw?(board)
   turn(board)
   if draw?(board)
     puts "Cats Game!"
     return
   end
 end
-  if draw?(board)
-    puts "Cats Game!"
-  end
-
   if winner(board)
     puts "Congratulations #{winner(board)}!"
   end
