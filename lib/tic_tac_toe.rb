@@ -1,4 +1,4 @@
-
+require 'pry'
 # Helper Method
 def position_taken?(board, index)
   !(board[index].nil? || board[index] == " ")
@@ -56,7 +56,7 @@ def full?(board)
 end
 
 def draw?(board)
-  if(won?(board).is_a? Array)
+  if won?(board)
     return false
   else
     full?(board)
@@ -64,7 +64,7 @@ def draw?(board)
 end
 
 def over?(board)
-  if draw?(board) || (won?(board).is_a? Array)
+  if draw?(board) || won?(board)
     return true
   end
   false
@@ -100,10 +100,10 @@ def turn(board)
 
   if !valid_move?(board, input_to_index(input))
     turn(board)
-  end
+  else
     move(board, input_to_index(input), current_player(board))
     display_board(board)
-
+  end
 end
 
 def play(board)
