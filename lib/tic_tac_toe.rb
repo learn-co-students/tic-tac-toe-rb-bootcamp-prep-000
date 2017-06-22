@@ -35,6 +35,7 @@ def turn(board)
     index = input_to_index(input)
     if valid_move?(board, index)
         move(board, index, current_player(board))
+        display_board(board)
     else
         turn(board)
     end
@@ -86,7 +87,7 @@ def play(board)
     if won?(board)
         puts "Congratulations #{winner(board)}!"
     else
-        puts "Cats Game!"    
+        puts "Cats Game!"
     end
 end
 
