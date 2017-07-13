@@ -35,7 +35,8 @@ def turn(board)
   if valid_move?(board, index)
         move(board,index, current_player(board))
        display_board(board)
-  else turn(board)
+  else
+      turn(board)
   end
 end
 
@@ -84,15 +85,7 @@ count = 0
 end
 
 def draw?(board)
-if !won?(board) && full?(board)
-   return true
-elsif !won?(board) && !full?(board)
-   return false
-elsif won?(board)
-  return false
-elsif won?(board) && full(board)
-  return false
-end
+!won?(board) && full?(board)
 end
 
 def over?(board)
@@ -100,7 +93,7 @@ def over?(board)
 end
 def winner(board)
   #binding.pry
-  if !draw?(board) && over?(board)
+  if won?(board)
     board[won?(board)[1]]
   else
   #elsif draw?(board) && full?(board)
