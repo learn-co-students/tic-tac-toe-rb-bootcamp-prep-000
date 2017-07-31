@@ -119,10 +119,8 @@ def turn(board)
 
     if count % 2 == 0
       move(board, index, 'X')
-      puts count
     else
       move(board, index, 'O')
-      puts count
     end
 
     display_board(board)
