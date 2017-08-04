@@ -62,8 +62,9 @@ if  valid_move?(board, index) == true
 else
   turn(board)
 end
-return display_board(board)
+
 end
+return display_board(board)
 end
 
 def turn_count(board)
