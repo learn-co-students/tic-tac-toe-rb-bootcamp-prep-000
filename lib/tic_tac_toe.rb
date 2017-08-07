@@ -36,35 +36,24 @@ def valid_move?(board, index)
 end
 
 def current_player(board)
-  player_x = 0
-  player_y = 0
-  board.each do |fu|
-    if fu == "X"
-      player_x += 1
-    elsif fu == "O"
-      player_y += 1
-    end
-    if
-      player_y >= player_x
-      return "X"
-    else
-      return "O"
-    end
+  if turn_count(board).odd?
+    return "O"
+  else
+    return "X"
   end
+end
 
 
 def turn(board)
   puts "Please enter 1-9:"
- index = input_to_index(gets.strip)
- current_player = current_player(board)
-if  valid_move?(board, index) == true
-  move(board, index, current_player)
-else
-  turn(board)
-end
-
-end
-return display_board(board)
+  index = input_to_index(gets.strip)
+  current_player = current_player(board)
+  if valid_move?(board, index) == true
+    move(board, index, current_player)
+  else
+    turn(board)
+  end
+  return display_board(board)
 end
 
 def turn_count(board)
@@ -111,7 +100,7 @@ def draw? (board)
 end
 
 def over? (board)
-  if won?(board) == true || draw?(board) == true || full?(board)
+  if won?(board) || draw?(board) || full?(board)
     return true
   else
     return false
@@ -126,5 +115,19 @@ def winner (board)
   else
     winner = won?(board)
     return board[winner[0]]
+  end
+end
+
+def play(board)
+  until over?(board) == true
+    turn(board)
+  end
+    if over?(board)
+      if won?(board)
+        puts "Congratulations #{winner(board)}!"
+        return true
+      elsif draw?(board)
+        puts "Cats Game!"
+      end
   end
 end
