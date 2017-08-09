@@ -22,9 +22,9 @@ end
 
 #Play the game until the board is full or someone has won
 def play(board)
-  turns = 0
-  until turns == 9
-    turns += 1
+  #turns = 0
+  until over?(board)#turns == 9
+    #turns += 1
     turn(board)
   end
 end
@@ -35,7 +35,7 @@ def turn(board)
   input = gets.strip
   index = input_to_index(input)
   if valid_move?(board, index)
-    move(board, index)
+    move(board, index, current_player(board))
     display_board(board)
   else
     turn(board)
@@ -86,7 +86,15 @@ end
 
 #Check if the game is over because someone won or the game is a draw
 def over?(board)
-  won?(board) || draw?(board)
+  if won?(board)
+    puts "Congratulations #{winner(board)}!"
+    return true
+  elsif draw?(board)
+    puts "Cats Game!"
+    return true
+  else
+    return false
+  end
 end
 
 #Return the winner
@@ -96,4 +104,20 @@ def winner(board)
   else
     board[won?(board)[0]]
   end
+end
+
+#Counts the number of turns taken by how many spaces have a token
+def turn_count(board)
+  count = 0
+  board.each do |token|
+    if token.downcase == "x" || token.downcase == "o"
+      count += 1
+    end
+  end
+  count
+end
+
+#Figures current player buy weather the move count is even or odd
+def current_player(board)
+  turn_count(board)  % 2 == 0 ? "X" : "O"
 end
