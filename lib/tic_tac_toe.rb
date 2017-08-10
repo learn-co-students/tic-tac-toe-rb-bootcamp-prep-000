@@ -1,4 +1,4 @@
-require 'pry'
+
 WIN_COMBINATIONS = [
   [0,1,2], #top row
   [3,4,5], #middle row
@@ -36,7 +36,6 @@ end
 
 def valid_move?(board, position)
   if position_taken?(board, position) == false && position.between?(0, 8)
-
     true
   else
     false
@@ -51,8 +50,6 @@ def turn(board)
   if valid_move?(board, position) == true
     move(board, position, token)
     display_board(board)
-    binding.pry
-
   else
     turn(board)
   end
@@ -111,7 +108,7 @@ def draw?(board)
 end
 
 def over?(board)
-  if won?(board) == true || draw?(board) == true
+  if won?(board) != false || draw?(board) == true
     true
   else
     false
@@ -119,8 +116,7 @@ def over?(board)
 end
 
 def winner(board)
-  if won?(board) != false
-    winning_combination = won?(board)
+  if winning_combination = won?(board)
     return board[winning_combination[0]]
   end
 end
@@ -132,6 +128,6 @@ def play(board)
   if won?(board)
     puts "Congratulations #{winner(board)}!"
   elsif draw?(board)
-    puts "Cats game!"
+    puts "Cats Game!"
   end
 end
