@@ -1,3 +1,9 @@
 #!/usr/bin/env ruby
 
+board = [" "," "," "," "," "," "," "," "," "]
+
 require_relative '../lib/tic_tac_toe'
+
+puts "Welcome to Tic Tac Toe!"
+display_boardhttp(board)
+play(board)
