@@ -1,5 +1,3 @@
-# require 'pry'
-
 def display_board(board)
   puts " #{board[0]} | #{board[1]} | #{board[2]} "
   puts "-----------"
@@ -77,9 +75,9 @@ def won?(board)
     index_3 = i[2]
     if board[index_1] == "X" && board[index_2] == "X" && board[index_3] == "X" ||
        board[index_1] == "O" && board[index_2] == "O" && board[index_3] == "O"
-         true
+          true
     else
-         false
+          false
         end
     end
 end
@@ -99,7 +97,7 @@ def draw?(board)
 end
 
 def over?(board)
-  if draw?(board) == true || won?(board) == true || full?(board) == true
+  if draw?(board) || won?(board) || full?(board)
       true
   else
       false
@@ -132,13 +130,16 @@ def turn(board)
 end
 
 def play(board)
-  # counter = 0
   while !over?(board)
-    # binding.pry
     turn(board)
-    # counter += 1
-      # if draw?(board) == true
-      #   puts "Cats Game!"
-      #     end
-    end
+  end
+      if draw?(board)
+        puts "Cats Game!"
+          end
+      if winner(board) == "X"
+        puts "Congratulations X!"
+      elsif winner(board) == "O"
+        puts "Congratulations O!"
+      end
+
 end
