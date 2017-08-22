@@ -21,7 +21,7 @@ def turn(board)
   current_player = current_player(board)
   player_move = input_to_index(gets.strip)
   if valid_move?(board, player_move)
-    do_move(board, player_move, current_player)
+    move(board, player_move, current_player)
     display_board(board)
   else
     turn(board)
@@ -29,13 +29,13 @@ def turn(board)
 end
 
 # Plays a move, knowing the board, the position wanted, and the player's character
-def do_move(board, position, char = "X")
+def move(board, position, char)
   board[position] = char
 end
 
 # Checks if the desired move is valid
 def valid_move?(board, index)
-  !position_taken?(board, index) && index <= board.length - 1
+  !position_taken?(board, index) && index <= board.length - 1 && index >= 0
 end
 
 # Check whether we have a winning combination. Returns the winning combination, or nil if there's none
@@ -56,13 +56,7 @@ end
 
 # Checks whether there's a draw. Returns true if there is.
 def draw?(board)
-  status = false
-  if !won?(board) & full?(board) # true means a draw because the board is not won but full
-    status = true
-  elsif !won?(board) & !full?(board) || won?(board) # false means a draw if the board is neither full nor won, or if the board is won
-    status = false
-  end
-  status
+  !won?(board) && full?(board) # true means a draw because the board is not won but full
 end
 
 # Checks whether the game is over. Returns true if it is.
