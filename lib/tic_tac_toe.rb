@@ -16,7 +16,7 @@ def play(board)
   if won?(board)
     puts "Congratulations #{winner(board)}!"
   elsif draw?(board)
-    puts "Cats Game!"
+    puts "Cat's Game!"
   end
 end
 
@@ -70,8 +70,6 @@ end
 
 def position_taken?(board, index)
   board[index]== "X" || board[index] == "O"
-  # Creates a stop on RSpec
-  # !(board[location].nil? || board[location] == "")
 end
 
 def current_player(board)
