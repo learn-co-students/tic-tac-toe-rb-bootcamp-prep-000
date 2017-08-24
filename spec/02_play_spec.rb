@@ -106,11 +106,11 @@ describe './lib/tic_tac_toe.rb' do
       play(board)
     end
 
-    it 'prints "Cats Game!" on a draw' do
+    it 'prints "Cat\'s Game!" on a draw' do
       board = ["X", "O", "X", "O", "X", "X", "O", "X", "O"]
       allow($stdout).to receive(:puts)
 
-      expect($stdout).to receive(:puts).with("Cats Game!")
+      expect($stdout).to receive(:puts).with("Cat's Game!")
 
       play(board)
     end
