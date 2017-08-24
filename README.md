@@ -1,12 +1,18 @@
 # Tic Tac Toe in Ruby
 
-## Objectives
-
-1. Build a CLI Tic Tac Toe game!
-
 ## Overview
 
-You're going to be building a 2 player CLI version of Tic Tac Toe by defining a set of methods to encapsulate the game logic. When complete, it will look something like this when played:
+We'll build a two-player CLI version of Tic Tac Toe by defining a set of methods to encapsulate the game logic. 
+
+## Objectives
+
+1. Build and use helper methods within the Tic Tac Toe application
+2. Write a method that is responsible for the game loop in Tic Tac Toe
+3. Code the main executable file that will run the game in the CLI 
+
+## The Final Product
+
+When complete, the game will look something like this when played:
 
 <iframe width="100%" height="100%" src="https://www.youtube.com/embed/e4TMZ0f6qoI" frameborder="0" allowfullscreen></iframe>
 
@@ -271,7 +277,7 @@ it 'asks for players input on a turn of the game' do
 end
 ```
 
-This test is built to confirm that your implementation of the `#play` method will at some point ask the user for input via the `gets` method. In order to ensure this requirement of the play method, our test needs to setup some conditions and expectations.
+This test is built to confirm that your implementation of the `#play` method will at some point ask the user for input via the `gets` method. In order to ensure this requirement of the play method, our test needs to set up some conditions and expectations.
 
 1 . First, we have a sample game board, `board`, as it would look at the start of the game, entirely empty.
 
@@ -437,7 +443,7 @@ Feel proud. You can't imagine how far we've come already.
 
 ## Code Coverage
 
-Included with this lesson is a tool that will generate a Coverage Report that shows how much of our code is tested when we run our tests. After a test run, you can open the file generated in `coverage/index.html` from terminal with `open coverage/index.html`. It should pop up in your browser and look like:
+Included with this lesson is a tool that will generate a Coverage Report that shows how much of our code is tested when we run our tests. After a test run, you can open the file generated in `coverage/index.html` from terminal with `open coverage/index.html` (**If you're using the Learn IDE, don't run the `open` command here. Instead run `httpserver` and then open the IP address noted in browser and select the link to `coverage/`**). It should pop up in your browser and look like:
 
 ![Coverage](https://dl.dropboxusercontent.com/s/59peed056jjk9xm/2015-09-20%20at%203.39%20PM.png)
 
@@ -448,5 +454,3 @@ When you click on `lib/tic_tac_toe.rb`, you'll see something like:
 The lines in green have been tested, the lines in red haven't. When all tests pass, you should see 100% test coverage.
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/tic-tac-toe-rb' title='Tic Tac Toe in Ruby'>Tic Tac Toe in Ruby</a> on Learn.co and start learning to code for free.</p>
-
-<p class='util--hide'>View <a href='https://learn.co/lessons/tic-tac-toe-rb'>Tic Tac Toe in Ruby</a> on Learn.co and start learning to code for free.</p>

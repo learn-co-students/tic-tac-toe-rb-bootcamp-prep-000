@@ -43,7 +43,7 @@ describe './lib/tic_tac_toe.rb' do
 
   describe '#input_to_index' do
 
-    it 'convervets a user_input to an integer' do
+    it 'converts user_input to an integer' do
       user_input = "1"
 
       expect(input_to_index(user_input)).to be_a(Integer)
@@ -74,7 +74,7 @@ describe './lib/tic_tac_toe.rb' do
     it 'takes three arguments: board, position, and player token' do
       board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 
-      expect{move(board, 0, "X")}.to_not raise_error(ArgumentError)
+      expect{move(board, 0, "X")}.to_not raise_error
     end
 
     it 'allows "X" player in the bottom right and "O" in the top left ' do
@@ -190,11 +190,17 @@ describe './lib/tic_tac_toe.rb' do
 
   describe '#draw?' do
 
-    it 'calls won? and full?' do
+    it 'calls won?' do
       board = ["X", "O", "X", "O", "X", "X", "O", "X", "O"]
-      expect(self).to receive(:won?).with(board)
-      expect(self).to receive(:full?).with(board)
 
+      expect(self).to receive(:won?).with(board)
+      draw?(board)
+    end
+
+    it 'calls full?' do 
+      board = ["X", "O", "X", "O", "X", "X", "O", "X", "O"]
+
+      expect(self).to receive(:full?).with(board)      
       draw?(board)
     end
 
