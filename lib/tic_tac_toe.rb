@@ -49,7 +49,7 @@ def turn(board)                #a single complete turn
 end
 
 def empty?(board)
-  board.all? {|e| e==nil || e==" "}
+  board.all? {|e| e==nil || e==" " || e==""}
 end
 def won?(board)
   if empty?(board)
