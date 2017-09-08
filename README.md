@@ -183,7 +183,7 @@ The `#position_taken?` method will be responsible for evaluating the position se
 
 #### `#valid_move?`
 
-Build a method `valid_move?` that accepts a board and an index to check and returns `true` if the move is valid and `false` or `nil` if not. A valid move means that the submitted position is:
+Build a method `valid_move?` that accepts a board and an index to check, and returns `true` if the move is valid, and `false` or `nil` if not. A valid move means that the submitted position is:
 
 1. Present on the game board.
 2. Not already filled with a token.
@@ -453,4 +453,4 @@ When you click on `lib/tic_tac_toe.rb`, you'll see something like:
 
 The lines in green have been tested, the lines in red haven't. When all tests pass, you should see 100% test coverage.
 
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/tic-tac-toe-rb' title='Tic Tac Toe in Ruby'>Tic Tac Toe in Ruby</a> on Learn.co and start learning to code for free.</p>
+<p class='util--hide'>View <a href='https://learn.co/lessons/tic-tac-toe-rb'>Tic Tac Toe in Ruby</a> on Learn.co and start learning to code for free.</p>
