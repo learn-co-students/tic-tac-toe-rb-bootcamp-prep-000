@@ -82,15 +82,29 @@ def won?(board)
     if position_taken?(board, position_1) && position_taken?(board, position_2) && position_taken?(board, position_3)
       if board[position_1] == board[position_2] && board[position_2] == board[position_3]
         return win_combo
-      else
-        false
       end
-    else
-      false
     end
   end
   false
 end
+
+# def won?(board)
+#   WIN_COMBINATIONS.each do |win_combo|
+#     position_1 = win_combo[0]
+#     position_2 = win_combo[1]
+#     position_3 = win_combo[2]
+#     if position_taken?(board, position_1) && position_taken?(board, position_2) && position_taken?(board, position_3)
+#       if board[position_1] == board[position_2] && board[position_2] == board[position_3]
+#         return win_combo
+#       else
+#         false
+#       end
+#     else
+#       false
+#     end
+#   end
+#   false
+# end
 
 def full?(board)
   board.each_index do |i|
