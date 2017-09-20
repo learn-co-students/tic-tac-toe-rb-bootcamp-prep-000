@@ -134,18 +134,3 @@ def play(board)
   else
     puts "Cat's Game!"
   end
-end
-
-# def play(board)
-#   until over?(board) do
-#     if !!won?(board)
-#       win_combo = won?(board)
-#       binding.pry
-#       puts "Congratulations #{board[win_combo[0]]}!"
-#     elsif draw?(board)
-#       puts "The result is a draw :("
-#     else
-#       turn(board)
-#     end
-#   end
-# end
