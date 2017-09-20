@@ -1,5 +1,3 @@
-# turns: who, how many, won/draw?, feedback
-
 WIN_COMBINATIONS = [
   [0,1,2],
   [3,4,5],
@@ -134,3 +132,4 @@ def play(board)
   else
     puts "Cat's Game!"
   end
+end
