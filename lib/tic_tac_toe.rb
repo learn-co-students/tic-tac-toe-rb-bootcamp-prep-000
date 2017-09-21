@@ -45,7 +45,6 @@ end
 def turn(board)
   puts "Please enter 1-9:"
   user_input = gets.chomp
-  user_input.to_i
   index = input_to_index(user_input)
   while valid_move?(board, index) == false
     puts "Please enter 1-9:"
@@ -113,7 +112,7 @@ end
 def draw?(board)
   full = full?(board)
   won = won?(board)
-  if (full == true) && (won.is_a?(Array))
+  if (full == true) && (won.is_a?(Array) == true)
     false
   elsif (full == false)
     false
@@ -125,7 +124,7 @@ end
 def over?(board)
   draw = draw?(board)
   won = won?(board)
-  if draw == true || (won.is_a?(Array)) == true
+  if draw == true || (won.is_a?(Array) == true)
     true
   else
     false
@@ -146,33 +145,18 @@ def winner(board)
 end
 
 def play(board)
-  # win_statement = "Congratulations "
-  # display_board(board)
+  win_statement = "Congratulations "
+  display_board(board)
   while over?(board) == false
      turn(board)
-  #   display_board(board)
-  #   if WIN_COMBINATIONS.include?(won?(board))
-  #     if winner(board) == "X"
-  #       puts win_statement + "X!"
-  #     else
-  #       puts win_statement + "O!"
-  #     end
-  #     break
-  #   end
-  #   if draw?(board) == true
-  #     puts "Cat's Game!"
-  #     break
-  #   end
   end
-  # if winner(board) == "X" || winner(board) == "O"
-  #   if winner(board) == "X"
-  #     puts win_statement + "X!"
-  #   else
-  #     puts win_statement + "O!"
-  #   end
-  # else
-  #   puts "Cat's Game!"
-  # end
+  if winner(board) == "X"
+    puts win_statement + "X!"
+  elsif winner(board) == "O"
+    puts win_statement + "O!"
+  else
+    puts "Cat's Game!"
+  end
 end
 
 #play([" "," "," "," "," "," "," "," "," "])
