@@ -153,7 +153,7 @@ def move(board, move, player)
 
 end
 
-def turn
+def turn(board)
   puts "Please make your move (X, 1 - 9)"
 
   move = gets.strip
@@ -180,5 +180,11 @@ def current_player(board)
     turn = "0"
   else
     turn = "X"
+  end
+end
+
+def play(board)
+  while !over?(board) do
+    turn(board)
   end
 end
