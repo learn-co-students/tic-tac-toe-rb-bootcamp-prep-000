@@ -1,3 +1,11 @@
 #!/usr/bin/env ruby
 
 require_relative '../lib/tic_tac_toe'
+
+puts "Welcome to Tic Tac Toe!"
+puts "Please make your first move (X, 1 - 9)"
+
+board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+
+move = gets.strip
+move(board, move, "X")
