@@ -11,15 +11,22 @@ WIN_COMBINATIONS = [
 ]
 
 def play(board)
-   
+
 end
 
 def display_board(board)
-
+   puts
+   puts " #{board[0]} | #{board[1]} | #{board[2]} "
+   puts "-----------"
+   puts " #{board[3]} | #{board[4]} | #{board[5]} "
+   puts "-----------"
+   puts " #{board[6]} | #{board[7]} | #{board[8]} "
 end
 
 def position_taken?(board, position)
-
+   if board[position].strip == ""
+      false
+   end
 end
 
 def valid_move?(board, position)
@@ -27,7 +34,7 @@ def valid_move?(board, position)
 end
 
 def input_to_index(input)
-
+   input.to_i
 end
 
 def move(board, position, player)
@@ -39,7 +46,7 @@ def turn
 end
 
 def turn_count(board)
-
+   
 end
 
 def won?(board)
