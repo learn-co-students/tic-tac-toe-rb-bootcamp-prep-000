@@ -24,29 +24,59 @@ def display_board(board)
 end
 
 def position_taken?(board, position)
-   if board[position].strip == ""
-      false
-   end
+    # if turn_count(board) % 2 == 0
+    #     return "X"
+    # else
+    #     return "O"
+    # end
+    if valid_move(board, position)
+        true
+    else
+        false
+    end
 end
 
 def valid_move?(board, position)
-
+    # position.between?(0,8) && !position_taken?(board, position)
+    if position < 0 || board[position] == "X" || board[position] == "O" || position > 8
+        false
+    else
+        true
+    end
 end
 
 def input_to_index(input)
-   input.to_i
+   input.to_i - 1
 end
 
 def move(board, position, player)
-
+    board[position] = player
 end
 
-def turn
+def turn(board)
+    puts "Please enter 1-9:"
+    move = gets.strip
 
+    int = input_to_index(move)
+
+    if valid_move?(board, int)
+        move(board, int, "X")
+        display_board(board)
+    else
+        puts "Please enter 1-9:"
+        move = gets.strip
+        int = input_to_index(move)
+    end
 end
 
 def turn_count(board)
-   
+    counter = 0
+    board.each do |current|
+        if current == "X" || current == "O"
+            counter += 1
+        end
+    end
+    return counter
 end
 
 def won?(board)
@@ -54,7 +84,11 @@ def won?(board)
 end
 
 def current_player(board)
-
+    if turn_count(board) % 2 == 0
+        return "X"
+    else
+        return "O"
+    end
 end
 
 def full?(board)
