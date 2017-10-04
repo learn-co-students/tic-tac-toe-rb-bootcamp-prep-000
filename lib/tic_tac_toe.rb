@@ -11,6 +11,7 @@ WIN_COMBINATIONS = [
   [2,4,6], #right diagonal win
 ]
 
+#display the board and populate spaces according the board array
 def display_board(board="")
   rows = [" #{board[0]} | #{board[1]} | #{board[2]} ",\
   " #{board[3]} | #{board[4]} | #{board[5]} ",\
@@ -103,18 +104,22 @@ def won?(board)
     return false
 end
 
+#check if the board is full
 def full?(board)
   !board.find { |i| i == " " || i == ""}
 end
 
+#check if the board is at a draw
 def draw?(board)
   !won?(board) && full?(board)
 end
 
+#check if the game is over (all spots full)
 def over?(board)
   won?(board) || draw?(board) || full?(board);
 end
 
+#return the winner
 def winner(board)
  won = won?(board)
   if won
@@ -122,6 +127,7 @@ def winner(board)
  end
 end
 
+#call play until game is either a win or a draw
 def play(board)
   until over?(board)
     turn(board);
