@@ -112,8 +112,7 @@ def over?(board)
 end
 
 def winner(board)
-  win = won?(board)
-  if(win != false)
-    return board[win[0]]
+  if((won?(board)).kind_of?(Array))
+    return board[(won?(board))[0]]
   end
 end
