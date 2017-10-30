@@ -41,8 +41,18 @@ def turn(board)
   if valid_move?(board, index)
     move(board, index, current_player)
     display_board(board)
+  elsif over?(board)
+    if won?(board)
+      if winner(board) == "X"
+        puts "Congratulations X!"
+      elsif winner(board) == "O"
+        puts "Congratulations O!"
+      end
+    elsif draw?(board)
+      puts "Cat's Game!"
+    end
   else
-    turn(board)
+    play(board)
   end
 end
 
@@ -134,9 +144,21 @@ def winner(board)
 end
 
 def play(board)
+  # turn(board)
   counter = 0
   until counter == 9
-    turn(board)
     counter += 1
+    break if over?(board)
+  end
+  if over?(board)
+    if won?(board)
+      if winner(board) == "X"
+        puts "Congratulations X!"
+      elsif winner(board) == "O"
+        puts "Congratulations O!"
+      end
+    elsif draw?(board)
+      puts "Cat's Game!"
+    end
   end
 end
