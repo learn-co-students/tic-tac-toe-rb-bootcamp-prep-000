@@ -8,30 +8,16 @@ def display_board(board)
   puts " #{board[6]} | #{board[7]} | #{board[8]} "
 end
 
-def play(board)
-  while !(over?(board))
-    turn(board)
-  end
-
-  if won?(board)
-    winner = winner(board)
-    puts "Congratulations #{winner}!"
-  elsif draw?(board)
-    puts "Cat's Game!"
-  end
-
-end
-
-
-def input_to_index(input)
-  input.to_i - 1
+def input_to_index(user_input)
+  user_input.to_i - 1
 end
 
 def move(board, index, x)
-  if x == nil
-    x = current_player(board)
-  end
   board[index] = x
+end
+
+def position_taken?(board, location)
+  board[location] != " " && board[location] != ""
 end
 
 def valid_move?(board, index)
@@ -39,22 +25,22 @@ def valid_move?(board, index)
 end
 
 def turn(board)
+  puts "Please enter 1-9:"
   input = gets.strip
-  index = input_to_index(input)
-  current_player = current_player(board)
+  index = input - 1
   if valid_move?(board, index)
-    move(board, index, current_player)
-    return display_board(board)
+    move(board, index)
+    display_board(board)
   else
-    puts "Please try again (1-9): "
-    input = gets.strip
-    index = input_to_index(input)
-    if valid_move?(board, index)
-      move(board, index, current_player)
-      return display_board(board)
-    else
-      return turn(board)
-    end
+    turn(board)
+  end
+end
+
+def play(board)
+  counter = 0
+  while counter < 9
+    turn(board)
+    counter += 1
   end
 end
 
