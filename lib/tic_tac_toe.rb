@@ -57,6 +57,7 @@ def turn(board)
   if valid_move?(board,index)
     move(board, index, player)
     display_board(board)
+    return board
   else
     turn(board)
   end
@@ -80,11 +81,6 @@ def current_player(board)
     return "O"
   end
 end
-
-def position_taken?(board, index)
-  !(board[index].nil? || board[index] == " ")
-end
-
 
 def won?(board)
   positions = []
@@ -137,6 +133,13 @@ def winner(board)
 end
 
 def play(board)
-  turn(board)
-  over?(board)
+  while !over?(board)
+    turn(board)
+  end
+  if won?(board)
+    winner = winner(board)
+    puts "Congratulations #{winner}!"
+  elsif draw?(board)
+    puts "Cat's Game!"
+  end
 end
