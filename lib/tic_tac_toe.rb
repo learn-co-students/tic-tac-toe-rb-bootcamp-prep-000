@@ -58,7 +58,10 @@ def over?(board)
 end
 
 def winner(board)
-  return board [won?(board) [0]] if won?(board) != false
+  # won?(board) gives us the win_combo of [0, 1, 2]
+  # won?(board)[0] gives us 0
+  # board[won?(board)[0]] gives us "X", "O"
+  return board[won?(board)[0]] if won?(board) != false
   return nil
 end
 
@@ -84,6 +87,17 @@ def turn(board)
   if !is_valid
     turn(board)
   end
-  move(board,turn_in,"X")
+  move(board,turn_in,current_player(board))
   display_board(board)
+end
+
+def play(board)
+  while !over?(board)
+    turn(board)
+  end
+  if won?(board)
+     puts "Congratulations #{winner(board)}!"
+   else
+     puts "Cat's Game!"
+   end
 end
