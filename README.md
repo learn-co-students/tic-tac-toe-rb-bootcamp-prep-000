@@ -1,4 +1,4 @@
-# Tic Tac Toe in Ruby
+i# Tic Tac Toe in Ruby
 
 ## Overview
 
