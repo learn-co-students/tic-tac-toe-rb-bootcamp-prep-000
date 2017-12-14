@@ -1,10 +1,10 @@
 require_relative '../lib/tic_tac_toe.rb'
 
-describe './lib/tic_tac_toe.rb' do  
+describe './lib/tic_tac_toe.rb' do
   describe '#play' do
     it 'asks for players input on a turn of the game' do
       board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-      allow($stdout).to receive(:puts)
+      allow($stdout).to receive(:puts) # this disables puts
       allow(self).to receive(:over?).and_return(false, true)
 
       expect(self).to receive(:gets).at_least(:once).and_return("1")
@@ -14,7 +14,8 @@ describe './lib/tic_tac_toe.rb' do
 
     it 'checks if the game is over after every turn' do
       board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-      allow($stdout).to receive(:puts)
+      allow($stdout).to receive(:puts) # this disables puts
+      #https://stackoverflow.com/questions/15430551/suppress-console-output-during-rspec-tests/23364973
       allow(self).to receive(:gets).and_return("1", "2", "3")
 
       expect(self).to receive(:over?).at_least(:twice).and_return(false, false, true)
