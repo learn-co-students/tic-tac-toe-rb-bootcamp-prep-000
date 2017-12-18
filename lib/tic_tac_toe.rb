@@ -18,9 +18,9 @@ def play(board)
 end
 
 def turn(board)
-  puts "Please enter 1-9:"
-  input = gets.strip
-  index = input_to_index(input)
+  puts "Please choose a number 1-9:"
+  user_input = gets.chomp
+  index = input_to_index(user_input)
   if valid_move?(board, index)
     player_token = current_player(board)
     move(board, index, player_token)
@@ -42,10 +42,6 @@ def position_taken?(board, index)
   board[index] == "X" || board[index] == "O"
 end
 
-def move(board, index, player_token)
-  board[index] = player_token
-end
-
 def current_player(board)
   if turn_count(board) % 2 === 0
     return "X"
@@ -64,6 +60,10 @@ def turn_count(board)
   return count
 end
 
+def move(board, index, player_token)
+  board[index] = player_token
+end
+
 WIN_COMBINATIONS = [
   [0, 1, 2],
   [3, 4, 5],
@@ -72,7 +72,7 @@ WIN_COMBINATIONS = [
   [1, 4, 7],
   [2, 5, 8],
   [0, 4, 8],
-  [2, 4, 6]
+  [6, 4, 2]
 ]
 
 def won?(board)
@@ -96,8 +96,12 @@ def draw?(board)
   !won?(board) && full?(board)
 end
 
-def over?(board)
-  draw?(board) || won?(board)
+def over?(board) #must be if statement? I kept getting an infinite loop
+  if won?(board) || draw?(board)
+    return true
+  else
+    return false
+  end
 end
 
 def winner(board)
