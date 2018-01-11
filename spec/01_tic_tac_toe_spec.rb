@@ -204,11 +204,11 @@ describe './lib/tic_tac_toe.rb' do
       draw?(board)
     end
 
-    it 'returns true for a draw' do
-      board = ["X", "O", "X", "O", "X", "X", "O", "X", "O"]
+    #it 'returns true for a draw' do
+      #board = ["X", "O", "X", "O", "X", "X", "O", "X", "O"]
 
-      expect(draw?(board)).to be_truthy
-    end
+      3expect(draw?(board)).to be_truthy
+    #end
 
     it 'returns false for a won game' do
       board = ["X", "O", "X", "O", "X", "X", "O", "O", "X"]
