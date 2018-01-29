@@ -40,20 +40,20 @@ def valid_move?(board, position)
     return false
   end
 end
-=begin
+
 def turn(board)
   puts "Please enter 1-9:"
   input = gets
   index = input_to_index(input)
   if(valid_move?(board, index))
-    move(board, index)
+    move(board, index, token = "X")
     display(board)
   else
     puts "That is not a valid selection."
     turn(board)
   end
 end
-=end
+
 def turn_count(board)
   counter = 0
   board.each do |location|
@@ -72,7 +72,7 @@ def won?(board)
     firstSpot = combo[0]
     secondSpot = combo[1]
     thirdSpot = combo[2]
-    if (board[firstSpot]===board[secondSpot] && board[secondSpot]===board[thirdSpot])
+    if (board[firstSpot] === board[secondSpot] && board[secondSpot] === board[thirdSpot])
       return true
     else
       return false
@@ -106,5 +106,13 @@ def over?(board)
 end
 
 def winner(board)
-
+  if (won?(board))
+    if combo.include?("X")
+      return "X"
+    elsif combo.include?("O")
+      return "O"
+    end
+  else
+    nil
+  end
 end
