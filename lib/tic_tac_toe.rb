@@ -45,7 +45,7 @@ def turn(board)
     input = gets.strip
     index = input_to_index(input)
     if valid_move?(board, index)
-      move(board, index, "X")
+      move(board, index, current_player(board))
       display_board(board)
     else
       turn(board)
@@ -93,7 +93,19 @@ end
 
 def winner(board)
   if win_combo = won?(board)
-    board[win_combo.first]
+    winner = board[win_combo.first]
+    puts "Congratulations #{winner}!"
   end
+  winner
 end
 
+def play(board)
+  until over?(board)
+  turn(board)
+  end
+  if won?(board)
+    winner(board)
+  elsif draw?(board)
+    puts "Cat's Game!"
+  end
+end
