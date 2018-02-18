@@ -32,6 +32,7 @@ false
 elsif board[index] == "X" || board[index] == "O"
 true
 end
+end
 
 def valid_move?(board, index)
 index.between?(0, 8) && !position_taken?(board, index)
@@ -104,4 +105,16 @@ def winner(board)
     elsif board[won?(board)[0]] == "O"
       return "O"
   end
+end
+
+def play(board)
+while !over?(board)
+  turn(board)
+end
+if won?(board)
+  puts "Congratulations #{winner(board)}!"
+end
+if draw?(board)
+  puts "Cat's Game!"
+end
 end
