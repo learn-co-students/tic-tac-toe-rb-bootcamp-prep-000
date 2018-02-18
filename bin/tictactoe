@@ -5,4 +5,8 @@ require_relative '../lib/tic_tac_toe'
 board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 puts "Welcome to Tic Tac Toe!"
 display_board(board)
+<<<<<<< HEAD
 play(board)
+=======
+turn(board)
+>>>>>>> aed37f34638e9e35407a31858315a274a47dd89d

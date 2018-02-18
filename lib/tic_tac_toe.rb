@@ -1,3 +1,4 @@
+
 def display_board(board)
 puts " #{board[0]} | #{board[1]} | #{board[2]} "
 puts "-----------"
@@ -31,10 +32,10 @@ false
 elsif board[index] == "X" || board[index] == "O"
 true
 end
-end
 
 def valid_move?(board, index)
 index.between?(0, 8) && !position_taken?(board, index)
+index.to_i.between?(0, 8) && !position_taken?(board, index)
 end
 
 def turn(board)
@@ -65,6 +66,13 @@ def current_player(board)
   else
     return "O"
   end
+if !valid_move?(board, index)
+  turn(board)
+else
+  move(board, index)
+end
+display_board(board)
+
 end
 
 def won?(board)
@@ -95,5 +103,5 @@ def winner(board)
       return "X"
     elsif board[won?(board)[0]] == "O"
       return "O"
-    end
+  end
 end
