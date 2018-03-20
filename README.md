@@ -120,7 +120,7 @@ We will keep track of which player's turn it is and how many turns have been pla
 
 ### Helper Methods
 
-Open up `lib/tic_tac_toe.rb`. You'll be coding your helper methods here. Run the tests for these methods by typing `rspec spec/01_tic_tac_toe_spec.rb` in the terminal. Use the test output, along with the guidelines below, to build these methods.
+Open up `lib/tic_tac_toe.rb`. You'll be coding your helper methods here. Run the tests for these methods by typing `b` in the terminal. Use the test output, along with the guidelines below, to build these methods.
 
 #### `WIN_COMBINATIONS`
 
