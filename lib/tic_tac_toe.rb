@@ -1,4 +1,6 @@
+
 require "pry"
+
 def display_board(board)
   puts " #{board[0]} | #{board[1]} | #{board[2]} 
 -----------
@@ -99,20 +101,19 @@ end
 
 def draw?(board)
    !won?(board) &&full?(board)   
+
 end 
 
 
 def over?(board)
-
   if won?(board)  || draw?(board) 
-  return true
+   return true
   end
  return false
 end
 
 def winner(board)
-  if over?(board) == true && draw?(board) == false
-  
+  if won?(board)
     if board[won?(board)[0]] == "X"
       return "X"
     elsif board[won?(board)[0]] == "O"
@@ -122,17 +123,17 @@ def winner(board)
 end 
 
 def play(board) 
- puts "Welcome to tic tac toe" 
+ puts "Cat's Game!" 
  display_board(board)
- until over?(board) 
+ until over?(board) == true
  turn_count(board)
  turn(board)
+ won?(board)
  end
-if draw?(board) 
-       puts "Cats Game!"
- elsif winner(board) == "X"
-       puts "Congratulations X"
- elsif winner(board) == "O"
-       puts "Congratulations O"
-   end
+  if draw?(board)
+        puts "Cats Game!"
+  else 
+    puts "Congratulations #{winner(board)}!"
+  end
+
 end 
