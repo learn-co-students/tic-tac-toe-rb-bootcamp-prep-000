@@ -1,6 +1,4 @@
-
 require "pry"
-
 def display_board(board)
   puts " #{board[0]} | #{board[1]} | #{board[2]} 
 -----------
@@ -101,19 +99,20 @@ end
 
 def draw?(board)
    !won?(board) &&full?(board)   
-
 end 
 
 
 def over?(board)
+
   if won?(board)  || draw?(board) 
-   return true
+  return true
   end
  return false
 end
 
 def winner(board)
   if won?(board)
+  
     if board[won?(board)[0]] == "X"
       return "X"
     elsif board[won?(board)[0]] == "O"
@@ -125,15 +124,14 @@ end
 def play(board) 
  puts "Cat's Game!" 
  display_board(board)
- until over?(board) == true
+ until over?(board) 
  turn_count(board)
  turn(board)
- won?(board)
  end
-  if draw?(board)
-        puts "Cats Game!"
-  else 
-    puts "Congratulations #{winner(board)}!"
-  end
-
+ 
+if draw?(board) 
+       puts "Cats Game!"
+ else
+       puts "Congratulations #{winner(board)}!"
+ end
 end 
