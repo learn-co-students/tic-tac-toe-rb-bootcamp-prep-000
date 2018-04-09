@@ -24,8 +24,8 @@ def input_to_index(user_input)
   user_input.to_i - 1
 end
 
-def move(board, index, current_player)
-  board[index] = current_player
+def move(board, index, player)
+  board[index] = player
 end
 
 def position_taken?(board, location)
@@ -59,7 +59,6 @@ def turn_count(board)
     end
   end
   turns
-
 end
 
 def current_player(board)
@@ -84,7 +83,7 @@ def draw?(board)
 end
 
 def over?(board)
-  won?(board) || full?(board)
+  won?(board) || draw?(board)
 end
 
 def winner(board)
@@ -94,13 +93,12 @@ def winner(board)
 end
 
 def play(board)
-  turn(board)
-  until over?(board) do
+  while !over?(board)
     turn(board)
   end
   if won?(board)
-    puts "Congratulations #{winner(board}!"
-  else
+    puts "Congratulations #{winner(board)}!"
+  elsif draw?(board)
     puts "Cat's Game!"
   end
 end
