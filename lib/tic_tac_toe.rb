@@ -9,9 +9,10 @@ WIN_COMBINATIONS = [
   [0, 4, 8],
   [6, 4, 2]
   ]
+  
+board = Array.new(9, " ")
 
 def display_board(board)
-  board = Array.new(9, " ")
   puts " #{board[0]} | #{board[1]} | #{board[2]} "
   puts "-----------"
   puts " #{board[3]} | #{board[4]} | #{board[5]} "
@@ -19,8 +20,8 @@ def display_board(board)
   puts " #{board[6]} | #{board[7]} | #{board[8]} "
 end 
 
-def input_to_index(board, user_input)
-  user_input.to_i - 1 
+def input_to_index(input)
+  input.to_i-1
 end 
 
 def move(board, index, current_player)
@@ -32,7 +33,7 @@ def position_taken?(board, index)
 end
   
 def valid_move?(board, index)
-  !position_taken?(board, index) && index.between?(0, 8)
+  !position_taken?(board, index) && index.between?(0,8)
 end 
 
 def turn_count(board)
@@ -57,9 +58,9 @@ end
 def turn(board)
   puts "Choose 1-9:"
   input = gets.strip
-  index = input_to_index(user_input)
+  index = input_to_index(input)
   if valid_move?(board, index) 
-    move(board, index, current_player)
+    move(board, index)
     return display_board(board)
   else 
     turn(board)
@@ -120,12 +121,20 @@ end
 end 
 
 def play(board)
-  until over?(board) == true 
+  until over?(board) || draw?(board)
    turn(board)
   end 
-  if won?(board)
-    puts "Congratulations #{winner(board)}!"
-  elseif draw?(board)
+  if draw?(board)
     puts "Cat's Game!"
+  else
+    if won?(board)
+    puts "Congratulations #{winner(board)}!"
   end 
 end
+
+
+
+
+
+
+
