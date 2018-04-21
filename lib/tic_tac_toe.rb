@@ -1,5 +1,5 @@
 WIN_COMBINATIONS = [
-[0, 1 ,2],
+[0, 1, 2],
 [3, 4, 5],
 [6, 7, 8],
 [0, 3, 6],
@@ -8,8 +8,6 @@ WIN_COMBINATIONS = [
 [0, 4, 8],
 [6, 4, 2]
 ]
-
-board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 
 def display_board(board)
 
@@ -45,7 +43,7 @@ index = input_to_index(user_input)
     turn(board)
   else
     puts "Please enter 1-9:"
-  move(board, index, character = "X")
+  move(board, index, current_player(board))
   display_board(board)
  end
  end
@@ -69,21 +67,9 @@ def current_player(board)
 end
 
 def won?(board)
-  WIN_COMBINATIONS.each do |win_combination|
-    win_index_1 = win_combination[0]
-    win_index_2 = win_combination[1]
-    win_index_3 = win_combination[2]
-
-    position_1 = board[win_index_1]
-    position_2 = board[win_index_2]
-    position_3 = board[win_index_3]
-
-    if position_1 == "X" && position_2 == "X" && position_3 == "X" || position_1 == "O" && position_2 == "O" && position_3 == "O"
-      return win_combination
-    end
+  WIN_COMBINATIONS.detect do |combo|
+    board[combo[0]] == board[combo[1]] && board[combo[1]] == board[combo[2]] && position_taken?(board, combo[0])
   end
-else
-  false
 end
 
 def full?(board)
@@ -111,7 +97,6 @@ def over?(board)
     board[winning_combination[0]]
   end
 end
-
 
 def play(board)
 while !over?(board)
