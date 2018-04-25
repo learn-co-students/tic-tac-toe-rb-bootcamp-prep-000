@@ -101,8 +101,8 @@ end
 end
 
 def play(board)
-
-  until over?(board)
+puts "Welcome to Tic Tac Toe!"
+while !over?(board)
       turn(board)
     end
 if won?(board)
