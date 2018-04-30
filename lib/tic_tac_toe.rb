@@ -89,11 +89,15 @@ def over?(board)
   full?(board) || won?(board) || draw?(board)
  end
 
-def winner?(board)
-  winning_combination == won?(board)
- if !winning_combination
-   return nil
- end
- first_winning_index == winning_combination[0]
- board[first_winning_index]
-end
+ def winner(board)
+     if won? == false
+       return nil
+     else
+       win_array = won?
+     end
+     if board[win_array[0]] == "X"
+       return "X"
+     else
+       return "O"
+     end
+   end
