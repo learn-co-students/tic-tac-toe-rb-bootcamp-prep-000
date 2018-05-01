@@ -1,6 +1,6 @@
 require_relative '../lib/tic_tac_toe.rb'
 
-describe './lib/tic_tac_toe.rb' do  
+describe './lib/tic_tac_toe.rb' do
   describe '#play' do
     it 'asks for players input on a turn of the game' do
       board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
@@ -110,7 +110,7 @@ describe './lib/tic_tac_toe.rb' do
       board = ["X", "O", "X", "O", "X", "X", "O", "X", "O"]
       allow($stdout).to receive(:puts)
 
-      expect($stdout).to receive(:puts).with("Cat's Game!")
+      expect($stdout).to receive(:puts).with("Cats Game!")
 
       play(board)
     end

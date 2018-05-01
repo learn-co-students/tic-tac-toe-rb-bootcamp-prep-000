@@ -81,23 +81,34 @@ def full?(board)
     space == "X" || space == "O"  }
   end
 
-def draw?(board)
-  !won?(board) && full?(board)
+  def draw?(board)
+    !won?(board) && full?(board)
+  end
+
+  def over?(board)
+    full?(board) || won?(board) || draw?(board)
+  end
+
+  def winner(board)
+    if won?(board) == nil
+      return nil
+    else
+      win_array = won?(board)
+    end
+    if board [win_array[0]] == "X"
+      return "X"
+    else
+      return "O"
+    end
+  end
+
+  def play(board)
+    while !over?(board)
+    turn(board)
+  end
+  if won?(board)
+     puts "Congratulations #{winner(board)}!"
+  elsif draw?(board)
+     puts "Cats Game!"
+  end
 end
-
-def over?(board)
-  full?(board) || won?(board) || draw?(board)
- end
-
- def winner(board)
-     if won? == false
-       return nil
-     else
-       win_array = won?
-     end
-     if board[win_array[0]] == "X"
-       return "X"
-     else
-       return "O"
-     end
-   end
