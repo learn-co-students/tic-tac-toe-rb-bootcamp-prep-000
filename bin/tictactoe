@@ -1,3 +1,8 @@
 #!/usr/bin/env ruby
-
+puts "Welcome to Tic Tac Toe!"
 require_relative '../lib/tic_tac_toe'
+board = "board"
+
+board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+display_board(board)
+play(board)
