@@ -37,7 +37,7 @@ end
 
 
 def turn(board)
-  character = "X"
+  character = current_player(board)
   puts "Please enter 1-9:"
   input = gets.strip
   index = input_to_index(input)
@@ -53,6 +53,11 @@ end
 def play(board)
   until over?(board)
     turn(board)
+  end
+  if won?(board)
+    puts "Congratulations #{winner(board)}!"
+  else draw?(board)
+    puts "Cat's Game!"
   end
 end
 
