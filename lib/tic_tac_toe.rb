@@ -47,22 +47,39 @@ def valid_move?(board, index)
   end
 end
 
-def turn()
+def turn(board)
   puts "Please enter 1-9"
   input = gets.strip
   index = input_to_index(input)
-  if valid_move(board, index)
-    move(board, index, character="X")
+  if valid_move?(board, index)
+    move(board, index, current_player(board))
     display_board(board)
-  else
-    turn()
+  else 
+    turn(board)
   end
 end
 
-def turn_count()
+def turn_count(board)
+  count = 0
+  index = 0
+  loop do
+    if position_taken?(board, index)
+      count += 1
+    end
+    index += 1
+    if index > 9 
+      break
+    end
+  end
+  return count
 end
 
-def current_player()
+def current_player(board)
+  if turn_count(board) % 2 == 0 
+    return 'O'
+  else
+    return 'X'
+  end
 end
 
 def won?(board)
@@ -86,11 +103,13 @@ def full? (board)
 end
 
 def draw?(board)
-  if won?(board) == false && full?(board)
-    return true
-  elsif won?(board) == false && !full?(board)
-    return false
-  elsif won?(board) != false
+  if won?(board) == false
+    if full?(board)
+      return true
+    else 
+      return false
+    end
+  else
     return false
   end
 end
@@ -113,5 +132,16 @@ def winner(board)
     end
   else
     return nil
+  end
+end
+
+def play(board)
+  while !over?(board)
+    turn(board)
+  end
+  if won?(board)
+    puts `Congratulations #{winner(board}!`
+  elsif draw?(board)
+    puts `it's a draw !`
   end
 end
