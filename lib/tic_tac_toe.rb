@@ -80,6 +80,9 @@ def current_player(board)
   else
     return 'X'
   end
+  # if turn_count(board) == 3
+  #   return 'X'
+  # end
 end
 
 def won?(board)
@@ -136,12 +139,15 @@ def winner(board)
 end
 
 def play(board)
-  while !over?(board)
-    turn(board)
-  end
-  if won?(board)
-    puts `Congratulations #{winner(board}!`
-  elsif draw?(board)
-    puts `it's a draw !`
-  end
+    while !over?(board)
+      turn(board)
+      if won?(board) || draw?(board)
+        break
+      end
+    end
+    if won?(board)
+      puts `Congratulations #{winner(board)}!`
+    elsif draw?(board)
+      puts'Cat\'s Game!'
+    end
 end
