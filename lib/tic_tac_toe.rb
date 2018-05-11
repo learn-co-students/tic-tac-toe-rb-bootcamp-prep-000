@@ -38,8 +38,7 @@ def turn(board)
   input = gets.strip
   index = input_to_index(input)
   if valid_move?(board, index)
-    letter = current_player(board)
-    move(board, index, letter)
+    move(board, index, current_player(board))
     display_board(board)
   else
     turn(board)
@@ -55,9 +54,7 @@ def turn_count(board)
 end
 
 def current_player(board)
-  count = turn_count(board)
-  count.even? ? player = "X" : player = "O"
-  player
+  turn_count(board).even? ? player = "X" : player = "O" 
 end
 
 def won?(board)
@@ -65,8 +62,10 @@ def won?(board)
   WIN_COMBINATIONS.each do |set|
     if board[set[0]] == "X" && board[set[1]] == "X" && board[set[2]] == "X"
       result = set
+      break
     elsif board[set[0]] == "O" && board[set[1]] == "O" && board[set[2]] == "O"
       result = set
+      break
     end
   end
   result
@@ -76,7 +75,6 @@ def full?(board)
   filled = board.all? do |spot|
     spot != " " && spot != ""
   end
-  filled
 end
 
 def draw?(board)
@@ -100,9 +98,9 @@ def play(board)
   until over?(board)
     turn(board)
   end
-  finish = winner(board)
-  if finish != nil
-    puts "Congratulations #{finish}!"
+  letter = winner(board)
+  if letter != nil
+    puts "Congratulations #{letter}!"
   else
     puts "Cat's Game!"
   end
