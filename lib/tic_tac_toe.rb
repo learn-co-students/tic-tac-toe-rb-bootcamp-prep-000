@@ -26,7 +26,7 @@ def move(board, index, current_player)
 end
 
 def position_taken?(board, location)
-  board[location] != " " && board[location] != ""
+  board[location].strip != ""
 end
 
 def valid_move?(board, index)
@@ -97,7 +97,7 @@ def winner(board)
 end
 
 def play(board)
-  while over?(board)
+  until over?(board)
     turn(board)
   end
   finish = winner(board)
