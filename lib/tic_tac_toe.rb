@@ -135,8 +135,9 @@ def play_again
   if answer == "y"
     board = board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
     play(board)
-  else
-    puts "Thank you for playing!"
+  elsif answer == "n"
+    puts "Goodbye! Thank you for playing!"
     exit
+  else play_again
   end
 end
