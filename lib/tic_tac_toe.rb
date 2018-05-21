@@ -28,37 +28,48 @@ def move(board, position, char)
   return board
 end
 
-def position_taken?(board, location)
-  board[location] != " " && board[location] != ""
+def position_taken?(board, index)
+ if board[index]== "" || board[index] == nil || board[index] == " "
+    return false
+  else
+    return true
+  end
 end
 
+
+
 def valid_move?(board, index)
-  index.between?(0,8) && !position_taken?(board, index)
+  if !position_taken?(board,index) && index.between?(0,8)
+    return true
+  else
+    return false
+  end
 end
 
 def turn(board)
-  puts "Please enter 1-9:"
-  input = gets.strip
-  index = input_to_index(input)
-  if valid_move?(board, index)
-    move(board, index)
-    display_board(board)
-  else
-    turn(board)
-  end
-  
+    puts "Please enter 1-9:"
+    input = gets.strip
+    index = input_to_index(input)
+    
+    if valid_move?(board, index)
+      move(board, index)
+      display_board(board)
+    end
+    
 end
 
 # Define your play method below
 def play(board)
-    for i in 0..8
-      if !won?(board)
-        turn(board) 
-      else
-        puts "Congratulations #{winner(board)}"
+      until over?(board)
+          play(board)
       end
-    end
-  
+      if draw?(board)
+        puts "Cat's Game!"
+      end
+      if won?(board)
+        puts "Congratulations #{winner(board)}!"
+      end 
+   
 end
 
 def full?(board)
