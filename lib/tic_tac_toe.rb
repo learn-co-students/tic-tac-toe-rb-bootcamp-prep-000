@@ -15,19 +15,19 @@ def valid_move?(board,index)
 end
 
 def position_taken?(board,index)
-  if board[index] == " "
-    false
-    elsif board[index] == ""
-    false
-    elsif board[index] == nil
-    false
-    elsif board[index] == "X"
-    true
-    elsif board[index] == "O"
-    true
-  else
-      nil
-end
+  board[index] == "X" || board[index] == "O"
+#     false
+#     elsif board[index] == ""
+#     false
+#     elsif board[index] == nil
+#     false
+#     elsif board[index] == "X"
+#     true
+#     elsif board[index] == "O"
+#     true
+#   else
+#       nil
+# end
 end
 
 def input_to_index(user_input)
@@ -42,7 +42,7 @@ def turn(board)
   puts "Please enter 1-9:"
   user_input = gets.strip
   index = input_to_index(user_input)
-  if valid_move?(board,index) == true
+  if valid_move?(board,index)
   move(board,index,current_player(board))
   display_board(board)
 else
@@ -55,17 +55,16 @@ def turn_count(board)
   board.each do |turn|
   if turn == "X" || turn == "O"
   counter += 1
-  puts counter
   end
 end
 counter
 end
 
 def current_player(board)
-  if turn_count(board) % 2 == 0 || turn_count(board) == 0
-    return "X"
+  if turn_count(board) % 2 == 0
+    "X"
   else
-    return "O"
+    "O"
   end
 end
 
