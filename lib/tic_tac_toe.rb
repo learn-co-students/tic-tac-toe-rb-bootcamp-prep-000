@@ -16,18 +16,6 @@ end
 
 def position_taken?(board,index)
   board[index] == "X" || board[index] == "O"
-#     false
-#     elsif board[index] == ""
-#     false
-#     elsif board[index] == nil
-#     false
-#     elsif board[index] == "X"
-#     true
-#     elsif board[index] == "O"
-#     true
-#   else
-#       nil
-# end
 end
 
 def input_to_index(user_input)
@@ -106,12 +94,11 @@ def winner(board)
 end
 
 def play(board)
-  name = winner(board)
-  while !over?(board)
+    while !over?(board)
     turn(board)
   end
   if won?(board)
-    puts "Congratulations #{name}!"
+    puts "Congratulations #{winner(board)}!"
   elsif draw?(board)
     puts "Cat's Game!"
  end 
