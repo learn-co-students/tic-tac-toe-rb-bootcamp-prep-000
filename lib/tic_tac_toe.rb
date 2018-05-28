@@ -33,6 +33,14 @@ def position_taken?(board, index)
   !(board[index].nil? || board[index] == " ")
 end
 
+def turn_count(board)
+  return board.select{|c| c == "X" || c == "O"}.length
+end
+
+def current_player(board)
+  return turn_count(board)%2 == 0 ? "X" : "O"
+end
+
 def turn(board)
   puts "Please enter 1-9:"
   index = input_to_index(gets.strip)
@@ -46,13 +54,7 @@ end
 
 #-----------------------------------------
 
-def turn_count(board)
-  return board.select{|c| c == "X" || c == "O"}.length
-end
 
-def current_player(board)
-  return turn_count(board)%2 == 0 ? "X" : "O"
-end
 
 def won?(board)
   WIN_COMBINATIONS.each do |combo|
@@ -90,13 +92,12 @@ end
 
 def play(board)
   
-  until won?(board)
+  until over?(board)
     turn(board)
-    display_board(board)
   end
   
   if w = winner(board)
-    puts "#{w} won the game!"
+    puts "Congratulations #{w}!"
   else
     puts "Cat's Game!"
   end
