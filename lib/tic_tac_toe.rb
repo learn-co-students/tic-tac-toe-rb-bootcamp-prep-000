@@ -99,6 +99,8 @@ def play(board)
     puts "Congratulations #{winner(board)}!"
   elsif draw?(board)
     puts "Cat's Game!"
+  else
+    puts "Something went wrong."
   end
 end
 
