@@ -37,13 +37,6 @@ def turn(board)
 end 
 
 def turn_count(board)
-#  counter = 0 
-#  board.each do |cell|
-#    if cell.upcase == "X" || cell.upcase == "O"
-#      counter += 1
-#    end
-#  end
-#  counter
   board.select{ |cell| cell == "X" || cell == "O" }.length
 end
 
