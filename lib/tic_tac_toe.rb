@@ -8,6 +8,8 @@ WIN_COMBINATIONS = [
   [0,4,8],
   [2,4,6],
   ]
+
+
  
 
 def display_board(board)
@@ -22,50 +24,35 @@ def input_to_index(user_input)
   user_input.to_i - 1
 end
 
-def move(board, location, current_player)
-  board[location] = current_player
+def move(board, index, player)
+  board[index] = player
 end
 
-def position_taken?(board, location)
-  board[location] != " " && board[location] != ""
+def position_taken?(board, index)
+  board[index] != " " && board[index] != ""
 end
 
-#def valid_move?(board, position)
- # position.between?(0,8) && !position_taken?(board, position)
-#end
-
-def valid_move?(board, position)
-  if position.between?(0,8)
-    if !position_taken?(board, position)
-      true
-    end
-  end
+def valid_move?(board, index)
+  index.between?(0,8) && !position_taken?(board, index)
 end
 
 
 
 def turn(board)
   puts "Please enter 1-9:"
-  input = gets.strip
-  index = input_to_index(input)
+  user_input = gets.strip
+  index = input_to_index(user_input)
   if valid_move?(board, index)
     move(board,index,current_player(board))
     display_board(board)
   else
-   # turn(board)
-   gets.strip
+   turn(board)
   end
 end
 
 
 def turn_count(board)
-  counter = 0
-  board.each do |turn|
-    if turn == "X" || turn == "O"
-      counter += 1
-    end
- end
- return counter
+  board.count{|token| token == "X" || token == "O"}
 end
 
 
@@ -73,10 +60,10 @@ def current_player(board)
   turn_count(board) % 2 == 0 ? "X" : "O"
 end
 
-  def won?(board)
+def won?(board)
     WIN_COMBINATIONS.detect do |combination|
   
-      if (board[combination[0]] == "X" && board[combination[1]] == "X" && board[combination[2]] == "X") ||
+     if (board[combination[0]] == "X" && board[combination[1]] == "X" && board[combination[2]] == "X") ||
          (board[combination[0]] == "O" && board[combination[1]] == "O" && board[combination[2]] == "O")
         
         return combination
@@ -88,8 +75,9 @@ end
   end
 end
 
+
 def full?(board)
-board.all? {|space| space == "O" || space == "X"}
+board.all? {|space| space == "X" || space == "O"}
 end
 
 def draw?(board)
@@ -97,7 +85,7 @@ def draw?(board)
   end
   
 def over?(board)
-  won?(board) || full?(board)
+  won?(board) || draw?(board)
 end
   
 def winner(board)
@@ -107,17 +95,17 @@ def winner(board)
   return nil
   end
 end
+
+
   
-  
-def play(board)
+  def play(board)
   until over?(board)
-    current_player(board)
-   turn(board)
+    turn(board)
   end
-  if winner(board)
+  if won?(board)
     puts "Congratulations #{winner(board)}!"
   elsif draw?(board)
     puts "Cat's Game!"
   end
-  
 end
+
