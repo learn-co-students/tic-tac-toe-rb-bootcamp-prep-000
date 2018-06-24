@@ -1,5 +1,8 @@
 def position_taken?(board, index)
   !(board[index].nil? || board[index] == " ")
 end
-# I think that the above position_taken methiod was provided by learn, and is not the  not the one that I wrote.
+# I think that the above position_taken methiod was provided by learn, and is not the  not the one that I wrote.  the one that I wrote is:
+def position_taken?(board, location)
+  board[location] != " " && board[location] != ""
+end
 
