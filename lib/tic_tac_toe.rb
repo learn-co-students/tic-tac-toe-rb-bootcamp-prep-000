@@ -35,7 +35,7 @@ def turn(board)
   input = gets.strip
   index = input_to_index(input)
   if valid_move?(board, index)
-    move(board, index)
+    move(board, index, current_player(board))
     display_board(board)
   else
     turn(board)
@@ -49,7 +49,10 @@ end
 
 
 def current_player(board)
-    turn_count(board).even? ? current_player = "X" : current_player = "O"
+    if turn_count(board).even? 
+      current_player = "X" 
+    else current_player = "O"
+    end 
 end
 
 
