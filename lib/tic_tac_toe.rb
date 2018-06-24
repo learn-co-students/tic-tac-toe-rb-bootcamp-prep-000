@@ -1,5 +1,7 @@
-#My original methods are from TIC TAC TOE TURN.  Some of them were modified by LEARN in TIC TAC TOE PLAY LOOP. I originally wrote turn_count(board) and current_player(board) in TIC TAC TOE CURRENT PLAYER. 
-# And here, in TIC TAC TOE.RB, I have modified some or all of them. 
+# I originally wrote most of these methods in TIC TAC TOE TURN.  Some of those were then modified by LEARN in TIC TAC TOE PLAY LOOP. 
+# I originally wrote turn_count(board) and current_player(board) in TIC TAC TOE CURRENT PLAYER. 
+# I wrote the remainder and the array in TIC TAC TOE GAME STATUS.
+# And here, in TIC TAC TOE.RB, I have modified some or all of the above. 
 
 WIN_COMBINATIONS = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
 
