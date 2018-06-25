@@ -117,8 +117,18 @@ end
  
     
 
-# Define your play method below
+# Define your PLAY method below
+# until the game is OVER
+#  take TURNS
+# end
+ 
+# IF the game was WON
+# PUTS "Congratulatons, #{WINNER}."
+# ELSE IF the game was a DRAW
+# PUTS "You have both played to a draw."
+# end
 
+# (So if you are not basing your decision in your code to stop taking turns when the game is OVER? then we end up in an infinite loop!)
 
 def play(board)
   until !board.include?("   ") && !board.include?(" ")
