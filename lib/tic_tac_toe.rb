@@ -51,7 +51,6 @@ def turn_count(board)
     move_count += 1
     end
   end
-  puts move_count
   return move_count
 end
 
@@ -108,13 +107,7 @@ end
 
 
 def over?(board)
-  if draw?(board) == true
-    return true
-  elsif won?(board).kind_of?(Array) == true
-  return true
-  elsif full?(board) == false 
-    return false
-end
+  won?(board) || draw?(board)
 end
 
 
@@ -131,15 +124,13 @@ end
 
 
 def play(board)
-
-until (over?(board)==true)
-turn(board)
-end
-  if winner(board) == "X"
-  puts "Congratulations X!"
-elsif winner(board) == "O"
-  puts "Congratulations O!"
-elsif draw?(board) == true
+  #error about not checking won? every turn was because over? was never calling won? function
+  while !over?(board) 
+  turn(board)
+  end
+    if won?(board)
+    puts "Congratulations #{winner(board)}!"
+  elsif draw?(board)
   puts "Cat's Game!"
-end
+  end
 end
