@@ -102,7 +102,7 @@ describe './lib/tic_tac_toe.rb' do
       allow($stdout).to receive(:puts)
 
       expect(self).to_not receive(:turn)
-
+    
       play(board)
     end
 
