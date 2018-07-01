@@ -111,8 +111,6 @@ def winner(board)
 end
 
 def play(board)
-  display_board(board)
-  
   # Since the order of turns goes X, O, X, O, X
   # there won't be a winner until at least 5 turns have been played.
   # 5.times do turn(board) end
