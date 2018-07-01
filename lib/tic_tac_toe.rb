@@ -75,12 +75,14 @@ def won?(board) # The Tic Tac Toe Game Status lab has a more elegant Solution
     end
     
     all_x || all_o # Return the all_x or all_o win combo, or null otherwise.
+    # Note also that all_x and all_o are arrays, which are truthy.
   end
   # nil if no win combination was found
 end
 
 def full?(board)
-  board.all?{|token| token == "X" || token == "O"}
+  turn_count(board) == 9 # 9 turns will fill up the whole board
+  #board.all?{|token| token == "X" || token == "O"} works, too.
 end
 
 def draw?(board)
@@ -88,7 +90,10 @@ def draw?(board)
 end
 
 def over?(board)
-  won?(board) || full?(board)
+  # It won't pass the tests, but I could just check #won? and #full?, 
+  # eliminate #draw? altogether, and get the same result.
+  # The reason: if the game is not won, and the board is full, it's a draw by definition!
+  won?(board) || draw?(board)
 end
 
 def winner(board)
@@ -102,5 +107,27 @@ def winner(board)
     # winning_player[0] is the win combination's first index, 
     # corresponding to a position on the board.
     # This returns the winning token at that position.
+  end
+end
+
+def play(board)
+  # Since the order of turns goes X, O, X, O, X
+  # there won't be a winner until at least 5 turns have been played.
+  # 5.times do turn(board) end
+  # However, that causes an infinite loop in the tests since they don't provide 5 inputs.
+  
+  until over?(board)
+    turn(board)
+  end
+  
+  # I could use if / elsif / else, but this is arguably more efficient and elegant.
+  # Also, the board is full by now, so I don't need to check for that.
+  case winner(board)
+  when "X"
+    puts "Congratulations X!"
+  when "O"
+    puts "Congratulations O!"
+  else
+    puts "Cat's Game!"
   end
 end
