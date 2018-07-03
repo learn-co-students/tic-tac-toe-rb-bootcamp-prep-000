@@ -112,10 +112,11 @@ end
 
 def play(board)
   # Since the order of turns goes X, O, X, O, X
-  # there won't be a winner until at least 5 turns have been played.
+  # there won't be a winner until at least 5 turns have been played
   # 5.times do turn(board) end
   # However, that causes an infinite loop in the tests since they don't provide 5 inputs.
   
+  # Given that 5 turns were played, this executes #turn a maximum of 4 times.
   until over?(board)
     turn(board)
   end
