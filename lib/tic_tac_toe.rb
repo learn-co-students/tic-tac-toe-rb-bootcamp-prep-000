@@ -39,7 +39,7 @@ def valid_move?(board, index)
      board[index] = player
    end
 
-#def turn(board)
+#def turn(board) #old turn_condition that rendered true and passed tests. Problem is that it marks all X's.
   #puts "Please enter 1-9:"
   #input = gets.strip
   #index = input_to_index(input)
@@ -51,13 +51,13 @@ def valid_move?(board, index)
   #end
 #end
 
-def turn(board)
+def turn(board) # <= the method that needs to be refactored becasue it throws off my tests.
   puts "Please enter 1-9:"    
-  input = gets.strip     
+  input = gets.strip   
   index = input_to_index(input)     
   if valid_move?(board, index)
      move(board, index, current_player(board))
-     turn(board)  
+     turn(board)
    end
   display_board(board)
 end
@@ -125,7 +125,7 @@ def winner(board)
     end
   end
 
-def play(board)
+def play(board) #<= I believe I have written this one out correctly because it plays until the game is over? (pun intended!)
   until over?(board) # plays game until it's over
     turn(board) #players will keep taking turns
   end
