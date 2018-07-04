@@ -35,7 +35,7 @@ def valid_move?(board, index)
      end
    end
 
- def move(board, index, player)
+ def move(board, index, player) #no longer using X's or O's as a default value
      board[index] = player
    end
 
@@ -51,12 +51,14 @@ def valid_move?(board, index)
   #end
 #end
 
-def turn(board) # <= the method that needs to be refactored becasue it throws off my tests.
+def turn(board) 
   puts "Please enter 1-9:"    
   input = gets.strip   
   index = input_to_index(input)     
   if valid_move?(board, index)
      move(board, index, current_player(board))
+     end
+   else 
      turn(board)
    end
   display_board(board)
@@ -125,7 +127,7 @@ def winner(board)
     end
   end
 
-def play(board) #<= I believe I have written this one out correctly because it plays until the game is over? (pun intended!)
+def play(board) #<= I believe I have written this one out correctly because it plays until the game is over (pun intended!)
   until over?(board) # plays game until it's over
     turn(board) #players will keep taking turns
   end
@@ -135,4 +137,4 @@ def play(board) #<= I believe I have written this one out correctly because it p
     elsif draw?(board)  #draw condition
       puts "Cat's Game!" # message when the game ends in a draw
     end
-end
+  end
