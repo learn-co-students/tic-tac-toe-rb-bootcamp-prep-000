@@ -116,7 +116,7 @@ def play(board)
   # 5.times do turn(board) end
   # However, that causes an infinite loop in the tests since they don't provide 5 inputs.
   
-  # Given that 5 turns were played, this executes #turn a maximum of 4 times.
+  # This executes #turn 9 times maximum (or 4 times, if the code above is used) 
   until over?(board)
     turn(board)
   end
