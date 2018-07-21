@@ -19,16 +19,21 @@ def display_board(the_board)
   puts " #{the_board[6]} | #{the_board[7]} | #{the_board[8]} "
 end
 
+
+
 def input_to_index(input)
   input.to_i - 1 
 end
+
+
 
 def move(array,index,character)
   array[index] = character
 end
 
-def position_taken?(board, index)
 
+
+def position_taken?(board, index)
   taken = nil
    if (board[index] ==  " " || board[index] == "" || board[index] == nil)
      taken = false
@@ -53,6 +58,7 @@ def turn(board)
   if valid_move?(board, index)
     character = current_player(board)
     move(board, index, character)
+    display_board(board)
   else
     turn(board)
   end 
@@ -133,16 +139,35 @@ end
   end
 end
 
+
+
 def play(board)
+  board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
   until over?(board)
     turn(board)
   end
   
   if won?(board)
     puts "Congratulations #{winner(board)}!"
+    try_again?(board)
   elsif draw?(board)
     puts "Cat's Game!"
   end
 end
-  
+
+def try_again?(board)
+  puts "Would you like to play again? Type Yes or No"
+    input = gets.strip
+    if input.downcase == "yes"
+      board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+      display_board(board)
+      play(board)
+    else
+      puts" thank you for playing"
+      over?(board)
+    end
+end
+      
+
+
 
