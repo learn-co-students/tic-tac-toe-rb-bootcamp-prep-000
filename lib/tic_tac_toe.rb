@@ -60,16 +60,21 @@ def turn(board)
     move(board, index, current_player(board))
     display_board(board)
   else
+    display_board(board)
     turn(board)
   end
 end
 
 def play(array)
-  9.times do
+  while !over?(array) do
     turn(array)
   end
+  if won?(array)
+    puts "Congratulations #{winner(array)}!"
+  else
+    puts "Cat's Game!"
+  end
 end
-
 
 def won?(array)
   winning_move = nil
