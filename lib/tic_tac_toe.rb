@@ -91,10 +91,15 @@ end
 # The #play method
 
 def play(board)
-  puts "Please enter 1-9:"
-  
+  until over?(board)
+    turn(board)
+  end
+  if won?(board)
+    puts "Congratulations #{winner(board)}!"
+  elsif draw?(board)
+    puts "Cat's Game!"
+  end
 end
-
 
 
 
