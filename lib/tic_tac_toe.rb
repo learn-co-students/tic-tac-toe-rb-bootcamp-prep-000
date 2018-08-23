@@ -1,3 +1,4 @@
+require 'pry'
 WIN_COMBINATIONS = [
   [0,1,2],
   [3,4,5],
@@ -25,7 +26,6 @@ end
 
 def move(board, index, player)
   board[index]=player
-  display_board(board)
 end
 
 
@@ -53,6 +53,7 @@ def turn(board)
   index = input_to_index(input)
   if valid_move?(board,index)
     move(board,index, current_player(board))
+    display_board(board)
   else
     turn(board)
   end
@@ -115,20 +116,18 @@ end
 
 
 def draw?(board)
-  if full?(board) == true && won?(board) == false
+  if full?(board) && won?(board) == false
     return true
   end
 end
 
 def over?(board)
-  if won?(board).kind_of?(Array) || full?(board) == true || draw?(board) == true
-    return true
-  end
+  won?(board) || draw?(board)
 end
 
 
 def winner(board)
-  if won?(board).kind_of?(Array)
+  if won?(board)
     ace=won?(board)
     return board[ace[0]]
   else
@@ -138,11 +137,11 @@ end
 
 def play(board)
   while !over?(board)
-  turn(board)
+    turn(board)
   end
-  if won?(board).kind_of?(Array)
-    return "Congratulations Player #{winner(board)}"
-  elsif draw?(board) == true
-    return "Cat's Game!"
+  if won?(board)
+    puts "Congratulations #{winner(board)}!"
+  else
+    puts "Cat's Game!"
   end
 end
