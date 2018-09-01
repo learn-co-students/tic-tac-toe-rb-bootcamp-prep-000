@@ -48,18 +48,17 @@ end
 # Define your play method below
 
 def play(board)
-  counter = 0
-  loop do
-    if over?(board)
-      if won?(board)
-        puts winner(board) + " has one the game"
-      else puts "Game Over"
-      end
-      turn(board)
-      counter += 1
-    end
+  until over?(board) == true
+    turn(board)
+  end
+
+  if won?(board)
+    puts "Congratulations #{winner(board)}!"
+  elsif draw?(board)
+    puts "Cat's Game!"
   end
 end
+
 
 #WIN DRAW OVER FULL
 
@@ -85,9 +84,9 @@ def won?(board)
     position_3 = board[index_2]
 
     if position_1 == "X" && position_2 == "X" && position_3 == "X"
-      return true
+      return win_combo
     elsif position_1 == "O" && position_2 == "O" && position_3 == "O"
-      return true
+      return win_combo
     end
   }
   return false
