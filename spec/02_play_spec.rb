@@ -12,7 +12,7 @@ describe './lib/tic_tac_toe.rb' do
       play(board)
     end
 
-    it 'checks if the game is over after every turn' do
+    fit 'checks if the game is over after every turn' do
       board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
       allow($stdout).to receive(:puts)
       allow(self).to receive(:gets).and_return("1", "2", "3")
