@@ -63,7 +63,7 @@ describe './lib/tic_tac_toe.rb' do
 
   end
 
-  describe '#move' do
+  describe '#player_move' do
 
     it 'does not allow for a default third argument' do
       board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
