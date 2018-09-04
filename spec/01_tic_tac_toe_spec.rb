@@ -81,7 +81,6 @@ describe './lib/tic_tac_toe.rb' do
       board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
       player_move(board, 0, "O")
       player_move(board, 8, "X")
-
       expect(board).to eq(["O", " ", " ", " ", " ", " ", " ", " ", "X"])
     end
   end
