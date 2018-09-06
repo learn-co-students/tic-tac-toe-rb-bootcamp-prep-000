@@ -223,7 +223,7 @@ The `#current_player` method should take in an argument of the game board and us
 
 #### `#won?`
 
-Your `#won?` method should accept a board as an argument and return false/nil if there is no win combination present in the board and return the winning combination indexes as an array if there is a win. Use your `WIN_COMBINATIONS` constant in this method.
+Your `#won?` method should accept a board as an argument and return **false** if there is no win combination present in the board and return the winning combination indexes as an array if there is a win. Use your `WIN_COMBINATIONS` constant in this method.
 
 #### `#full?`
 
