@@ -60,15 +60,11 @@ def current_player(board)
 end
 
 def won?(board)
-  WIN_COMBINATIONS.each do |combo|
-    val1 = board[combo[0]]
-    val2 = board[combo[1]]
-    val3 = board[combo[2]]
-    if position_taken?(board, combo[0]) && val1 == val2 && val2 == val3
-      return combo
-    end
+  WIN_COMBINATIONS.detect do |combo|
+    board[combo[0]] == board[combo[1]]
+    && board[combo[1]] = board[combo[2]]
+    && position_taken(board[combo[0]])
   end
-  false
 end
 
 def full?(board)
@@ -94,9 +90,8 @@ def play(board)
   until over?(board) do
     turn(board)
   end
-  player = winner(board)
-  if player
-    puts "Congratulations #{player}!"
+  if won?(board)
+    puts "Congratulations #{winner(board)}!"
   elsif draw?(board)
     puts "Cat's Game!"
   end
