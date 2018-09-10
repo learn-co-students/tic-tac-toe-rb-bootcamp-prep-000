@@ -79,7 +79,6 @@ def won?(board)
     end
     if holder[0] == holder[1] && holder[0] == holder[2] && holder[0] != " "
       return combination
-      break
     end
   end
   FALSE
