@@ -51,7 +51,7 @@ def turn(board)
     if valid_move?(board, user_input) == false
     turn(board)
     else
-    move(board,user_input,x)
+    move(board,user_input,current_player(board))
     end
   display_board(board)
 end
@@ -127,15 +127,20 @@ end
 end 
 
 def play(board)
-  if over?(board) == false
+  until over?(board) == true ||
+  won?(board) == !false ||
+  draw?(board) == true ||
   turn(board)
-elsif over?(board) == true && 
+end
+  
+  if over?(board) == true && 
 draw?(board) == true
 puts "Cat's Game!"
-elsif won?(board) == "X"
+elsif winner(board) == "X"
 puts "Congratulations X!"
-elsif won?(board) == "O"
+elsif winner(board) == "O"
 puts "Congratulations O!"
 end 
+
 end 
  
