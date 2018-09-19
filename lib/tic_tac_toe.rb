@@ -89,14 +89,10 @@ def won?(board)
 end
 
 def full?(board)
-  index = 0
-  while index < board.length 
-    index += 1
-    if board[index] == " "
-      return false
-    elsif board[index] == "X" || board[index] == "O"
-      return true
-    end
+  if board.find {|i| i == " " || i == nil}
+    return false
+  else
+    return true
   end
 end
 
@@ -117,24 +113,15 @@ def over?(board)
 end
 
 def winner(board)
-  if won?(board)
-    won?(board).each do |win|
-    win_index_1 = win[0]
-    position_1 = board[win_index_1] 
-    if position_1 == "X"
-      return "X"
-    elsif position_1 == "O"
-      return "O"
-    else
-      false
-    end
-    end
+  if win_combination = won?(board)
+    board[win_combination.first]
   end
 end
 
 # Define your play method below
 def play(board)
   until over?(board) 
+    current_player(board)
     turn(board)
   end
   if won?(board) 
