@@ -26,6 +26,7 @@ def valid_move?(board, index)
   index.between?(0,8) && !position_taken?(board, index)
 end
 
+
 def turn(board)
   puts "Please enter 1-9:"
   input = gets.strip
@@ -138,13 +139,13 @@ end
 end
 
 
-def current_player (board)
-  if(((turn_count(board)).odd?) == true)
-      return "O"
-    else
-      return "X"
-    end
+def current_player(board)
+  if turn_count(board) % 2 == 0
+    "X"
+  else turn_count(board) % 2 == 1
+    "O"
   end
+end
 
   def winning_player (board)
     if !(((turn_count(board)).odd?) == true)
