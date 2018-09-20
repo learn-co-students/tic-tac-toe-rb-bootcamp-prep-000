@@ -155,14 +155,14 @@ end
       end
     end
 
-
+=begin
 def play (board)
 
     loop do
 
       turn(board)
 
-      if(over?(board) == true)
+      if(over?(board))
         break
       end
 
@@ -174,4 +174,16 @@ def play (board)
       puts "Cat's Game!"
     end
 
+end
+=end
+
+def play(board)
+  while !over?(board)
+    turn(board)
+  end
+  if won?(board)
+    puts "Congratulations #{winner(board)}!"
+  elsif draw?(board)
+    puts "Cat's Game!"
+  end
 end
