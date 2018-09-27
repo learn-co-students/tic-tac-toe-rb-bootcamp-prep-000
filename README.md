@@ -223,7 +223,7 @@ The `#current_player` method should take in an argument of the game board and us
 
 #### `#won?`
 
-Your `#won?` method should accept a board as an argument and return false/nil if there is no win combination present in the board and return the winning combination indexes as an array if there is a win. Use your `WIN_COMBINATIONS` constant in this method.
+Your `#won?` method should accept a board as an argument and return **false** if there is no win combination present in the board and return the winning combination indexes as an array if there is a win. Use your `WIN_COMBINATIONS` constant in this method.
 
 #### `#full?`
 
@@ -451,6 +451,6 @@ When you click on `lib/tic_tac_toe.rb`, you'll see something like:
 
 ![Coverage 2](https://dl.dropboxusercontent.com/s/3xzof85jm0g5vwp/2015-09-20%20at%203.40%20PM.png)
 
-The lines in green have been tested, the lines in red haven't. When all tests pass, you should see 100% test coverage.
+The lines in green have been tested, the lines in red haven't. When all tests pass, you should see 100% test coverage. You can exit `httpserver` using `control + c`.
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/tic-tac-toe-rb' title='Tic Tac Toe in Ruby'>Tic Tac Toe in Ruby</a> on Learn.co and start learning to code for free.</p>
