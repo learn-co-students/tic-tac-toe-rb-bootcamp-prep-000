@@ -173,9 +173,9 @@ Outputting:
 
 Once the user inputs where they would like to go on the board, we then have to convert this to the board index multiple times. Instead of doing that in a lot of places, we can remove this repetitive code and put it in this helper method. This method takes the user_input (which is a string), converts it to an Integer, and subtracts 1. Remember that, from the player's point of view, the board contains spaces 1-9. But, an array's indexes start their count at 0.
 
-#### `#player_move`
+#### `#move`
 
-Your `#player_move` method must take in three arguments: **1)** the board array, **2)** the index in the board array that the player would like to fill out with an "X" or and "O", and **3)** the player's character (either "X" or "O"). We previously had you write this method with a default argument of "X" for the third argument, but that is no longer needed.
+Your `#move` method must take in three arguments: **1)** the board array, **2)** the index in the board array that the player would like to fill out with an "X" or and "O", and **3)** the player's character (either "X" or "O"). We previously had you write this method with a default argument of "X" for the third argument, but that is no longer needed.
 
 #### `#position_taken?`
 
