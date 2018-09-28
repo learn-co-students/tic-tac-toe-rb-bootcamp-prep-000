@@ -13,6 +13,8 @@ RSpec::Matchers.define :include_array do |expected|
   end
 end
 
+RSpec::Expectations.configuration.warn_about_potential_false_positives = false
+
 def run_file(file)
   eval(File.read(file), binding)
 end
