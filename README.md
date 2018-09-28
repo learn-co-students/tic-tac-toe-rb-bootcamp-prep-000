@@ -34,7 +34,6 @@ and Pasting."
 ├── Gemfile
 ├── Gemfile.lock
 ├── README.md
-├── Rakefile
 ├── bin
 │   └── tictactoe
 ├── lib
@@ -46,11 +45,11 @@ and Pasting."
     └── spec_helper.rb
 ```
 
-#### Gemfile and Rakefile
+#### Gemfile
 
-These files setup some tools and gems for our project and can mostly be ignored.
-Make sure to run `bundle` before starting this project so that you have all the
-required gems.
+This file sets up gems for our project and can mostly be ignored. Make sure to
+run `bundle` before starting this project so that you have all the required
+gems.
 
 #### `bin/tictactoe`
 
@@ -215,9 +214,9 @@ This method takes the user_input (which is a string), converts it to an Integer,
 and subtracts 1. Remember that, from the player's point of view, the board
 contains spaces 1-9. But, an array's indexes start their count at 0.
 
-#### `#make_move`
+#### `#move`
 
-Your `#make_move` method must take in three arguments: **1)** the board array,
+Your `#move` method must take in three arguments: **1)** the board array,
 **2)** the index in the board array that the player would like to fill out with
 an "X" or and "O", and **3)** the player's character (either "X" or "O"). We
 previously had you write this method with a default argument of "X" for the
@@ -241,7 +240,8 @@ Build a method `valid_move?` that accepts a board and an index to check, and ret
 Build a method `valid_move?` that accepts a board and an index to check and
 returns `true` if the move is valid and `false` or `nil` if not. A valid move
 means that the submitted position is:
->>>>>>> solution
+
+> > > > > > > solution
 
 1.  Present on the game board.
 2.  Not already filled with a token.
@@ -294,7 +294,8 @@ Your `#won?` method should accept a board as an argument and return **false** if
 there is no win combination present in the board and return the winning
 combination indexes as an array if there is a win. Use your `WIN_COMBINATIONS`
 constant in this method.
->>>>>>> solution
+
+> > > > > > > solution
 
 #### `#full?`
 
@@ -593,6 +594,7 @@ The lines in green have been tested, the lines in red haven't. When all tests pa
 The lines in green have been tested, the lines in red haven't. When all tests
 pass, you should see 100% test coverage. You can exit `httpserver` using
 `control + c`.
->>>>>>> solution
+
+> > > > > > > solution
 
 <p class='util--hide'>View <a href='https://learn.co/lessons/tic-tac-toe-rb'>Tic Tac Toe in Ruby</a> on Learn.co and start learning to code for free.</p>

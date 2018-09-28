@@ -60,23 +60,23 @@ describe './lib/tic_tac_toe.rb' do
     end
   end
 
-  describe '#make_move' do
+  describe '#move' do
     it 'does not allow for a default third argument' do
       board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
-      expect { make_move(board, 0) }.to raise_error(ArgumentError)
+      expect { move(board, 0) }.to raise_error(ArgumentError)
     end
 
     it 'takes three arguments: board, position, and player token' do
       board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
-      expect { make_move(board, 0, 'X') }.to_not raise_error
+      expect { move(board, 0, 'X') }.to_not raise_error
     end
 
     it 'allows "X" player in the bottom right and "O" in the top left ' do
       board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-      make_move(board, 0, 'O')
-      make_move(board, 8, 'X')
+      move(board, 0, 'O')
+      move(board, 8, 'X')
       expect(board).to eq(['O', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'X'])
     end
   end
