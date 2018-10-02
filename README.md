@@ -234,14 +234,9 @@ method should return `false` (i.e. "not taken"), otherwise it will return
 
 #### `#valid_move?`
 
-<<<<<<< HEAD
-Build a method `valid_move?` that accepts a board and an index to check, and returns `true` if the move is valid, and `false` or `nil` if not. A valid move means that the submitted position is:
-=======
 Build a method `valid_move?` that accepts a board and an index to check and
 returns `true` if the move is valid and `false` or `nil` if not. A valid move
 means that the submitted position is:
-
-> > > > > > > solution
 
 1.  Present on the game board.
 2.  Not already filled with a token.
@@ -287,15 +282,10 @@ use the `#turn_count` method to determine if it is `"X"`'s turn or `"O"`'s.
 
 #### `#won?`
 
-<<<<<<< HEAD
-Your `#won?` method should accept a board as an argument and return **false** if there is no win combination present in the board and return the winning combination indexes as an array if there is a win. Use your `WIN_COMBINATIONS` constant in this method.
-=======
 Your `#won?` method should accept a board as an argument and return **false** if
 there is no win combination present in the board and return the winning
 combination indexes as an array if there is a win. Use your `WIN_COMBINATIONS`
 constant in this method.
-
-> > > > > > > solution
 
 #### `#full?`
 
@@ -588,13 +578,8 @@ When you click on `lib/tic_tac_toe.rb`, you'll see something like:
 
 ![Coverage 2](https://dl.dropboxusercontent.com/s/3xzof85jm0g5vwp/2015-09-20%20at%203.40%20PM.png)
 
-<<<<<<< HEAD
-The lines in green have been tested, the lines in red haven't. When all tests pass, you should see 100% test coverage. You can exit `httpserver` using `control + c`.
-=======
 The lines in green have been tested, the lines in red haven't. When all tests
 pass, you should see 100% test coverage. You can exit `httpserver` using
 `control + c`.
-
-> > > > > > > solution
 
 <p class='util--hide'>View <a href='https://learn.co/lessons/tic-tac-toe-rb'>Tic Tac Toe in Ruby</a> on Learn.co and start learning to code for free.</p>
