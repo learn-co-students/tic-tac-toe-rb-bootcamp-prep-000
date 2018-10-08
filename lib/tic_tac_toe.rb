@@ -50,8 +50,8 @@ def turn(board)
     turn(board)
   else
     move(board, index, current_player(board))
+    display_board(board)
   end
-  display_board(board)
 end
 
 def turn_count(array)
