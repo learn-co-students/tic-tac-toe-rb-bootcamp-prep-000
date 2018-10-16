@@ -18,12 +18,21 @@ end
 
 
 def position_taken?(board, index)
-  !(board[index].nil? || board[index] == " " ||  board[index] == "X" ||  board[index] == "O")
+  
+ if !(board[index].nil? || board[index] == " ")
+   return false
+ else
+  return true
+ end 
 end
 
 
 def valid_move?(board, index)
-  index.between?(0,8) && !position_taken?(board, index)
+  if index.between?(0,8) && !position_taken?(board, index)
+    true
+  else
+    false
+  end
 end
 
 
@@ -127,6 +136,7 @@ end
 def winner(board)
   if won?(board)
     return board[won?(board)[0]]
+  end
 end
   
 def play(board)
@@ -136,6 +146,7 @@ def play(board)
   if won?(board)
     return "Congratulations #{winner(board)}!"
   elsif draw?(board)
-  return "Cats Game!"
+    return "Cats Game!"
   end
- end
+ 
+end
