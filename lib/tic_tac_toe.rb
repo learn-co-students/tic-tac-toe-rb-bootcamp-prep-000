@@ -62,8 +62,8 @@ end
 
 
 WIN_COMBINATIONS = [
-  [0,1,2], # Top row
-  [3,4,5], # Middle row
+  [0,1,2],
+  [3,4,5], 
   [6,7,8],
   [0,3,6],
   [1,4,7],
@@ -124,24 +124,18 @@ end
 end
 
 
- def winner(board)
+def winner(board)
   if won?(board)
     return board[won?(board)[0]]
-  end
+end
   
-  def play(board)
-  counter = 0
-  while counter < 9
-  turn (board)
-  counter += 1
+def play(board)
+  until over?(board)
+    turn(board)
   end
-  
-  if  won?(board)
-    return "Congratulations"
-    
+  if won?(board)
+    return "Congratulations #{winner(board)}!"
   elsif draw?(board)
-   return "Game is draw"
-   
+  return "Cats Game!"
+  end
  end
-end
-end
