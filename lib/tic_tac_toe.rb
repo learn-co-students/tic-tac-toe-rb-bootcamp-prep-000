@@ -20,18 +20,18 @@ end
 def position_taken?(board, index)
   
  if !(board[index].nil? || board[index] == " ")
-   return false
+   return true
  else
-  return true
+  return false
  end 
 end
 
 
 def valid_move?(board, index)
   if index.between?(0,8) && !position_taken?(board, index)
-    true
-  else
     false
+  else
+    true
   end
 end
 
@@ -148,5 +148,4 @@ def play(board)
   elsif draw?(board)
     return "Cats Game!"
   end
- 
-end
+ end
