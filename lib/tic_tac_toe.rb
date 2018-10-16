@@ -12,13 +12,13 @@ def input_to_index(user_input)
 end
 
 
-def move(board, index, current_player = "X")
+def move(board, index, current_player)
   board[index] = current_player
 end
 
 
 def position_taken?(board, index)
-  !(board[index].nil? || board[index] == " ")
+  !(board[index].nil? || board[index] == " " ||  board[index] == "X" ||  board[index] == "O")
 end
 
 
@@ -36,15 +36,6 @@ def turn(board)
     display_board(board)
   else
     turn(board)
-  end
-end
-
-
-def play(board)
-  counter = 0
-  while counter < 9
-  turn (board)
-  counter += 1
   end
 end
 
@@ -137,4 +128,20 @@ end
   if won?(board)
     return board[won?(board)[0]]
   end
+  
+  def play(board)
+  counter = 0
+  while counter < 9
+  turn (board)
+  counter += 1
+  end
+  
+  if  won?(board)
+    return "Congratulations"
+    
+  elsif draw?(board)
+   return "Game is draw"
+   
+ end
+end
 end
