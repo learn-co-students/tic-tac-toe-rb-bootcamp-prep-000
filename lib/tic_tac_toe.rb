@@ -29,9 +29,9 @@ end
 
 def valid_move?(board, index)
   if index.between?(0,8) && !position_taken?(board, index)
-    false
-  else
     true
+  else
+    false
   end
 end
 
@@ -41,7 +41,7 @@ def turn(board)
   input = gets.strip
   index = input_to_index(input)
   if valid_move?(board, index)
-    move(board, index)
+    move(board, index,current_player(board))
     display_board(board)
   else
     turn(board)
@@ -144,8 +144,8 @@ def play(board)
     turn(board)
   end
   if won?(board)
-    return "Congratulations #{winner(board)}!"
+    puts "Congratulations #{winner(board)}!"
   elsif draw?(board)
-    return "Cats Game!"
+    puts "Cat's Game!"
   end
  end
