@@ -14,12 +14,13 @@ end
 
 def move(board, index, current_player)
   board[index] = current_player
+  
 end
 
 
 def position_taken?(board, index)
   
- if !(board[index].nil? || board[index] == " ")
+ if !(board[index] == " " || board[index] == "" || board[index] == nil)
    
    return true
  else
@@ -45,6 +46,8 @@ def turn(board)
     move(board, index,current_player(board))
     display_board(board)
   else
+    
+    puts "That move was not vaild please try again"
     turn(board)
   end
 end
@@ -142,10 +145,11 @@ end
   
 def play(board)
 
-  until over?(board)
+ until over?(board) do
     turn(board)
-    
   end
+
+  
   if won?(board)
     puts "Congratulations #{winner(board)}!"
   elsif draw?(board)
