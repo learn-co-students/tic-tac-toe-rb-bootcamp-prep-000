@@ -14,7 +14,8 @@ end
 
 def move(board, index, current_player)
   board[index] = current_player
-   return board
+  return board
+  
 end
 
 
@@ -118,14 +119,14 @@ end
 
 
  def draw?(board)
-  if !won?(board) && full?(board)
-    return true
-  elsif won?(board) == false && full(board) == false
+  if won?(board)
     return false
+  elsif full?(board)
+    return true
   else
     return false
+    end
   end
-end
 
 
  def over?(board)
@@ -145,10 +146,11 @@ end
   
 def play(board)
 
- until over?(board) do
+  until over?(board)
     turn(board)
+    
   end
-
+  
   
   if won?(board)
     puts "Congratulations #{winner(board)}!"
