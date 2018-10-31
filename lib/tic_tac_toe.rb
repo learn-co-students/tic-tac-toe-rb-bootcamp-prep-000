@@ -1,3 +1,4 @@
+require 'pry'
 WIN_COMBINATIONS = [
   [0, 1, 2], #top row
   [3, 4, 5], #middle row
@@ -24,7 +25,8 @@ end
   end
 end
  def move(board, index, current_player)
-  board[index] = current_player(board)
+
+  board[index] = current_player
 end
  def position_taken?(board, index)
   board[index] != " " && board[index] != ""
