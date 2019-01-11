@@ -1,3 +1,5 @@
+require "pry"
+
 def display_board(board)
    puts" #{board[0]} | #{board[1]} | #{board[2]} "
    puts"-----------"
@@ -140,15 +142,14 @@ def winner(board)
 end
 
 
-# def play(board)
-#   2.times do turn(board)
-#     until won?(board) || over?(board)
-#       if won?(board)
-#         puts "Congratulations, #{winner(board)}"
-#       elsif over?(board)
-#         puts "Cat's game!"
-#       end
-#     break
-#     end
-#   end
-# end
+def play(board)
+  until over?(board)
+    turn(board)
+  end
+  
+  if won?(board)
+    puts "Congratulations #{winner(board)}!"
+  else
+    puts "Cat's Game!"
+  end
+end
