@@ -32,18 +32,14 @@ def valid_move?(board,index)
   end
 end
 
-
 def turn(board)
-  display_board(board)
   puts "Please enter 1-9:"
-  input = gets
+  input = gets.strip
   index = input_to_index(input)
-      
   if valid_move?(board, index)
-    move(board, index, value = "X")
+    move(board, index)
     display_board(board)
   else
-    puts "Invalid move."
     turn(board)
   end
 end
@@ -139,3 +135,18 @@ def winner(board)
     nil
   end
 end
+
+
+def play(board)
+  input = gets
+end
+#   2.times do turn(board)
+#     until won?(board) || over?(board)
+#       if won?(board)
+#         puts "Congratulations, #{winner(board)}"
+#       elsif over?(board)
+#         puts "Cat's game!"
+#       end
+#     end
+#   end
+# end
