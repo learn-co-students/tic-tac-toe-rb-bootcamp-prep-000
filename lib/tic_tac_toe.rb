@@ -33,6 +33,42 @@ def valid_move?(board,index)
 end
 
 
+def turn(board)
+  display_board(board)
+  puts "Please enter 1-9:"
+  input = gets
+  index = input_to_index(input)
+      
+  if valid_move?(board, index)
+    move(board, index, value = "X")
+    display_board(board)
+  else
+    puts "Invalid move."
+    turn(board)
+  end
+end
+
+
+def turn_count(board)
+  counter = 0
+  board.each do |element|
+    if element != " " && element != "" && element != nil
+      counter += 1 
+    end
+  end
+  counter
+end
+
+
+def current_player(board)
+  counter = turn_count(board)
+  if counter.even?
+    return "X"
+  else
+    return "O"
+  end
+end
+
 # Define your WIN_COMBINATIONS constant
 WIN_COMBINATIONS = [
   [0,1,2], # Top row
@@ -45,7 +81,6 @@ WIN_COMBINATIONS = [
   [2,4,6], # Right diagonal
   ]
   
-
 def won?(board)
   WIN_COMBINATIONS.each do |win_combination|
     win_index_1 = win_combination[0]
@@ -70,6 +105,7 @@ def won?(board)
   end
   #binding.pry
 end
+
     
 def full?(board)  
   if board.include? " "
@@ -78,6 +114,7 @@ def full?(board)
     true
   end
 end
+
 
 def draw?(board)
   if full?(board) && !won?(board) 
@@ -88,6 +125,7 @@ def draw?(board)
     false
   end
 end
+
 
 def over?(board)
   won?(board) || draw?(board) || full?(board)
