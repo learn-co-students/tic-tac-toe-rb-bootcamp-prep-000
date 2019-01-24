@@ -65,7 +65,7 @@ end
 
 def turn(board)
   puts "Please enter 1-9:"
-  token = "X"
+  token = current_player (board)
     input = input_to_index(gets.chomp)
     if valid_move?(board, input)
       move(board, input, token)
@@ -148,19 +148,10 @@ def winner(board)
 end
 
 def play(board)
-  loop do
-    player = current_player (board)
-    input = input_to_index(gets)
-    if valid_move?(board, input)
-      move(board, input, player)
-    end
+  turn(board) until over?(board)
     if winner(board)
       puts "Congratulations #{winner(board)}!"
     elsif draw?(board)
       puts "Cat's Game!"
-    end
-    if over?(board)
-      break
-    end
   end
 end
