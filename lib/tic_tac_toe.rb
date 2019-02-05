@@ -4,6 +4,10 @@ def play(board)
   
   while !over?(board)
     turn(board)
+    if(won?(board))
+      puts winner(board)
+      break
+    end
   end
 end
 
@@ -58,10 +62,10 @@ def won?(board)
     if(win_combo.all? {|index| (position_taken?(board,index))})
       if(win_combo.all? {|ele| board[ele] == "X"})
         winner = "X"
-        return win_combo
+        return true
       elsif(win_combo.all? {|ele| board[ele] == "O"})
         winner = "O"
-        return win_combo
+        return true
       end
     end
   end
