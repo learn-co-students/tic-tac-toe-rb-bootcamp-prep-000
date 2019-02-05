@@ -4,10 +4,9 @@ def play(board)
   
   while !over?(board)
     turn(board)
-    if(won?(board))
-      puts winner(board)
-      break
-    end
+  end
+  if(won?(board))
+    puts "Congratulations #{winner(board)}!"
   end
 end
 
@@ -62,10 +61,10 @@ def won?(board)
     if(win_combo.all? {|index| (position_taken?(board,index))})
       if(win_combo.all? {|ele| board[ele] == "X"})
         winner = "X"
-        return true
+        return "Congratulations X!"
       elsif(win_combo.all? {|ele| board[ele] == "O"})
         winner = "O"
-        return true
+        return "Congratulations O!"
       end
     end
   end
@@ -97,9 +96,9 @@ def winner(board)
   WIN_COMBINATIONS.each do |win_combo|
     if(win_combo.all? {|index| (position_taken?(board,index))})
       if(win_combo.all? {|ele| board[ele] == "X"})
-        return "Congratulations X!"
+        return "X"
       elsif(win_combo.all? {|ele| board[ele] == "O"})
-        return "Congratulations O!"
+        return "O"
       end
     end
   end
