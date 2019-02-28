@@ -19,6 +19,7 @@ def play(board)
 end
 
 
+
 def display_board(board)
   puts " #{board[0]} | #{board[1]} | #{board[2]} "
   puts "-----------"
@@ -45,14 +46,14 @@ end
 
 
 def valid_move?(board, index)
-  if !position_taken?(board,index) && index.between?(0,8)
+  if !position_taken?(board,index) && index.between?(0,8) 
     true
   else
     false
   end
 end
 
-def turn(board) until over?(board)
+def turn(board)
   puts 'Please enter 1-9:'
   user_input = gets.strip
   index = input_to_index(user_input)
@@ -63,6 +64,7 @@ def turn(board) until over?(board)
     turn(board)
   end
 end
+
 
 
 def turn_count(board)
