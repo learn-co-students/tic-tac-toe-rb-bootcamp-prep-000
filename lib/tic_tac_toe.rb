@@ -43,12 +43,9 @@ def full?(board)
 end
 
 def draw?(board)
-  if !won?(board) && full?(board)
-    true
-  elsif !won?(board) && !full?(board) || !won?(board)
-    false
-  end
+  full?(board) && !won?(board)
 end
+
 
 def over?(board)
   if won?(board) || full?(board) || draw?(board)
@@ -58,17 +55,9 @@ def over?(board)
   end
 end
 
-def winner?(board)
-  index = []
-  index = won?(board)
-  if index == false
-    return nil
-  else
-    if board[index[0]] == "X"
-      return "X"
-    else
-      return "O"
-    end
+def winner(board)
+  if winning_combo = won?(board)
+    board[winning_combo.first]
   end
 end
 
@@ -129,4 +118,16 @@ def turn(board)
       turn(board)
     end
   display_board(board)
+end
+
+def play(board)
+  until over?(board) == true
+    turn(board)
+  end
+
+  if won?(board) == true
+    puts "Congratulations #{winner(board)} !"
+  elsif draw?(board) == true
+    puts "Cat's Game!"
+  end
 end
