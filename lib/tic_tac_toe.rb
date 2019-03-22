@@ -9,29 +9,37 @@ WIN_COMBINATIONS = [
   [2,5,8]
 ]
 
+# def won?(board)
+# winner = false
+#   WIN_COMBINATIONS.each do |win_combination|
+#     win_index_1 = win_combination[0]
+#     win_index_2 = win_combination[1]
+#     win_index_3 = win_combination[2]
+#
+#      position_1 = board[win_index_1]
+#     position_2 = board[win_index_2]
+#     position_3 = board[win_index_3]
+#
+#      # empty_board = (position_1 == " " && position_2 == " " && position_3 == " ")
+#     winning_move = (position_1 == "X" && position_2 == "X" && position_3 == "X") || (position_1 == "O" && position_2 == "O" && position_3 == "O")
+#     # draw = (position_1 == "X" && position_2 == "O" && position_3 == "X") || (position_1 == "O" && position_2 == "X" && position_3 == "O")
+#
+#      if winning_move
+#       winner = true
+#       return win_combination # return the win_combination indexes that won.
+#     else
+#       winner = false
+#      end
+#   end
+# winner
+# end
+
 def won?(board)
-winner = false
-  WIN_COMBINATIONS.each do |win_combination|
-    win_index_1 = win_combination[0]
-    win_index_2 = win_combination[1]
-    win_index_3 = win_combination[2]
-
-     position_1 = board[win_index_1]
-    position_2 = board[win_index_2]
-    position_3 = board[win_index_3]
-
-     # empty_board = (position_1 == " " && position_2 == " " && position_3 == " ")
-    winning_move = (position_1 == "X" && position_2 == "X" && position_3 == "X") || (position_1 == "O" && position_2 == "O" && position_3 == "O")
-    # draw = (position_1 == "X" && position_2 == "O" && position_3 == "X") || (position_1 == "O" && position_2 == "X" && position_3 == "O")
-
-     if winning_move
-      winner = true
-      return win_combination # return the win_combination indexes that won.
-    else
-      winner = false
-     end
+  WIN_COMBINATIONS.detect do |combo|
+    board[combo[0]] == board[combo[1]] &&
+    board[combo[1]] == board[combo[2]] &&
+    position_taken?(board, combo[0])
   end
-winner
 end
 
 def full?(board)
@@ -121,21 +129,17 @@ def turn(board)
 end
 
 def play(board)
-<<<<<<< HEAD
-  until over?(board) == true
-=======
-  until won?(board) == true
->>>>>>> 8ccb801c72449e00a8e50fd1b4741c4018070e0f
+  until won?(board) == true || over?(board) == true
     turn(board)
   end
-
-  if won?(board) == true
-<<<<<<< HEAD
-    puts "Congratulations #{winner(board)} !"
-=======
-    puts "Congratulations #{winner(board)}"
->>>>>>> 8ccb801c72449e00a8e50fd1b4741c4018070e0f
-  elsif draw?(board) == true
+  # if won?(board) == true
+  #   puts "Congratulations #{winner(board)}!"
+  # elsif draw?(board) == true
+  #   puts "Cat's Game!"
+  # end
+  if won?(board) && !draw?(board)
+    puts "Congratulations #{winner(board)}!"
+  else
     puts "Cat's Game!"
   end
 end
