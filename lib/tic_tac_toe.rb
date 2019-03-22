@@ -121,12 +121,20 @@ def turn(board)
 end
 
 def play(board)
+<<<<<<< HEAD
   until over?(board) == true
+=======
+  until won?(board) == true
+>>>>>>> 8ccb801c72449e00a8e50fd1b4741c4018070e0f
     turn(board)
   end
 
   if won?(board) == true
+<<<<<<< HEAD
     puts "Congratulations #{winner(board)} !"
+=======
+    puts "Congratulations #{winner(board)}"
+>>>>>>> 8ccb801c72449e00a8e50fd1b4741c4018070e0f
   elsif draw?(board) == true
     puts "Cat's Game!"
   end
