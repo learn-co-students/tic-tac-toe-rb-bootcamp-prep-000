@@ -3,7 +3,7 @@
 
 ## How it works
 
-Ruby Tic Tac Toe is a command line executable in which a Tic Tac Toe board is represented by an array of strings. The board object is then passed to each seqential method as an argument so the helper method can interact with or introspect on the board.
+Ruby Tic Tac Toe is a command line executable in which a Tic Tac Toe board is represented by an array of strings. The board object is then passed to each sequential method as an argument so the helper method can interact with or introspect on the board.
 
 
 A board with an "X" in the middle:
