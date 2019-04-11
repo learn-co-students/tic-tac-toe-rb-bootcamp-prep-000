@@ -123,3 +123,17 @@ def winner(board)
 		end
 	end
 end
+
+def play(board)
+  	counter = 0
+  	until counter == 9 || over?(board)
+    	turn(board)
+    	counter += 1
+    	end
+    	if over?(board) && won?(board)
+    		puts "Congratulations #{winner(board)}!"
+    	end
+    	if over?(board) && draw?(board)
+    		puts "Cat's Game!"
+    	end
+  	end
