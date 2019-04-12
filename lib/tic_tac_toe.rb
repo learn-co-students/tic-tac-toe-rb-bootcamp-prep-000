@@ -2,11 +2,11 @@ def play(board)
   until over?(board)
     turn(board)
   end
-  
-  if won?(board) 
+
+  if won?(board)
     puts "Congratulations #{winner(board)}!"
-  else 
-    puts "Cat's Game!"
+  else
+    puts ""
   end
 end
 
@@ -34,7 +34,7 @@ def move(board, index, player)
   board[index] = player
 end
 
-def turn(board) 
+def turn(board)
   puts "Please enter 1-9:"
   input = gets.strip
   index = input_to_index(input)
@@ -63,32 +63,32 @@ def won?(board)
     win_index_1 = win_combination[0]
     win_index_2 = win_combination[1]
     win_index_3 = win_combination[2]
-    
+
     position_1 = board[win_index_1]
     position_2 = board[win_index_2]
     position_3 = board[win_index_3]
-    
+
     if (position_1 == "X" && position_2 == "X" && position_3 == "X") || (position_1 == "O" && position_2 == "O" && position_3 == "O")
       return win_combination
-    else 
+    else
       false
     end
-  end 
+  end
   false
 end
 
-def full?(board) 
+def full?(board)
   (board.reject{|i| i == " "}.length ==9)
 end
 
-def draw?(board) 
+def draw?(board)
   if !won?(board) && full?(board)
     return true
   end
   false
 end
 
-def over?(board) 
+def over?(board)
   if won?(board) || draw?(board) || full?(board)
     true
   end
