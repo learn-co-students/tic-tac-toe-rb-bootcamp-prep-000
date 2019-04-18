@@ -96,14 +96,24 @@ def winner(board)
 end
 
 def turn(board)
-  token = current_player(board)
-  puts "Please enter 1-9:"
-  input = input_to_index(gets.chomp.strip)
-  if valid_move?(board, input)
-    move(board, input, token)
-    display_board(board)
+  if over?(board)
+    if draw?(board)
+      puts "Cat's Game!"
+      return
+    else
+      puts "Congratulations #{winner(board)}!"
+      return
+    end
   else
-    turn(board)
+    token = current_player(board)
+    puts "Please enter 1-9:"
+    input = input_to_index(gets.chomp.strip)
+    if valid_move?(board, input)
+      move(board, input, token)
+      display_board(board)
+    else
+      turn(board)
+    end
   end
 end
 
@@ -120,5 +130,5 @@ def play(board)
         puts "Congratulations #{winner(board)}!"
         return
       end
-    end
+  end
 end
