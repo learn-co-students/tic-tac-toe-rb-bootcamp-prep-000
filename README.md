@@ -1,4 +1,4 @@
-# Tic Tac Toe in Ruby
+# Tic Tac Toe in Ruby (APG)
 
 ## Overview
 
