@@ -51,7 +51,8 @@ def display_board(board)
     input = input_to_index(input)
     index = input
     if valid_move?(board, index)
-      move(board, input, value = "X")
+    #   value = current_player(board)
+      move(board, input, current_player(board))
       display_board(board)
     else
       turn(board)
@@ -131,6 +132,11 @@ def full?(board)
       turn(board)
       i += 1
     end
+    if draw?(board)
+        puts "Cat\'s Game!"
+    else
+        puts "Congratulations #{winner(board)}!"
+    end
   end
-  
+
 
