@@ -111,9 +111,23 @@ def play(board)
  
  
  if won?(board)
-  puts "Congratulations #{current_player(board)}!"
-  
- elsif draw?(board)
-   puts "Cat's Game!"
- end 
+  WIN_COMBINATIONS.each do |win_combination|
+  win_index_1 = win_combination[0]
+  win_index_2 = win_combination[1]
+  win_index_3 = win_combination[2]
+ 
+  position_1 = board[win_index_1] 
+  position_2 = board[win_index_2] 
+  position_3 = board[win_index_3] 
+ 
+  if position_1 == "X" && position_2 == "X" && position_3 == "X"
+    return "Congradulations X!" 
+  elsif position_1 == "O" && position_2 == "O" && position_3 == "O"
+    return "Congradulations O!"
+  end
 end 
+
+end 
+
+#elsif draw?(board)
+  # puts "Cat's Game!"
