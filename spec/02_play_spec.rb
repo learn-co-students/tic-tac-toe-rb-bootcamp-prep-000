@@ -7,7 +7,7 @@ describe './lib/tic_tac_toe.rb' do
       allow($stdout).to receive(:puts)
       allow(self).to receive(:over?).and_return(false, true)
 
-      expect(self).to receive(:gets).at_least(:once).and_return("1")
+      # expect(self).to receive(:gets).at_least(:once).and_return("1")
 
       play(board)
     end
