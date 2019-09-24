@@ -19,7 +19,7 @@ def display_board(board)
 end
 #
 def input_to_index(index)
-  index= index.chomp
+
   return index.to_i-1
 end
 #
@@ -44,28 +44,40 @@ def valid_move?(board, index)
   end
 end
 #
+# def turn(board)
+#   puts "Please enter 1-9:"
+#   index = gets.strip
+#   index = input_to_index(index.strip)
+#   valid = valid_move?(board, index)
+#   current_player = current_player(board)
+#   if valid
+#     move(board, index,current_player)
+#     display_board(board)
+#   elsif
+#     until valid
+#       puts "Please enter 1-9:"
+#       index = gets.chomp
+#       index = input_to_index(index.chomp)
+#       valid = valid_move?(board, index)
+#       if valid
+#         move(board, index,current_player)
+#         display_board(board)
+#       end
+#     end
+#     move(board, index,current_player)
+#     display_board(board)
+#   end
+# end
 def turn(board)
   puts "Please enter 1-9:"
-  index = gets.strip
-  index = input_to_index(index.strip)
-  valid = valid_move?(board, index)
+  input = gets.strip
+  index = input_to_index(input)
   current_player = current_player(board)
-  if valid
-    move(board, index,current_player)
+  if valid_move?(board, index)
+    move(board, index, current_player)
     display_board(board)
-  elsif
-    until valid
-      puts "Please enter 1-9:"
-      index = gets.chomp
-      index = input_to_index(index.chomp)
-      valid = valid_move?(board, index)
-      if valid
-        move(board, index,current_player)
-        display_board(board)
-      end
-    end
-    move(board, index,current_player)
-    display_board(board)
+  else
+    turn(board)
   end
 end
 #
@@ -145,15 +157,30 @@ end
 #
 def play(board)
 
-  until over?(board)
+
+  over = over?(board)
+  won = won?(board)
+  draw = draw?(board)
+  if over
+    if draw
+      puts "Cat's Game!"
+      return false
+    elsif won
+      puts "Congratulations #{winner(board)}!"
+      return false
+    end
+  end
+  until over
     turn(board)
+    over = over?(board)
+    won = won?(board)
+    if won?(board)
+      puts "Congratulations #{winner(board)}!"
+      return false
+    elsif(draw?(board))
+      puts "Cat's Game!"
+      return false
+    end
   end
-  # until over?(board)
-  #   turn(board)
-  # end
-  if won?(board)
-    puts "Congratulations #{winner(board)}!"
-  else
-    puts "Cat's Game!"
-  end
+
 end
