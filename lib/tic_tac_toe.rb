@@ -76,8 +76,6 @@ def winner(board)
   if won?(board)
     win_combo = won?(board)
     winner = board[win_combo[0]]   #The first value will be "X" or "O" - the WINNER!
-    puts "WINNER from #winner IS: "
-    winner
     return winner
   end
 end  
@@ -101,8 +99,6 @@ end
 def update_array_at_with(board, index, value)
   index = index.to_i
   board[index] = value
-  puts  board[index]
-
   return board
 end
 
@@ -134,10 +130,9 @@ def turn(board)
   end  
 end  
 
-def turn_count (board)
+def turn_count(board)
   count = 0
   board.each do |value|
-    # puts "#{value}"
     if ("#{value}" == "X") ||  ("#{value}" == "O")
       count += 1
     end
@@ -160,19 +155,25 @@ end
 def play(board)
   turns = [1,2,3,4,5,6,7,8,9]
   while turns.length > 0
-    spent_index = turn(board)
-    spent_input = spent_index + 1
+    unless over?(board)
+      # remove used_input, not available next turn ...
+      used_index = turn(board)
+      used_input = used_index + 1
+      turns.delete(used_input)
+    end
     
-    # remove the spent_input
-    turns.delete(spent_input)  
+    # check if game is over ...
+    if over?(board)   # returns true for both a Win or Draw.
+      turns = []  # stop the play loop
+    end
+    
+    # checks if the game is a win or draw after every turn
     if won?(board)
-      puts "Winner"
-      puts winner(board)
-      turns = []
+      puts "Congratulations " + winner(board) +"!"
     elsif draw?(board)
-      puts "GAME OVER - Draw"
-      turns = []
-   end
+      puts "Cat's Game!"
+    end
   end
-end  
+end
+
 
