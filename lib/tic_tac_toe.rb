@@ -1,3 +1,4 @@
+
 # THIS PASSES ALL THE TESTS ...
 
 def position_taken?(board, index)
@@ -185,3 +186,11 @@ def play(board)
 end
 =end
 
+# NEED BELOW TO PASS  'learn test' ... (bypass ./bin/tictactoe)
+board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+
+puts "Welcome to Tic Tac Toe!"
+
+display_board(board)
+
+play(board)
