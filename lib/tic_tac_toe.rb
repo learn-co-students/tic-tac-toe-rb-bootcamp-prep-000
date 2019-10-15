@@ -153,18 +153,25 @@ def current_player(board)
 end
 
 def play(board)
-  turns = [1,2,3,4,5,6,7,8,9]
-  while turns.length > 0
+  until over?(board) || draw?(board)
+    current_player(board)
+    turn(board)
+  end
+  if won?(board)
+    puts "Congratulations #{winner(board)}!"
+  elsif draw?(board)
+    puts "Cat's Game!"
+  end
+end  
+
+
+=begin
+def play(board)
+  num_of_turns = 0
+  while num_of_turns > 10
+
     unless over?(board)
-      # remove used_input, not available next turn ...
-      used_index = turn(board)
-      used_input = used_index + 1
-      turns.delete(used_input)
-    end
-    
-    # check if game is over ...
-    if over?(board)   # returns true for both a Win or Draw.
-      turns = []  # stop the play loop
+      turn(board)
     end
     
     # checks if the game is a win or draw after every turn
@@ -174,6 +181,7 @@ def play(board)
       puts "Cat's Game!"
     end
   end
+  num_of_turns += 1
 end
-
+=end
 
