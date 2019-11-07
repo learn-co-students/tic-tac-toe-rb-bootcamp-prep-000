@@ -16,3 +16,20 @@ def display_board(board)
   puts "-----------"
   puts " #{board[6]} | #{board[7]} | #{board[8]} "
 end
+
+
+def input_to_index(user_input)
+  new_user_input = user_input.to_i
+  new_user_input -= 1
+  return new_user_input
+end
+
+def move(board, location,player)
+  board[location] = player
+end
+
+def position_taken?(board, location)
+  !(board[location].nil? || board[location] == " ")
+  # Creates a stop on RSpec
+  # !(board[location].nil? || board[location] == "")
+end
