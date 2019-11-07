@@ -33,3 +33,10 @@ def position_taken?(board, location)
   # Creates a stop on RSpec
   # !(board[location].nil? || board[location] == "")
 end
+
+def valid_move?(board,index)
+  if index.to_i.between?(1,9) && !position_taken?(board, index.to_i-1)
+    return true
+  else false
+  end
+end
