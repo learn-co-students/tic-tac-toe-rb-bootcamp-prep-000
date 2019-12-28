@@ -59,8 +59,6 @@ end
 
 def turn(board)
   puts "Please enter 1-9:"
-  # if current_player (board)
-  
   input = gets.strip
   index = input_to_index(input)
   if valid_move?(board, index)
@@ -101,7 +99,6 @@ def won?(board)
         position_2 = board[win_index_2] 
         position_3 = board[win_index_3] 
         if (position_1 == "X" && position_2 == "X" && position_3 == "X") || (position_1 == "O" && position_2 == "O" && position_3 == "O")
-          
           return combination 
         else 
           false
@@ -128,14 +125,12 @@ def full?(board)
 end
 
 def draw?(board)
-  !((!won?(board) && !full?(board)) ||(won?(board)))
+  !won?(board) && full?(board)
 end
-
 
 def over?(board)
   won?(board) || draw?(board) || full?(board) 
 end
-
 
 def winner(board)
   combo = won?(board)
@@ -157,11 +152,6 @@ def play(board)
     
 end
 
-# def play(board)
-#   9.times do
-#     turn(board)
-#   end 
-# end
 
 
 
