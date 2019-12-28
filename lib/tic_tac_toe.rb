@@ -22,15 +22,32 @@ def display_board(board)
     puts "-----------"
     puts " #{board[6]} | #{board[7]} | #{board[8]} "
   end
+
+
+WIN_COMBINATIONS=[
+  [0,1,2],
+  [3,4,5],
+  [6,7,8],
+  [0,4,8],
+  [2,4,6],
+  [0,3,6],
+  [1,4,7],
+  [2,5,8]]
  
   def input_to_index(arg)
     arg = arg.to_i
     arg = arg - 1
   end
   
-  def move(board, index, player_char="X")
+  def move(board, index, player_char)
     board[index] = player_char
   end 
+  
+
+def position_taken?(board, index)
+  !(board[index].nil? || board[index] == " ")
+end
+
  
 def valid_move?(board, index)
   if (index.between?(0,8)) && (!position_taken?(board,index))
@@ -40,32 +57,19 @@ def valid_move?(board, index)
   end 
 end 
 
-def position_taken?(board, index)
-  if board[index]=="" || board[index]==" " || board[index]== nil 
-    return false 
-  else 
-    return true 
-  end 
-end
-
 def turn(board)
   puts "Please enter 1-9:"
+  # if current_player (board)
+  
   input = gets.strip
   index = input_to_index(input)
   if valid_move?(board, index)
-     move(board, index)
-     display_board(board)
+    move(board, index, "#{current_player (board)}")
+    display_board(board)
   else
-     turn(board)
+    turn(board)
   end
 end
-
-def play(board)
-  9.times do
-    turn(board)
-  end 
-end
-
 
 def turn_count (board) 
   occupied = 0 # count occupied in board
@@ -87,20 +91,6 @@ def current_player (board)
 end 
 
 
-def position_taken?(board, index)
-  !(board[index].nil? || board[index] == " ")
-end
-
-WIN_COMBINATIONS=[
-  [0,1,2],
-  [3,4,5],
-  [6,7,8],
-  [0,4,8],
-  [2,4,6],
-  [0,3,6],
-  [1,4,7],
-  [2,5,8]]
-
 def won?(board)
     # check win combination
       WIN_COMBINATIONS.each do |combination| 
@@ -120,29 +110,32 @@ def won?(board)
   false
 end
 
+
 def full?(board)
       if     (board.all? do |element|
-             element == " " || element == nil || element==""
-             end)
-         # puts "borad empty"
-         return false
+            element == " " || element == nil || element==""
+            end)
+        # puts "borad empty"
+        return false
       elsif (board.any?{|element| element ==" " || element== nil})#=> true
         # puts "borad in progress"
-         return false 
+        return false 
       else
-         puts "borad full"
+        # puts "borad full"
         true
       end 
       # return true
 end
 
 def draw?(board)
-   !((!won?(board) && !full?(board)) ||(won?(board)))
+  !((!won?(board) && !full?(board)) ||(won?(board)))
 end
+
 
 def over?(board)
   won?(board) || draw?(board) || full?(board) 
 end
+
 
 def winner(board)
   combo = won?(board)
@@ -150,5 +143,27 @@ def winner(board)
     return board[combo[0]]
   end
 end
+
+def play(board)
+  until over?(board)
+    turn(board)
+  end
+  if won?(board)
+    puts "Congratulations #{winner(board)}!"
+  elsif draw?(board)
+   puts "Cat's Game!"
+ end
+    
+    
+end
+
+# def play(board)
+#   9.times do
+#     turn(board)
+#   end 
+# end
+
+
+
 
 
