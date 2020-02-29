@@ -11,15 +11,14 @@ WIN_COMBINATIONS = [
 ].freeze 
 
 def play(board)
-  while turn(board) 
-    until over?(board) 
+  until over?(board) 
+    turn(board) 
+  end
       if won?(board)
         puts "Congratulations #{winner(board)}!"
       elsif draw?(board)
         puts "Cat's Game!"
       end
-    end
-end
 end
 
 def display_board(board) 
@@ -71,15 +70,15 @@ def turn(board)
 end
 
 def position_taken?(board, location) 
-    board[location] != "X " && board[location] != "O"
+    board[location] == "X" || board[location] == "O"
 end
 
 def current_player(board) 
-    turn_count(board).even? "X" || "O"
+   turn_count(board).even? ? "X" : "O"
 end
 
 def turn_count(board) 
-    board.count { |value| value == "X" || value == "O" }
+    board.count {|value| value == "X" || value == "O" }
 end
 
 def move(board, index, current_player) 
