@@ -21,8 +21,8 @@ def input_to_index(user_input)
   user_input.to_i - 1
 end
 
-def move(board, index)
-   board[index] = player
+def move(board, index, character)
+   board[index] = character
 end
 
 def position_taken?(board, index)
@@ -36,7 +36,7 @@ end
 
 def valid_move?(board, index)
   spot = index.to_i
-  if position_taken?(board, spot) == false && spot.between.(0, 8)
+  if position_taken?(board, spot) == false && spot.between?(0, 8)
     return true
   else
     return false
@@ -48,7 +48,8 @@ def turn(board)
   num = gets.strip
   index = input_to_index(num)
   if valid_move?(board, index) == true
-    move(board, index)
+    character = current_player(board)
+    move(board, index, character)
     return display_board(board)
   else
     turn(board)
@@ -67,15 +68,15 @@ def turn_count(board)
 
  def current_player(board)
    if turn_count(board).even? == true
-     return "O"
-   else
      return "X"
+   else
+     return "O"
    end
  end
 
 def won?(board)
   WIN_COMBINATIONS.detect do |win_combo|
-    position.taken?(board, win, combo[0]) && board[win_combo[0]] == board[win_combo[1]] && board[win_combo[1]] == board[win_combo[2]]
+    position_taken?(board, win_combo[0]) && board[win_combo[0]] == board[win_combo[1]] && board[win_combo[1]] == board[win_combo[2]]
   end
 end
 
@@ -114,14 +115,13 @@ def winner(board)
 end
 
 def play(board)
-  i = 0
-  until i = 9
+  until over?(board)
     turn(board)
-    i += 1
   end
-  if winner(board)
-    return "Congratulations, #{board[won?(board)[0]}"
+  if won?(board)
+    winner(board) == "X" || winner(board) == "O"
+    puts "Congratulations #{winner(board)}!"
   elsif draw?(board)
-    puts "It was a draw."
+    puts "Cat's Game!"
   end
 end
