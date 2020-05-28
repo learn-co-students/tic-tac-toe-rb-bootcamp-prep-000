@@ -28,53 +28,29 @@ def move(board,index,char)
 end
 
 def valid_move?(board,index)
-  if index.between?(0,8) && !position_taken?(board,index)
-    return true
-  else
-    return false
-  end
+  index.between?(0,8) && !position_taken?(board,index)
 end  
 
 def position_taken?(board,index)
-  if board[index] == " " || board[index] == ""
-    return false
-  elsif board[index] == "X" || board[index] == "O"
-    return true
-  else  board[index] == nil
-    return false
-  end
+  board[index] == "X" || board[index] == "O"
 end
 
 def turn(board)
   puts "Please enter 1-9:"
-  input = gets.chomp
+  input = gets.strip
   index = input_to_index(input)
-    
-    if valid_move?(board,index) == true
-      move(board, index, "X")
+     if valid_move?(board,index) 
+      move(board, index, current_player(board))
       display_board(board)
-      puts "Please enter 1-9:"
-    else 
+     else 
       turn(board)
   end
 end
 
-def play(board)
-  count=0
-  while count < 9
-    turn(board)
-    count += 1
-  end
-end  
-
 def turn_count(board)
-  count = 0
-  board.each do |board_element|
-    if board_element == "X" || board_element == "O"
-      count += 1
-    end
+  board.count do |board_element|
+    board_element == "X" || board_element == "O"
   end
-  return count
 end 
 
 def current_player(board)
@@ -94,8 +70,8 @@ def won?(board)
 end
 
 def full?(board)
-  board.each_index.all? do |index|
-    position_taken?(board, index)
+  board.all? do |token|
+    token == "X" || token == "O"
   end 
 end
 
@@ -104,33 +80,25 @@ def draw?(board)
 end
 
 def over?(board)
-  won?(board) || full?(board)
+  won?(board) || draw?(board)
 end
 
 def winner(board) 
   winning_array = won?(board)
-    if won?(board)
-      if board.at(winning_array[0]) === "X"  
-        return "X" 
-      elsif board.at(winning_array[0]) === "O"
-        return "O"
-      end
+    if winning_array
+      board.at(winning_array[0])   
     end
-  return nil
 end
 
 def play(board)
   winning_array = won?(board)
   until over?(board)
-    if current_player(board) == "X"
-      if turn(board)
-    elsif current_player(board) == "O"
-      if turn(board)
-    end
+      turn(board)
   end
   if won?(board)
-    puts "Congrationlations #{board.at(winning_array[0])}!"
+    puts "Congratulations #{winner(board)}!"
   elsif draw?(board)
-    puts "The game was a draw."
+    puts "Cat's Game!"
   end
 end
+
