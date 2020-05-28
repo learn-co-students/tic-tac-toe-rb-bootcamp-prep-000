@@ -119,11 +119,18 @@ def winner(board)
   return nil
 end
 
-
-
-
-
-
-
-
-
+def play(board)
+  winning_array = won?(board)
+  until over?(board)
+    if current_player(board) == "X"
+      if turn(board)
+    elsif current_player(board) == "O"
+      if turn(board)
+    end
+  end
+  if won?(board)
+    puts "Congrationlations #{board.at(winning_array[0])}!"
+  elsif draw?(board)
+    puts "The game was a draw."
+  end
+end
