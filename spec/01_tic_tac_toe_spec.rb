@@ -114,6 +114,22 @@ describe './lib/tic_tac_toe.rb' do
     end
   end
 
+  describe '#turn_count' do
+    it 'counts occupied positions' do
+      board = ['O', ' ', ' ', ' ', 'X', ' ', ' ', ' ', 'X']
+
+      expect(turn_count(board)).to eq(3)
+    end
+  end
+
+  describe '#current_player' do
+    it 'returns the correct player, X, for the third move' do
+      board = ['O', ' ', ' ', ' ', 'X', ' ', ' ', ' ', ' ']
+
+      expect(current_player(board)).to eq('X')
+    end
+  end
+
   describe '#turn' do
     it 'makes valid moves' do
       board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
@@ -136,22 +152,6 @@ describe './lib/tic_tac_toe.rb' do
       expect(self).to receive(:gets).and_return('1')
 
       turn(board)
-    end
-  end
-
-  describe '#turn_count' do
-    it 'counts occupied positions' do
-      board = ['O', ' ', ' ', ' ', 'X', ' ', ' ', ' ', 'X']
-
-      expect(turn_count(board)).to eq(3)
-    end
-  end
-
-  describe '#current_player' do
-    it 'returns the correct player, X, for the third move' do
-      board = ['O', ' ', ' ', ' ', 'X', ' ', ' ', ' ', ' ']
-
-      expect(current_player(board)).to eq('X')
     end
   end
 
