@@ -160,13 +160,13 @@ def play(board)
 def playagain?(board)
   puts "Would you like to play again? Y/N"
   input = gets.strip.downcase
-  if input == "y" || "yes"
+  if input == "y" || input == "yes"
     board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
     puts " "
     puts "Round #{$round += 1}!"
     display_board(board)
     play(board)
-  elsif input == "n" || "no"
+  elsif input == "n" || input == "no"
     exit
   else
     playagain?(board)
