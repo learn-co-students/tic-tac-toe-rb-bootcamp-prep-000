@@ -10,6 +10,8 @@ WIN_COMBINATIONS = [
 ]
 
 $round = 1
+$player_score = 0
+$computer_score = 0
 
 def display_board(board)
   puts " #{board[0]} | #{board[1]} | #{board[2]} "
@@ -157,32 +159,41 @@ def play(board)
     turn(board)
   end
 
-def playagain?(board)
+def score_keep
+  puts " "
+  puts "----- Round #{$round += 1}! -----"
+  puts "Player: #{$player_score} Computer: #{$computer_score}"
+  puts " "
+end
+
+def play_again?(board)
   puts "Would you like to play again? Y/N"
   input = gets.strip.downcase
-  if input == "y" || input == "yes"
+
+  if input == "yes" || input == "y"
     board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-    puts " "
-    puts "Round #{$round += 1}!"
+    score_keep
     display_board(board)
     play(board)
-  elsif input == "n" || input == "no"
+  elsif input == "no" || input == "n"
     exit
   else
-    playagain?(board)
+    play_again?(board)
   end
 end
 
   if won?(board)
     if winner(board) == "X"
       puts "Congratulations! You beat the computer!"
-      playagain?(board)
+      $player_score += 1
+      play_again?(board)
     else
       puts "The computer beat you :("
-      playagain?(board)
+      $computer_score += 1
+      play_again?(board)
   end
   else draw?(board)
     puts "Cat's Game!"
-    playagain?(board)
+    play_again?(board)
   end
 end
