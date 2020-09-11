@@ -53,7 +53,7 @@ def valid_move?(board, index)
   end
 end
 
-def move(board, index, token = "X")
+def move(board, index, token)
   board[index] = token
 end
 
@@ -63,7 +63,7 @@ def turn(board)
   index = input_to_index(input)
 
   if valid_move?(board, index)
-    move(board, index)
+    move(board, index, current_player(board))
     display_board(board)
   else
     turn(board)
@@ -137,9 +137,13 @@ def winner(board)
 end
 
 def play(board)
-  turn_number = 1
-  while turn_number < 10
+  until over?(board)
     turn(board)
-    turn_number += 1
+  end
+
+  if won?(board)
+    puts "Congratulations #{winner(board)}!"
+  else draw?(board)
+    puts "Cat's Game!"
   end
 end
