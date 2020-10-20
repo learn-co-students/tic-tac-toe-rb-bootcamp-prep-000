@@ -241,6 +241,16 @@ means that the submitted position is:
 1.  Present on the game board.
 2.  Not already filled with a token.
 
+#### `#turn_count`
+
+This method takes in an argument of the board array and returns the number of
+turns that have been played.
+
+#### `#current_player`
+
+The `#current_player` method should take in an argument of the game board and
+use the `#turn_count` method to determine if it is `"X"`'s turn or `"O"`'s.
+
 #### `#turn`
 
 Build a method `#turn` to encapsulate the logic of a single complete turn
@@ -269,16 +279,6 @@ else
   ask for input again until you get a valid move
 end
 ```
-
-#### `#turn_count`
-
-This method takes in an argument of the board array and returns the number of
-turns that have been played.
-
-#### `#current_player`
-
-The `#current_player` method should take in an argument of the game board and
-use the `#turn_count` method to determine if it is `"X"`'s turn or `"O"`'s.
 
 #### `#won?`
 
