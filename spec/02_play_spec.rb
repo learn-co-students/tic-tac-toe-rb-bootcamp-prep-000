@@ -1,138 +1,90 @@
-require_relative '../lib/tic_tac_toe.rb'
-
-describe './lib/tic_tac_toe.rb' do
-  describe '#play' do
-    it 'asks for players input on a turn of the game' do
-      board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-      allow($stdout).to receive(:puts)
-      allow(self).to receive(:over?).and_return(false, true)
-
-      expect(self).to receive(:gets).at_least(:once).and_return("1")
-
-      play(board)
-    end
-
-    it 'checks if the game is over after every turn' do
-      board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-      allow($stdout).to receive(:puts)
-      allow(self).to receive(:gets).and_return("1", "2", "4", "5", "7")
-
-      expect(self).to receive(:over?).at_least(:twice).and_return(false, false, true)
-
-      play(board)
-    end
-
-    it 'plays the first turn of the game' do
-      board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-      allow($stdout).to receive(:puts)
-      allow(self).to receive(:gets).and_return("1")
-
-      allow(self).to receive(:over?).and_return(false, true)
-
-      play(board)
-      expect(board).to match_array(["X", " ", " ", " ", " ", " ", " ", " ", " "])
-    end
-
-    it 'plays the first few turns of the game' do
-      board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-      num_of_turns = 0
-      allow($stdout).to receive(:puts)
-      allow(self).to receive(:gets).and_return("1","2","3")
-      allow(self).to receive(:over?).and_return(false, false, false, true)
-      allow(self).to receive(:turn) do
-        num_of_turns += 1
-        Process.exit!(true) if num_of_turns > 10
-      end.and_call_original
-
-      play(board)
-
-      expect(board).to match_array(["X", "O", "X", " ", " ", " ", " ", " ", " "])
-    end
-
-    it 'checks if the game is won after every turn' do
-      board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-      allow($stdout).to receive(:puts)
-      allow(self).to receive(:gets).and_return("1", "2", "3")
-      allow(self).to receive(:winner).and_return("X")
-
-      expect(self).to receive(:won?).at_least(:twice).and_return(false, false, true)
-
-      play(board)
-    end
-
-    it 'checks if the game is draw after every turn' do
-      board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-      allow($stdout).to receive(:puts)
-      allow(self).to receive(:gets).and_return("1", "2", "3")
-
-      expect(self).to receive(:draw?).at_least(:twice).and_return(false, false, true)
-
-      play(board)
-    end
-
-    it 'stops playing if someone has won' do
-      board = ["X", "X", "X", " ", " ", " ", " ", " ", " "]
-      allow($stdout).to receive(:puts)
-
-      expect(self).to_not receive(:turn)
-
-      play(board)
-    end
-
-    it 'congratulates the winner X' do
-      board = ["X", "X", "X", " ", " ", " ", " ", " ", " "]
-      allow($stdout).to receive(:puts)
-
-      expect($stdout).to receive(:puts).with("Congratulations X!")
-
-      play(board)
-    end
-
-    it 'congratulates the winner O' do
-      board = [" ", " ", " ", " ", " ", " ", "O", "O", "O"]
-      allow($stdout).to receive(:puts)
-
-      expect($stdout).to receive(:puts).with("Congratulations O!")
-
-      play(board)
-    end
-
-    it 'stops playing in a draw' do
-      board = ["X", "O", "X", "O", "X", "X", "O", "X", "O"]
-      allow($stdout).to receive(:puts)
-
-      expect(self).to_not receive(:turn)
-
-      play(board)
-    end
-
-    it 'prints "Cat\'s Game!" on a draw' do
-      board = ["X", "O", "X", "O", "X", "X", "O", "X", "O"]
-      allow($stdout).to receive(:puts)
-
-      expect($stdout).to receive(:puts).with("Cat's Game!")
-
-      play(board)
-    end
-
-    it 'plays through an entire game' do
-      board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-      allow($stdout).to receive(:puts)
-
-      # expect(self).to receive(:turn).at_most(1000).times
-      expect(self).to receive(:gets).and_return("1")
-      expect(self).to receive(:gets).and_return("2")
-      expect(self).to receive(:gets).and_return("3")
-      expect(self).to receive(:gets).and_return("4")
-      expect(self).to receive(:gets).and_return("5")
-      expect(self).to receive(:gets).and_return("6")
-      expect(self).to receive(:gets).and_return("7")
-      allow(self).to receive(:gets).and_raise("CLI continues to ask for input after game should have ended")
+WIN_COMBINATIONS = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [6, 4, 2]
+]
 
 
-      expect($stdout).to receive(:puts).with("Congratulations X!")
+def display_board(board)
+  puts " #{board[0]} | #{board[1]} | #{board[2]} "
+  puts '-----------'
+  puts " #{board[3]} | #{board[4]} | #{board[5]} "
+  puts '-----------'
+  puts " #{board[6]} | #{board[7]} | #{board[8]} "
+end
 
-      play(board)
-    end
+def valid_move?(board, index)
+  index.between?(0, 8) && !position_taken?(board, index)
+end
+
+def won?(board)
+  WIN_COMBINATIONS.detect do |combo|
+    board[combo[0]] == board[combo[1]] &&
+      board[combo[1]] == board[combo[2]] &&
+      position_taken?(board, combo[0])
+  end
+end
+
+def full?(board)
+  board.all? { |token| token == 'X' || token == 'O' }
+end
+
+def draw?(board)
+  !won?(board) && full?(board)
+end
+
+def over?(board)
+  won?(board) || draw?(board)
+end
+
+def input_to_index(user_input)
+  user_input.to_i - 1
+end
+
+def turn(board)
+  puts 'Please enter 1-9:'
+  user_input = gets.strip
+  index = input_to_index(user_input)
+  if valid_move?(board, index)
+    move(board, index, current_player(board))
+    display_board(board)
+  else
+    turn(board)
+  end
+end
+
+def position_taken?(board, index)
+  board[index] == 'X' || board[index] == 'O'
+end
+
+def current_player(board)
+  turn_count(board).even? ? 'X' : 'O'
+end
+
+def turn_count(board)
+  board.count { |token| token == 'X' || token == 'O' }
+end
+
+def move(board, index, player)
+  board[index] = player
+end
+
+def winner(board)
+  if winning_combo = won?(board)
+    board[winning_combo.first]
+  end
+end
+
+def play(board)
+  turn(board) until over?(board)
+  if won?(board)
+    puts "Congratulations #{winner(board)}!"
+  elsif draw?(board)
+    puts "Cat's Game!"
   end
 end
