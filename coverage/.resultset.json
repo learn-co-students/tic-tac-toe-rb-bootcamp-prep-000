@@ -1,0 +1,31 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/home/jolly-invocation-36d3/tic-tac-toe-rb-bootcamp-prep-000/lib/tic_tac_toe.rb": [
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1613326408
+  }
+}
